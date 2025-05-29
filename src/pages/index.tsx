@@ -53,6 +53,7 @@ const styles: { [key: string]: CSSProperties } = {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
+    fontFamily: "'Poetsen One', cursive",
   },
   navMenuGroup: {
     display: "flex",
@@ -408,11 +409,11 @@ const Index = () => {
         <div style={styles.navContent}>
           {/* Logo group on extreme left */}
           <div style={styles.logoGroup}>
-            <div style={styles.logoCircle}>
+            <div>
               <img 
                 src="/falcons_logo.png" 
                 alt="LAMB FALCONS Logo" 
-                style={{ width: '46px', height: '46px', objectFit: 'contain' }} 
+                style={{ width: '55px', height: '55px', objectFit: 'contain' }} 
               />
             </div>
             <div style={styles.logoText}>LAMB FALCONS</div>
@@ -608,9 +609,9 @@ const Index = () => {
       {/* CTA Section */}
       <section style={{ ...styles.section, ...styles.ctaSection }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <h2 style={{ ...styles.sectionTitle, fontSize: "3.5rem", marginBottom: "24px" }}>Ready to Soar?</h2>
+          <h2 style={{ ...styles.sectionTitle, fontSize: "3.5rem", marginBottom: "24px" }}>Ready to Roar?</h2>
           <p style={{ fontSize: "1.25rem", marginBottom: "32px", color: "rgba(255,255,255,0.9)" }}>
-            Join the LAMB FALCONS family and become part of something extraordinary
+            Join the family & become part of something extraordinary !
           </p>
           <button
             style={{
@@ -643,17 +644,19 @@ const Index = () => {
       {/* Footer */}
       <footer style={styles.footer}>
         <div style={styles.logoGroup}>
-          <div style={{ ...styles.logoCircle, width: "40px", height: "40px", fontSize: "18px" }}>
+          <div>
             <img 
               src="/falcons_logo.png" 
               alt="LAMB FALCONS Logo" 
-              style={{ width: '44px', height: '44px', objectFit: 'contain' }} 
+              style={{ width: '55px', height: '55px', objectFit: 'contain' }} 
             />
           </div>
           <div style={{ ...styles.logoText, fontSize: "20px" }}>LAMB FALCONS</div>
         </div>
         <div style={{ color: "rgba(255,255,255,0.6)" }}>
-          © 2025 LAMB FALCONS. All rights reserved. Soar with pride.
+          <div>© 2025 LAMB FALCONS.</div> 
+          <br></br>
+          <div>All rights reserved.</div>
         </div>
       </footer>
     </div>
