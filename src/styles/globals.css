@@ -1,0 +1,13 @@
+/* src/styles/globals.css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
