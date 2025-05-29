@@ -14,7 +14,7 @@ const styles: { [key: string]: CSSProperties } = {
     top: 0,
     width: "100%",
     zIndex: 50,
-    backgroundColor: "rgba(0,0,0,0.9)",
+    backgroundColor: "#032f3c",
     backdropFilter: "blur(10px)",
     borderBottom: "1px solid rgba(255,255,255,0.1)",
   },
@@ -47,13 +47,10 @@ const styles: { [key: string]: CSSProperties } = {
     fontWeight: "bold",
   },
   logoText: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    background: "linear-gradient(to right, #3b82f6, #1d4ed8)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-    fontFamily: "'Poetsen One', cursive",
+    fontSize: "34px",
+    fontWeight: "",
+    color: "white",
+    fontFamily: "'Lilita One', cursive",
   },
   navMenuGroup: {
     display: "flex",
@@ -136,6 +133,7 @@ const styles: { [key: string]: CSSProperties } = {
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
+    fontFamily: "'Cinzel', serif",
   },
   heroDescription: {
     fontSize: "1.25rem",
@@ -213,6 +211,7 @@ const styles: { [key: string]: CSSProperties } = {
     fontSize: "3rem",
     fontWeight: "bold",
     marginBottom: "24px",
+    fontFamily: "'Cinzel', serif",
   },
   sectionSubtitle: {
     fontSize: "1.25rem",
@@ -303,6 +302,13 @@ const styles: { [key: string]: CSSProperties } = {
       "linear-gradient(to right, #1e3a8a, #1d4ed8)",
     textAlign: "center",
   },
+  ctaTitle: {
+    fontSize: "3.5rem",
+    marginBottom: "24px",
+    fontFamily: "'Cinzel', serif",
+    fontWeight: "bold",
+    color: "white",
+  },
   footer: {
     backgroundColor: "#000000",
     borderTop: "1px solid rgba(255,255,255,0.1)",
@@ -329,24 +335,22 @@ const Index = () => {
     {
       image:
         "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop",
-      title: "STRENGTH IN UNITY",
-      subtitle: "LAMB FALCONS",
+      title: "WAR FOR THE BADGE",
       description: "Together we soar, together we conquer",
     },
     {
       image:
         "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1920&h=1080&fit=crop",
       title: "LEGACY OF EXCELLENCE",
-      subtitle: "LAMB FALCONS",
       description: "Building tomorrow's champions today",
     },
   ];
 
   const stats = [
-    { number: "150+", label: "Active Members" },
+    { number: "30+", label: "Active Members" },
     { number: "25", label: "Championships" },
-    { number: "2019", label: "Established" },
-    { number: "5", label: "Teams" },
+    { number: "2020", label: "Established" },
+    
   ];
 
   const newsItems = [
@@ -404,6 +408,9 @@ const Index = () => {
 
   return (
     <div style={styles.container}>
+      {/* Load Google Font */}
+      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      
       {/* Navigation */}
       <nav style={styles.navbar}>
         <div style={styles.navContent}>
@@ -502,7 +509,7 @@ const Index = () => {
       {/* Features Section */}
       <section style={{ ...styles.section, ...styles.featuresSection }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2 style={styles.sectionTitle}>Why Choose LAMB FALCONS</h2>
+          <h2 style={styles.sectionTitle}>Why Choose LAMB FALCONS ?</h2>
           <p style={styles.sectionSubtitle}>
             Experience excellence in every aspect of club membership and athletic development
           </p>
@@ -527,7 +534,7 @@ const Index = () => {
                 Join a club with a proven track record of success and a commitment to excellence in
                 every competition.
               </p>
-              <div style={{ color: "#3b82f6", fontWeight: 600 }}>Learn More →</div>
+              <div style={{ color: "#3b82f6", fontWeight: 600 }}></div>
             </div>
 
             <div
@@ -546,7 +553,7 @@ const Index = () => {
               <div style={styles.featureIcon}>👥</div>
               <h3 style={styles.featureTitle}>Strong Community</h3>
               <p style={styles.featureDescription}>
-                Be part of a tight-knit community where lifelong friendships are formed and everyone
+                Be part of a tight-knit community where lifelong friendships are formed & everyone
                 supports each other.
               </p>
               <div style={{ color: "#3b82f6", fontWeight: 600 }}>Join Now →</div>
@@ -568,10 +575,10 @@ const Index = () => {
               <div style={styles.featureIcon}>⭐</div>
               <h3 style={styles.featureTitle}>Elite Training</h3>
               <p style={styles.featureDescription}>
-                Access world-class training facilities and expert coaching to elevate your performance
+                Access world-class training facilities to elevate your performance
                 to new heights.
               </p>
-              <div style={{ color: "#3b82f6", fontWeight: 600 }}>Explore →</div>
+              <div style={{ color: "#3b82f6", fontWeight: 600 }}></div>
             </div>
           </div>
         </div>
@@ -609,7 +616,7 @@ const Index = () => {
       {/* CTA Section */}
       <section style={{ ...styles.section, ...styles.ctaSection }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          <h2 style={{ ...styles.sectionTitle, fontSize: "3.5rem", marginBottom: "24px" }}>Ready to Roar?</h2>
+          <h2 style={styles.ctaTitle}>Ready to Roar?</h2>
           <p style={{ fontSize: "1.25rem", marginBottom: "32px", color: "rgba(255,255,255,0.9)" }}>
             Join the family & become part of something extraordinary !
           </p>
