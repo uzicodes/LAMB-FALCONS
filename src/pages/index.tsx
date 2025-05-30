@@ -64,6 +64,7 @@ const styles: { [key: string]: CSSProperties } = {
     fontWeight: 500,
     transition: "color 0.3s ease",
     cursor: "pointer",
+    fontFamily: "'Merriweather', serif",
   },
   navButton: {
     backgroundColor: "transparent",
@@ -452,19 +453,11 @@ const Index = () => {
             >
               Jerseys
             </a>
-            <button
-              style={styles.navButton}
-              onMouseEnter={(e) => handleButtonHover(e, true)}
-              onMouseLeave={(e) => handleButtonHover(e, false)}
-            >
-              Login
+            <button className="button">
+              <span>Log In</span>
             </button>
-            <button
-              style={styles.registerBtn}
-              onMouseEnter={(e) => handleRegisterHover(e, true)}
-              onMouseLeave={(e) => handleRegisterHover(e, false)}
-            >
-              Register
+            <button className="button">
+              <span>Register</span>
             </button>
           </div>
         </div>
@@ -490,7 +483,20 @@ const Index = () => {
           <h1 style={styles.heroTitle}>{heroSlides[currentSlide]?.title}</h1>
           <p style={styles.heroDescription}>{heroSlides[currentSlide]?.description}</p>
           <div style={styles.heroButtons}>
-            <button style={styles.primaryBtn}>Join The Club →</button>
+            <div className="btn-conteiner">
+              <a className="btn-content">
+                <span>Join The Club</span>
+                <div className="icon-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+                    <g fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" strokeMiterlimit="10">
+                      <circle id="arrow-icon-one" cx="16" cy="16" r="7"></circle>
+                      <circle id="arrow-icon-two" cx="16" cy="16" r="7"></circle>
+                      <circle id="arrow-icon-three" cx="16" cy="16" r="7"></circle>
+                    </g>
+                  </svg>
+                </div>
+              </a>
+            </div>
             <button style={styles.secondaryBtn}>▶ Watch Highlights</button>
           </div>
         </div>

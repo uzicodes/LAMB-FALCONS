@@ -7,7 +7,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Merriweather&family=Poppins:wght@600&display=swap"
           rel="stylesheet"
         />
       </Head>
