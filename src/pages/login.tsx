@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 import { useRouter } from 'next/router';
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     minHeight: '100vh',
     width: '100vw',
@@ -11,6 +11,19 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Arial, sans-serif',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    filter: 'blur(8px)',
+    opacity: 0.3,
+    zIndex: 0,
   },
   loginBox: {
     backgroundColor: 'rgba(255,255,255,0.05)',
@@ -20,6 +33,8 @@ const styles = {
     width: '100%',
     maxWidth: '400px',
     border: '1px solid rgba(255,255,255,0.1)',
+    position: 'relative',
+    zIndex: 1,
   },
   logoGroup: {
     display: 'flex',
@@ -114,6 +129,11 @@ const Login = () => {
 
   return (
     <div style={styles.container}>
+      <img 
+        src="/login.jpg" 
+        alt="Background" 
+        style={styles.backgroundImage}
+      />
       <div style={styles.loginBox}>
         <div style={styles.logoGroup}>
           <img 

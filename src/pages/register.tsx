@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 import { useRouter } from 'next/router';
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     minHeight: '100vh',
     width: '100vw',
@@ -11,6 +11,19 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Arial, sans-serif',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    filter: 'blur(8px)',
+    opacity: 0.3,
+    zIndex: 0,
   },
   registerBox: {
     backgroundColor: 'rgba(255,255,255,0.05)',
@@ -20,6 +33,8 @@ const styles = {
     width: '100%',
     maxWidth: '400px',
     border: '1px solid rgba(255,255,255,0.1)',
+    position: 'relative',
+    zIndex: 1,
   },
   logoGroup: {
     display: 'flex',
@@ -37,11 +52,19 @@ const styles = {
     fontSize: '24px',
     fontWeight: 'bold',
     marginBottom: '20px',
-    textAlign: 'center' as const,
+    textAlign: 'center',
     color: '#ffffff',
   },
   inputGroup: {
     marginBottom: '20px',
+  },
+  nameGroup: {
+    display: 'flex',
+    gap: '12px',
+    marginBottom: '20px',
+  },
+  nameInput: {
+    flex: 1,
   },
   label: {
     display: 'block',
@@ -80,7 +103,7 @@ const styles = {
     transform: 'scale(1.02)',
   },
   loginLink: {
-    textAlign: 'center' as const,
+    textAlign: 'center',
     marginTop: '20px',
     color: 'rgba(255,255,255,0.6)',
   },
@@ -88,14 +111,6 @@ const styles = {
     color: '#3b82f6',
     textDecoration: 'none',
     fontWeight: 'bold',
-  },
-  nameGroup: {
-    display: 'flex',
-    gap: '12px',
-    marginBottom: '20px',
-  },
-  nameInput: {
-    flex: 1,
   },
 };
 
@@ -127,6 +142,11 @@ const Register = () => {
 
   return (
     <div style={styles.container}>
+      <img 
+        src="/register.jpg" 
+        alt="Background" 
+        style={styles.backgroundImage}
+      />
       <div style={styles.registerBox}>
         <div style={styles.logoGroup}>
           <img 

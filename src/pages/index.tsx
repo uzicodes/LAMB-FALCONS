@@ -148,6 +148,7 @@ const styles: { [key: string]: CSSProperties } = {
     gap: "16px",
     justifyContent: "center",
     flexWrap: "wrap",
+    width: "100%",
   },
   primaryBtn: {
     background:
@@ -352,6 +353,71 @@ const styles: { [key: string]: CSSProperties } = {
     cursor: "pointer",
     transform: "scale(1)",
   },
+  shadowBtn: {
+    padding: "10px 20px",
+    border: "none",
+    fontSize: "17px",
+    color: "#fff",
+    borderRadius: "7px",
+    letterSpacing: "4px",
+    fontWeight: 700,
+    textTransform: "uppercase",
+    transition: "0.5s",
+    transitionProperty: "box-shadow",
+    background: "rgb(0,140,255)",
+    boxShadow: "0 0 25px rgb(0,140,255)",
+    cursor: "pointer",
+  },
+  partnershipSection: {
+    backgroundColor: "#000000",
+    padding: "80px 20px",
+    borderTop: "1px solid rgba(255,255,255,0.1)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
+  },
+  partnershipContainer: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "40px",
+  },
+  partnershipContent: {
+    flex: 1,
+  },
+  partnershipTitle: {
+    fontSize: "3rem",
+    fontWeight: "bold",
+    marginBottom: "24px",
+    color: "#e9a090",
+    fontFamily: "'Cinzel', serif",
+  },
+  partnershipDescription: {
+    fontSize: "1.1rem",
+    color: "rgba(255,255,255,0.8)",
+    lineHeight: 1.6,
+    marginBottom: "24px",
+  },
+  partnershipLogo: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "40px",
+    width: "400px",
+    height: "400px",
+    margin: "0 auto",
+  },
+  partnershipLink: {
+    color: "#e9a090",
+    textDecoration: "none",
+    fontSize: "1.1rem",
+    fontWeight: 600,
+    cursor: "pointer",
+    transition: "color 0.3s ease",
+    display: "inline-block",
+    marginTop: "16px",
+  },
 };
 
 // Add global styles for animations
@@ -369,6 +435,13 @@ const globalStyles = `
     100% {
       transform: scale(1);
     }
+  }
+
+  .shadow__btn:hover {
+    box-shadow: 0 0 5px rgb(0,140,255),
+                0 0 25px rgb(0,140,255),
+                0 0 50px rgb(0,140,255),
+                0 0 100px rgb(0,140,255);
   }
 
   .social-link1:hover {
@@ -563,21 +636,31 @@ const Index = () => {
           <h1 style={styles.heroTitle}>{heroSlides[currentSlide]?.title}</h1>
           <p style={styles.heroDescription}>{heroSlides[currentSlide]?.description}</p>
           <div style={styles.heroButtons}>
-            <div className="btn-conteiner">
-              <a href="/register" className="btn-content">
-                <span>Join The Club</span>
-                <div className="icon-arrow">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
-                    <g fill="none" stroke="#ffffff" strokeWidth="1.5" strokeLinejoin="round" strokeMiterlimit="10">
-                      <circle id="arrow-icon-one" cx="16" cy="16" r="7"></circle>
-                      <circle id="arrow-icon-two" cx="16" cy="16" r="7"></circle>
-                      <circle id="arrow-icon-three" cx="16" cy="16" r="7"></circle>
-                    </g>
-                  </svg>
-                </div>
-              </a>
-            </div>
-            <button style={styles.secondaryBtn}>▶ Watch Highlights</button>
+            <button 
+              className="shadow__btn"
+              style={{
+                ...styles.shadowBtn,
+                margin: "0 auto"
+              }}
+              onClick={() => window.location.href = '/register'}
+            >
+              Join The Club
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -595,7 +678,7 @@ const Index = () => {
       {/* Features Section */}
       <section style={{ ...styles.section, ...styles.featuresSection }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <h2 style={styles.sectionTitle}>Why Choose LAMB FALCONS ?</h2>
+          <h2 style={{ ...styles.sectionTitle, color: "#e9a090" }}>Why Choose LAMB FALCONS ?</h2>
           <p style={styles.sectionSubtitle}>
             Experience excellence in every aspect of club membership and athletic development
           </p>
@@ -673,7 +756,7 @@ const Index = () => {
       {/* News Section */}
       <section style={{ ...styles.section, ...styles.newsSection }}>
         <div style={styles.newsHeader}>
-          <h2 style={{ ...styles.sectionTitle, fontSize: "2.5rem", marginBottom: 0 }}>Latest News</h2>
+          <h2 style={{ ...styles.sectionTitle, fontSize: "2.5rem", marginBottom: 0, color: "#e9a090" }}>Latest News</h2>
           <button
             style={{
               color: "#3b82f6",
@@ -732,6 +815,47 @@ const Index = () => {
           >
             Become a Falcon Today 
           </button>
+        </div>
+      </section>
+
+      {/* Partnership Section */}
+      <section style={styles.partnershipSection}>
+        <div style={styles.partnershipContainer}>
+          <div style={styles.partnershipContent}>
+            <h2 style={styles.partnershipTitle}>Official Kit Partner</h2>
+            <p style={styles.partnershipDescription}>
+              We are proud to announce our partnership with Designex, our official kit partner! 
+            </p>
+            <p style={styles.partnershipDescription}>
+              Designex brings years of expertise in sports apparel manufacturing, ensuring our players 
+              have access to the best equipment while representing our club with pride.
+            </p>
+            <a 
+              href="#jerseys" 
+              style={styles.partnershipLink}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#e9a090";
+              }}
+            >
+              Click here for the Kit's!
+            </a>
+          </div>
+          <div style={styles.partnershipLogo}>
+            <img 
+              src="/designex_logo.png" 
+              alt="Designex Logo" 
+              style={{ 
+                maxWidth: "300px", 
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+                borderRadius: "50%"
+              }} 
+            />
+          </div>
         </div>
       </section>
 
