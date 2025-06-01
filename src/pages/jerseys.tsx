@@ -270,8 +270,8 @@ const Jerseys = () => {
           </div>
           <div style={styles.navMenuGroup}>
             <a href="/" style={styles.navLink}>Home</a>
-            <a href="/#about" style={styles.navLink}>About Us</a>
-            <a href="/#members" style={styles.navLink}>Members</a>
+            <a href="/about" style={styles.navLink}>About Us</a>
+            <a href="/members" style={styles.navLink}>Members</a>
             <a href="/jerseys" style={{...styles.navLink, color: '#ffffff', fontWeight: 'bold'}}>Jerseys</a>
             <a href="/login" className="button"><span>Log In</span></a>
             <a href="/register" className="button"><span>Register</span></a>
