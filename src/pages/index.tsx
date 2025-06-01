@@ -583,7 +583,7 @@ const Index = () => {
           {/* Menu group on extreme right */}
           <div style={styles.navMenuGroup}>
             <a
-              href="#about"
+              href="/about"
               style={styles.navLink}
               onMouseEnter={(e) => handleNavLinkHover(e, true)}
               onMouseLeave={(e) => handleNavLinkHover(e, false)}
@@ -591,7 +591,7 @@ const Index = () => {
               About Us
             </a>
             <a
-              href="#members"
+              href="/members"
               style={styles.navLink}
               onMouseEnter={(e) => handleNavLinkHover(e, true)}
               onMouseLeave={(e) => handleNavLinkHover(e, false)}
@@ -599,7 +599,7 @@ const Index = () => {
               Members
             </a>
             <a
-              href="#jerseys"
+              href="/jerseys"
               style={styles.navLink}
               onMouseEnter={(e) => handleNavLinkHover(e, true)}
               onMouseLeave={(e) => handleNavLinkHover(e, false)}
@@ -831,7 +831,7 @@ const Index = () => {
               have access to the best equipment while representing our club with pride.
             </p>
             <a 
-              href="#jerseys" 
+              href="/jerseys" 
               style={styles.partnershipLink}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "#ffffff";
