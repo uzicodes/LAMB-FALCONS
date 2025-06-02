@@ -249,6 +249,7 @@ const styles: { [key: string]: CSSProperties } = {
     justifyContent: "center",
     marginBottom: "24px",
     fontSize: "32px",
+    margin: "0 auto 24px",
   },
   featureTitle: {
     fontSize: "1.5rem",
@@ -698,7 +699,7 @@ const Index = () => {
               }}
             >
               <div style={styles.featureIcon}>🏆</div>
-              <h3 style={styles.featureTitle}>Championship Legacy</h3>
+              <h3 style={{...styles.featureTitle, textAlign: "center"}}>Championship Legacy</h3>
               <p style={styles.featureDescription}>
                 Join a club with a proven track record of success and a commitment to excellence in
                 every competition.
@@ -720,12 +721,12 @@ const Index = () => {
               }}
             >
               <div style={styles.featureIcon}>👥</div>
-              <h3 style={styles.featureTitle}>Strong Community</h3>
+              <h3 style={{...styles.featureTitle, textAlign: "center"}}>Strong Community</h3>
               <p style={styles.featureDescription}>
                 Be part of a tight-knit community where lifelong friendships are formed & everyone
                 supports each other.
               </p>
-              <div style={{ color: "#3b82f6", fontWeight: 600 }}>Join Now →</div>
+              <div style={{ color: "#3b82f6", fontWeight: 600, cursor: "pointer" }} onClick={() => window.location.href = '/register'}>Join Now →</div>
             </div>
 
             <div
@@ -742,7 +743,7 @@ const Index = () => {
               }}
             >
               <div style={styles.featureIcon}>⭐</div>
-              <h3 style={styles.featureTitle}>Elite Training</h3>
+              <h3 style={{...styles.featureTitle, textAlign: "center"}}>Elite Training</h3>
               <p style={styles.featureDescription}>
                 Access world-class training facilities to elevate your performance
                 to new heights.

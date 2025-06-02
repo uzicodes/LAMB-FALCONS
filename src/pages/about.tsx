@@ -37,8 +37,7 @@ const styles: { [key: string]: CSSProperties } = {
     flex: '0 0 auto',
   },
   logoText: {
-    fontSize: '34px',
-    fontWeight: 'bold',
+    fontSize: '25px',
     color: 'white',
     fontFamily: "'Lilita One', cursive",
   },
