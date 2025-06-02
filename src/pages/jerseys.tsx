@@ -263,7 +263,7 @@ const Jerseys = () => {
             <img 
               src="/falcons_logo.png" 
               alt="LAMB FALCONS Logo" 
-              style={{ width: '48px', height: '48px', objectFit: 'contain' }} 
+              style={{ width: '65px', height: '65px', objectFit: 'contain' }} 
             />
             <div style={styles.logoText}>LAMB FALCONS</div>
           </div>

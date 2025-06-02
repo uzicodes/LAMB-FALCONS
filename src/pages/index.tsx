@@ -575,7 +575,7 @@ const Index = () => {
               <img 
                 src="/falcons_logo.png" 
                 alt="LAMB FALCONS Logo" 
-                style={{ width: '55px', height: '55px', objectFit: 'contain' }} 
+                style={{ width: '65px', height: '65px', objectFit: 'contain' }} 
               />
             </div>
             <div style={{ ...styles.logoText, fontSize: "25px", marginRight: "20px" }}>LAMB FALCONS</div>
@@ -867,7 +867,7 @@ const Index = () => {
             <img 
               src="/falcons_logo.png" 
               alt="LAMB FALCONS Logo" 
-              style={{ width: '55px', height: '55px', objectFit: 'contain' }} 
+              style={{ width: '58px', height: '58px', objectFit: 'contain' }} 
             />
           </div>
           <div style={{ ...styles.logoText, fontSize: "25px" }}>LAMB FALCONS</div>
