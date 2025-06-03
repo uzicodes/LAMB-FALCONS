@@ -42,7 +42,7 @@ const styles: { [key: string]: CSSProperties } = {
   container: {
     minHeight: '100vh',
     width: '100vw',
-    backgroundColor: '#000000',
+    background: 'linear-gradient(to bottom, #000000, #111827)',
     color: '#ffffff',
     fontFamily: 'Arial, sans-serif',
     paddingTop: '100px', // Space for navbar
