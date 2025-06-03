@@ -356,7 +356,7 @@ const Members = () => {
           <div style={styles.navMenuGroup}>
             <a href="/" style={styles.navLink}>Home</a>
             <a href="/about" style={styles.navLink}>About Us</a>
-            <a href="/members" style={{...styles.navLink, color: '#ffffff', fontWeight: 'bold'}}>Members</a>
+            <a href="/members" style={{...styles.navLink, color: '#3b82f6', fontWeight: 'bold'}}>Members</a>
             <a href="/jerseys" style={styles.navLink}>Jerseys</a>
             <a href="/login" className="button"><span>Log In</span></a>
             <a href="/register" className="button"><span>Register</span></a>
