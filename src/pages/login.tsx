@@ -125,6 +125,9 @@ const Login = () => {
     e.preventDefault();
     // Add your login logic here
     console.log('Login attempt with:', { email, password });
+    
+    // After successful login, redirect to profile
+    router.push('/profile');
   };
 
   return (

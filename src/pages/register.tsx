@@ -138,6 +138,23 @@ const Register = () => {
     e.preventDefault();
     // Add your registration logic here
     console.log('Registration attempt with:', formData);
+    
+    // Store user data in localStorage
+    const userData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phoneNumber,
+      location: "", // Empty location
+      joinDate: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+      role: "User",
+      avatar: "" // Empty avatar
+    };
+    
+    localStorage.setItem('userData', JSON.stringify(userData));
+    
+    // After successful registration, redirect to profile
+    router.push('/profile');
   };
 
   return (
