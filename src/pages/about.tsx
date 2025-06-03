@@ -1,5 +1,6 @@
 import React from 'react';
 import { CSSProperties } from 'react';
+import { HomeIcon } from 'lucide-react';
 
 const styles: { [key: string]: CSSProperties } = {
   container: {
@@ -85,7 +86,9 @@ const About = () => {
             <div style={styles.logoText}>LAMB FALCONS</div>
           </div>
           <div style={styles.navMenuGroup}>
-            <a href="/" style={styles.navLink}>Home</a>
+            <a href="/" style={{...styles.navLink, display: 'flex', alignItems: 'center'}}>
+              <HomeIcon size={20} />
+            </a>
             <a href="/about" style={{...styles.navLink, color: '#3b82f6', fontWeight: 'bold'}}>About Us</a>
             <a href="/members" style={styles.navLink}>Members</a>
             <a href="/jerseys" style={styles.navLink}>Jerseys</a>

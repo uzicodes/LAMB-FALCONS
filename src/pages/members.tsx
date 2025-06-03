@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CSSProperties } from 'react';
-import { Crown, Users, Mail, Phone, MapPin, Calendar } from 'lucide-react';
+import { Crown, Users, Mail, Phone, MapPin, Calendar, HomeIcon } from 'lucide-react';
 import Head from 'next/head';
 
 interface Member {
@@ -354,7 +354,9 @@ const Members = () => {
             <div style={styles.logoText}>LAMB FALCONS</div>
           </div>
           <div style={styles.navMenuGroup}>
-            <a href="/" style={styles.navLink}>Home</a>
+            <a href="/" style={{...styles.navLink, display: 'flex', alignItems: 'center'}}>
+              <HomeIcon size={20} />
+            </a>
             <a href="/about" style={styles.navLink}>About Us</a>
             <a href="/members" style={{...styles.navLink, color: '#3b82f6', fontWeight: 'bold'}}>Members</a>
             <a href="/jerseys" style={styles.navLink}>Jerseys</a>

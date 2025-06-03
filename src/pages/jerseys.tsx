@@ -1,6 +1,7 @@
 import React, { useState, CSSProperties } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { HomeIcon } from 'lucide-react';
 
 // Product data (dummy data)
 const jerseyProducts = [
@@ -268,7 +269,9 @@ const Jerseys = () => {
             <div style={styles.logoText}>LAMB FALCONS</div>
           </div>
           <div style={styles.navMenuGroup}>
-            <a href="/" style={styles.navLink}>Home</a>
+            <a href="/" style={{...styles.navLink, display: 'flex', alignItems: 'center'}}>
+              <HomeIcon size={20} />
+            </a>
             <a href="/about" style={styles.navLink}>About Us</a>
             <a href="/members" style={styles.navLink}>Members</a>
             <a href="/jerseys" style={{...styles.navLink, color: '#3b82f6', fontWeight: 'bold'}}>Jerseys</a>
