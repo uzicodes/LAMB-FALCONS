@@ -211,3 +211,19 @@ body {
     outline-offset: 0; 
   } 
 }
+
+@keyframes scroll {
+  0% {
+    transform: rotate(-5deg) translateX(0);
+  }
+  50% {
+    transform: rotate(5deg) translateX(-50%);
+  }
+  100% {
+    transform: rotate(-5deg) translateX(-100%);
+  }
+}
+
+.photo-reel {
+  animation: scroll 20s linear infinite;
+}

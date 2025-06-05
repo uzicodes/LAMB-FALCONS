@@ -178,31 +178,55 @@ const styles: { [key: string]: CSSProperties } = {
     padding: "80px 20px",
   },
   statsSection: {
-    background:
-      "linear-gradient(to right, rgba(29, 78, 216, 0.2), #000000)",
+    background: "#000000",
     display: "grid",
-    gridTemplateColumns:
-      "repeat(auto-fit, minmax(200px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
     gap: "32px",
     maxWidth: "1200px",
     margin: "0 auto",
+    padding: "60px 20px",
+    position: "relative",
+    borderTop: "1px solid rgba(255,255,255,0.1)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
   },
   statItem: {
     textAlign: "center",
+    position: "relative",
+    padding: "30px",
+    background: "rgba(255,255,255,0.02)",
+    borderRadius: "20px",
+    border: "1px solid rgba(255,255,255,0.05)",
+    transition: "all 0.3s ease",
+    cursor: "pointer",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    transform: "translateY(0)",
+  },
+  statItemHover: {
+    background: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    transform: "translateY(-5px)",
+    boxShadow: "0 8px 15px rgba(0, 0, 0, 0.2)",
   },
   statNumber: {
-    fontSize: "3rem",
+    fontSize: "3.5rem",
     fontWeight: "bold",
-    background:
-      "linear-gradient(to right, #3b82f6, #1d4ed8)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-    marginBottom: "8px",
+    color: "#87b541",
+    marginBottom: "12px",
+    textShadow: "0 0 30px rgba(135, 181, 65, 0.3)",
+    transition: "all 0.3s ease",
+  },
+  statNumberHover: {
+    textShadow: "0 0 40px rgba(135, 181, 65, 0.5)",
   },
   statLabel: {
-    color: "rgba(255,255,255,0.6)",
+    color: "rgba(255,255,255,0.7)",
     fontWeight: 500,
+    fontSize: "1.1rem",
+    letterSpacing: "0.5px",
+    transition: "all 0.3s ease",
+  },
+  statLabelHover: {
+    color: "rgba(255,255,255,0.9)",
   },
   featuresSection: {
     background:
@@ -239,17 +263,15 @@ const styles: { [key: string]: CSSProperties } = {
     cursor: "pointer",
   },
   featureIcon: {
-    width: "64px",
-    height: "64px",
-    background:
-      "linear-gradient(135deg, #2563eb, #1d4ed8)",
+    width: "80px",
+    height: "80px",
+    background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
     borderRadius: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "24px",
-    fontSize: "32px",
     margin: "0 auto 24px",
+    fontSize: "40px",
   },
   featureTitle: {
     fontSize: "1.5rem",
@@ -419,6 +441,80 @@ const styles: { [key: string]: CSSProperties } = {
     display: "inline-block",
     marginTop: "16px",
   },
+  photoReelSection: {
+    padding: "40px 0",
+    backgroundColor: "#000000",
+    overflow: "hidden",
+    position: "relative",
+    height: "300px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  photoReelContainer: {
+    position: "relative",
+    width: "1000px",
+    height: "300px",
+    perspective: "1000px",
+    transformStyle: "preserve-3d",
+  },
+  photoReelItem: {
+    position: "absolute",
+    width: "250px",
+    height: "160px",
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    transition: "all 0.3s ease",
+    left: "50%",
+    top: "50%",
+    transformOrigin: "50% 50% -200px",
+  },
+  photoReelImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    transition: "transform 0.3s ease",
+    filter: "brightness(0.8)",
+  },
+  fogOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,0.2) 100%)",
+    pointerEvents: "none",
+    zIndex: 2,
+  },
+  fogOverlayLeft: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "200px",
+    height: "100%",
+    background: "linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%)",
+    pointerEvents: "none",
+    zIndex: 2,
+  },
+  fogOverlayRight: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    width: "200px",
+    height: "100%",
+    background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%)",
+    pointerEvents: "none",
+    zIndex: 2,
+  },
+  "@keyframes scroll": {
+    "0%": {
+      transform: "translateX(0)",
+    },
+    "100%": {
+      transform: "translateX(-50%)",
+    },
+  },
 };
 
 // Add global styles for animations
@@ -477,6 +573,8 @@ const globalStyles = `
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
+  const [rotation, setRotation] = useState(0);
 
   const heroSlides = [
     {
@@ -528,12 +626,76 @@ const Index = () => {
     },
   ];
 
+  const photoReelImages = [
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Team practice session"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Match day celebration"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Team building exercise"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Training drills"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Team meeting"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Championship celebration"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Team strategy session"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Fitness training"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Team bonding"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+      alt: "Match preparation"
+    }
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation(prev => (prev + 0.5) % 360);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  const calculatePosition = (index: number, total: number) => {
+    const angle = (index * (360 / total) + rotation) * (Math.PI / 180);
+    const x = Math.sin(angle) * 400; // Horizontal movement
+    const z = Math.cos(angle) * 200; // Depth
+    const scale = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7; // Scale based on position
+    const opacity = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7; // Opacity based on position
+    const rotateY = (index * (360 / total) + rotation);
+
+    return {
+      transform: `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) scale(${scale}) rotateY(${rotateY}deg)`,
+      opacity,
+    };
+  };
 
   const handleNavLinkHover = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hover: boolean) => {
     const target = e.currentTarget;
@@ -669,12 +831,56 @@ const Index = () => {
       {/* Stats Section */}
       <section style={{ ...styles.section, ...styles.statsSection }}>
         {stats.map((stat, index) => (
-          <div key={index} style={styles.statItem}>
-            <div style={styles.statNumber}>{stat.number}</div>
-            <div style={styles.statLabel}>{stat.label}</div>
+          <div 
+            key={index} 
+            style={{
+              ...styles.statItem,
+              ...(hoveredStat === index ? styles.statItemHover : {})
+            }}
+            onMouseEnter={() => setHoveredStat(index)}
+            onMouseLeave={() => setHoveredStat(null)}
+          >
+            <div 
+              style={{
+                ...styles.statNumber,
+                ...(hoveredStat === index ? styles.statNumberHover : {})
+              }}
+            >
+              {stat.number}
+            </div>
+            <div 
+              style={{
+                ...styles.statLabel,
+                ...(hoveredStat === index ? styles.statLabelHover : {})
+              }}
+            >
+              {stat.label}
+            </div>
           </div>
         ))}
       </section>
+
+      {/* Photo Reel Section */}
+      <div style={styles.photoReelSection}>
+        <div style={styles.photoReelContainer}>
+          {photoReelImages.map((image, index) => (
+            <div
+              key={index}
+              style={{
+                ...styles.photoReelItem,
+                ...calculatePosition(index, photoReelImages.length),
+              }}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                style={styles.photoReelImage}
+              />
+              <div style={styles.fogOverlay} />
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Features Section */}
       <section style={{ ...styles.section, ...styles.featuresSection }}>
