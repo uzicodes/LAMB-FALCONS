@@ -125,6 +125,25 @@ const Register = () => {
     confirmPassword: '',
   });
   const [isHovered, setIsHovered] = useState(false);
+  const [errors, setErrors] = useState({
+    email: '',
+    phoneNumber: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const validateEmail = (email: string) => {
+    return email.includes('@') && email.includes('.');
+  };
+
+  const validatePhoneNumber = (phone: string) => {
+    const digitsOnly = phone.replace(/\D/g, '');
+    return digitsOnly.length === 11 || digitsOnly.length === 14;
+  };
+
+  const validatePassword = (password: string) => {
+    return password.length >= 6;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -136,24 +155,48 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log('Registration attempt with:', formData);
     
-    // Store user data in localStorage
+    // Validate all fields on submission
+    const newErrors = {
+      email: '',
+      phoneNumber: '',
+      password: '',
+      confirmPassword: ''
+    };
+
+    if (!validateEmail(formData.email)) {
+      newErrors.email = 'Email must contain @ and .';
+    }
+    if (!validatePhoneNumber(formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Phone number must be 11 or 14 digits';
+    }
+    if (!validatePassword(formData.password)) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
+
+    // If validation passes, proceed with registration
     const userData = {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
       phone: formData.phoneNumber,
-      location: "", // Empty location
+      location: "",
       joinDate: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
       role: "User",
-      avatar: "" // Empty avatar
+      avatar: ""
     };
     
     localStorage.setItem('userData', JSON.stringify(userData));
-    
-    // After successful registration, redirect to profile
     router.push('/profile');
   };
 
@@ -206,11 +249,19 @@ const Register = () => {
             <input
               type="email"
               name="email"
-              style={styles.input}
+              style={{
+                ...styles.input,
+                ...(errors.email ? { borderColor: '#ef4444' } : {})
+              }}
               value={formData.email}
               onChange={handleChange}
               required
             />
+            {errors.email && (
+              <div style={{ color: '#ef4444', fontSize: '14px', marginTop: '4px' }}>
+                {errors.email}
+              </div>
+            )}
           </div>
 
           <div style={styles.inputGroup}>
@@ -218,12 +269,20 @@ const Register = () => {
             <input
               type="tel"
               name="phoneNumber"
-              style={styles.input}
+              style={{
+                ...styles.input,
+                ...(errors.phoneNumber ? { borderColor: '#ef4444' } : {})
+              }}
               value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="+880"
               required
             />
+            {errors.phoneNumber && (
+              <div style={{ color: '#ef4444', fontSize: '14px', marginTop: '4px' }}>
+                {errors.phoneNumber}
+              </div>
+            )}
           </div>
           
           <div style={styles.inputGroup}>
@@ -231,11 +290,19 @@ const Register = () => {
             <input
               type="password"
               name="password"
-              style={styles.input}
+              style={{
+                ...styles.input,
+                ...(errors.password ? { borderColor: '#ef4444' } : {})
+              }}
               value={formData.password}
               onChange={handleChange}
               required
             />
+            {errors.password && (
+              <div style={{ color: '#ef4444', fontSize: '14px', marginTop: '4px' }}>
+                {errors.password}
+              </div>
+            )}
           </div>
 
           <div style={styles.inputGroup}>
@@ -243,11 +310,19 @@ const Register = () => {
             <input
               type="password"
               name="confirmPassword"
-              style={styles.input}
+              style={{
+                ...styles.input,
+                ...(errors.confirmPassword ? { borderColor: '#ef4444' } : {})
+              }}
               value={formData.confirmPassword}
               onChange={handleChange}
               required
             />
+            {errors.confirmPassword && (
+              <div style={{ color: '#ef4444', fontSize: '14px', marginTop: '4px' }}>
+                {errors.confirmPassword}
+              </div>
+            )}
           </div>
           
           <button
