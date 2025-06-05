@@ -507,14 +507,6 @@ const styles: { [key: string]: CSSProperties } = {
     pointerEvents: "none",
     zIndex: 2,
   },
-  "@keyframes scroll": {
-    "0%": {
-      transform: "translateX(0)",
-    },
-    "100%": {
-      transform: "translateX(-50%)",
-    },
-  },
 };
 
 // Add global styles for animations
@@ -568,6 +560,22 @@ const globalStyles = `
   .social-link5:hover {
     background-color: #ff8000;
     animation: bounce_613 0.4s linear;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: rotate(-5deg) translateX(0);
+    }
+    50% {
+      transform: rotate(5deg) translateX(-50%);
+    }
+    100% {
+      transform: rotate(-5deg) translateX(-100%);
+    }
+  }
+
+  .photo-reel {
+    animation: scroll 20s linear infinite;
   }
 `;
 
