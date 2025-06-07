@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
+    "framer-motion": "^12.16.0",
     "lucide-react": "^0.294.0",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
