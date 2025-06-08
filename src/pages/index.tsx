@@ -1,5 +1,93 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 
+// Constants
+const heroSlides = [
+  {
+    image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1920&h=1080&fit=crop",
+    title: "RISE AS ONE",
+    subtitle: "LAMB FALCONS",
+    description: "Where champions are forged and legends are born",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop",
+    title: "WAR FOR THE BADGE",
+    description: "Together we soar, together we conquer",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1920&h=1080&fit=crop",
+    title: "LEGACY OF EXCELLENCE",
+    description: "Building tomorrow's champions today",
+  },
+];
+
+const stats = [
+  { number: "30+", label: "Active Members" },
+  { number: "25", label: "Championships" },
+  { number: "2020", label: "Established" },
+];
+
+const newsItems = [
+  {
+    title: "Drops the Second Kit ft. Designex",
+    date: "May 25, 2025",
+    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=250&fit=crop",
+  },
+  {
+    title: "Training Facility Opens",
+    date: "May 22, 2025",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop",
+  },
+  {
+    title: "Joins a Jersey partner Designex",
+    date: "May 20, 2025",
+    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=250&fit=crop",
+  },
+];
+
+const photoReelImages = [
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Team practice session"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Match day celebration"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Team building exercise"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Training drills"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Team meeting"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Championship celebration"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Team strategy session"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Fitness training"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Team bonding"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    alt: "Match preparation"
+  }
+];
+
+// Styles
 const styles: { [key: string]: CSSProperties } = {
   container: {
     minHeight: "100vh",
@@ -538,7 +626,7 @@ const globalStyles = `
     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
     background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=\\"#f09433\\", endColorstr=\\"#bc1888\\", GradientType=1);
     animation: bounce_613 0.4s linear;
   }
 
@@ -579,124 +667,44 @@ const globalStyles = `
   }
 `;
 
+// Component
 const Index = () => {
+  const [mounted, setMounted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
   const [rotation, setRotation] = useState(0);
 
-  const heroSlides = [
-    {
-      image:
-        "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1920&h=1080&fit=crop",
-      title: "RISE AS ONE",
-      subtitle: "LAMB FALCONS",
-      description: "Where champions are forged and legends are born",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop",
-      title: "WAR FOR THE BADGE",
-      description: "Together we soar, together we conquer",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1920&h=1080&fit=crop",
-      title: "LEGACY OF EXCELLENCE",
-      description: "Building tomorrow's champions today",
-    },
-  ];
-
-  const stats = [
-    { number: "30+", label: "Active Members" },
-    { number: "25", label: "Championships" },
-    { number: "2020", label: "Established" },
-    
-  ];
-
-  const newsItems = [
-    {
-      title: "Drops the Second Kit ft. Designex",
-      date: "May 25, 2025",
-      image:
-        "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=250&fit=crop",
-    },
-    {
-      title: "Training Facility Opens",
-      date: "May 22, 2025",
-      image:
-        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop",
-    },
-    {
-      title: "Joins a Jersey partner Designex",
-      date: "May 20, 2025",
-      image:
-        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=250&fit=crop",
-    },
-  ];
-
-  const photoReelImages = [
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Team practice session"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Match day celebration"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Team building exercise"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Training drills"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Team meeting"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Championship celebration"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Team strategy session"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Fitness training"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Team bonding"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-      alt: "Match preparation"
-    }
-  ];
-
+  // Handle initial mount
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Handle slide rotation
+  useEffect(() => {
+    if (!mounted) return;
+    
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, [mounted, heroSlides.length]);
 
+  // Handle rotation animation
   useEffect(() => {
+    if (!mounted) return;
+    
     const interval = setInterval(() => {
       setRotation(prev => (prev + 0.5) % 360);
     }, 50);
     return () => clearInterval(interval);
-  }, []);
+  }, [mounted]);
 
   const calculatePosition = (index: number, total: number) => {
     const angle = (index * (360 / total) + rotation) * (Math.PI / 180);
-    const x = Math.sin(angle) * 400; // Horizontal movement
-    const z = Math.cos(angle) * 200; // Depth
-    const scale = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7; // Scale based on position
-    const opacity = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7; // Opacity based on position
+    const x = Math.sin(angle) * 400;
+    const z = Math.cos(angle) * 200;
+    const scale = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7;
+    const opacity = (Math.cos(angle) + 1) / 2 * 0.3 + 0.7;
     const rotateY = (index * (360 / total) + rotation);
 
     return {
@@ -732,14 +740,11 @@ const Index = () => {
 
   return (
     <div style={styles.container}>
-      <style>{globalStyles}</style>
-      {/* Load Google Font */}
-      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <style dangerouslySetInnerHTML={{ __html: globalStyles }} />
       
       {/* Navigation */}
       <nav style={styles.navbar}>
         <div style={styles.navContent}>
-          {/* Logo group on extreme left */}
           <div style={styles.logoGroup}>
             <div>
               <img 
@@ -751,7 +756,6 @@ const Index = () => {
             <div style={{ ...styles.logoText, fontSize: "25px", marginRight: "20px" }}>LAMB FALCONS</div>
           </div>
 
-          {/* Menu group on extreme right */}
           <div style={styles.navMenuGroup}>
             <a
               href="/about"
@@ -789,7 +793,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section style={styles.hero}>
-        {heroSlides.map((slide, index) => (
+        {mounted && heroSlides.map((slide, index) => (
           <div
             key={index}
             style={{
@@ -803,15 +807,23 @@ const Index = () => {
         ))}
 
         <div style={styles.heroContent}>
-          <div style={styles.heroSubtitle}>{heroSlides[currentSlide]?.subtitle}</div>
-          <h1 style={styles.heroTitle}>{heroSlides[currentSlide]?.title}</h1>
-          <p style={styles.heroDescription}>{heroSlides[currentSlide]?.description}</p>
+          {mounted && (
+            <>
+              <div style={styles.heroSubtitle}>{heroSlides[currentSlide]?.subtitle}</div>
+              <h1 style={styles.heroTitle}>{heroSlides[currentSlide]?.title}</h1>
+              <p style={styles.heroDescription}>{heroSlides[currentSlide]?.description}</p>
+            </>
+          )}
           <div style={styles.heroButtons}>
             <button 
               className="shadow__btn"
               style={{
                 ...styles.shadowBtn,
-                margin: "0 auto"
+                margin: "0 auto",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px"
               }}
               onClick={() => window.location.href = '/register'}
             >
@@ -826,7 +838,7 @@ const Index = () => {
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+                style={{ display: "inline-block", verticalAlign: "middle" }}
               >
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -843,7 +855,7 @@ const Index = () => {
             key={index} 
             style={{
               ...styles.statItem,
-              ...(hoveredStat === index ? styles.statItemHover : {})
+              ...(mounted && hoveredStat === index ? styles.statItemHover : {})
             }}
             onMouseEnter={() => setHoveredStat(index)}
             onMouseLeave={() => setHoveredStat(null)}
@@ -851,7 +863,7 @@ const Index = () => {
             <div 
               style={{
                 ...styles.statNumber,
-                ...(hoveredStat === index ? styles.statNumberHover : {})
+                ...(mounted && hoveredStat === index ? styles.statNumberHover : {})
               }}
             >
               {stat.number}
@@ -859,7 +871,7 @@ const Index = () => {
             <div 
               style={{
                 ...styles.statLabel,
-                ...(hoveredStat === index ? styles.statLabelHover : {})
+                ...(mounted && hoveredStat === index ? styles.statLabelHover : {})
               }}
             >
               {stat.label}
@@ -871,7 +883,7 @@ const Index = () => {
       {/* Photo Reel Section */}
       <div style={styles.photoReelSection}>
         <div style={styles.photoReelContainer}>
-          {photoReelImages.map((image, index) => (
+          {mounted && photoReelImages.map((image, index) => (
             <div
               key={index}
               style={{

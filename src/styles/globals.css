@@ -1,3 +1,5 @@
+
+
 /* src/styles/globals.css */
 
 html, body {
@@ -11,11 +13,40 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Lilita One', cursive;
 }
 
-/* From Uiverse.io by CristianMontoya98 */ 
+/* Animations */
+@keyframes bounce_613 {
+  40% {
+    transform: scale(1.4);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: rotate(-5deg) translateX(0);
+  }
+  50% {
+    transform: rotate(5deg) translateX(-50%);
+  }
+  100% {
+    transform: rotate(-5deg) translateX(-100%);
+  }
+}
+
+/* Button Styles */
 .btn {
   width: 5.5em;
   height: 2em;
@@ -53,6 +84,49 @@ body {
   transform: skewX(-45deg) scale(1, 1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+
+/* Shadow Button */
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+
+/* Social Links */
+.social-link1:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+  animation: bounce_613 0.4s linear;
+}
+
+.social-link2:hover {
+  background-color: #242c34;
+  animation: bounce_613 0.4s linear;
+}
+
+.social-link3:hover {
+  background-color: #5865f2;
+  animation: bounce_613 0.4s linear;
+}
+
+.social-link4:hover {
+  background-color: #25D366;
+  animation: bounce_613 0.4s linear;
+}
+
+.social-link5:hover {
+  background-color: #ff8000;
+  animation: bounce_613 0.4s linear;
+}
+
+/* Photo Reel */
+.photo-reel {
+  animation: scroll 20s linear infinite;
 }
 
 /* Register button styling */
@@ -105,7 +179,7 @@ body {
   opacity: 1; 
 }
 
-
+/* Button Container */
 .btn-conteiner { 
   display: flex; 
   justify-content: center; 
@@ -156,8 +230,8 @@ body {
   position: relative; 
   top: 6%; 
 } 
-  
-/* SVG */ 
+
+/* SVG */
 #arrow-icon-one { 
   transition: 0.4s; 
   transform: translateX(-60%); 
@@ -182,22 +256,20 @@ body {
   animation: color_anim 1s infinite 0.4s; 
 } 
 
-/* SVG animations */ 
+/* SVG animations */
 @keyframes color_anim { 
   0% { 
     fill: white; 
   } 
-
   50% { 
     fill: var(--color-background); 
   } 
-
   100% { 
     fill: white; 
   } 
 } 
 
-/* Button animations */ 
+/* Button animations */
 @-webkit-keyframes btn-content { 
   0% { 
     outline: 0.2em solid var(--color-background); 
@@ -210,20 +282,4 @@ body {
     outline: 0.2em solid var(--color-background); 
     outline-offset: 0; 
   } 
-}
-
-@keyframes scroll {
-  0% {
-    transform: rotate(-5deg) translateX(0);
-  }
-  50% {
-    transform: rotate(5deg) translateX(-50%);
-  }
-  100% {
-    transform: rotate(-5deg) translateX(-100%);
-  }
-}
-
-.photo-reel {
-  animation: scroll 20s linear infinite;
 }
