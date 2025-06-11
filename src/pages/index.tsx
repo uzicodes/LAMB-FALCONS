@@ -46,44 +46,36 @@ const newsItems = [
 
 const photoReelImages = [
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/DSC_0686.JPG",
     alt: "Team practice session"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/Copy of DSC_0225.JPG",
     alt: "Match day celebration"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/1685563071406.jpg",
     alt: "Team building exercise"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/Copy of DSC_0194.JPG",
     alt: "Training drills"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/DSC_0982.JPG",
     alt: "Team meeting"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/DSC_0583.JPG",
     alt: "Championship celebration"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/Copy of DSC_0474.JPG",
     alt: "Team strategy session"
   },
   {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
+    src: "/carousel/Copy of DSC_0142.JPG",
     alt: "Fitness training"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-    alt: "Team bonding"
-  },
-  {
-    src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&auto=format&fit=crop&q=60",
-    alt: "Match preparation"
   }
 ];
 
