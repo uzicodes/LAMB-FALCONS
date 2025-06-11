@@ -801,7 +801,7 @@ const Index = () => {
 
         <div style={{
           ...styles.heroContent,
-          marginTop: currentSlide === 1 ? "-350px" : "0"
+          marginTop: currentSlide === 1 ? "-375px" : "0"
         }}>
           {mounted && (
             <>
