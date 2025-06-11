@@ -9,7 +9,7 @@ const heroSlides = [
     description: "Where champions are forged and legends are born",
   },
   {
-    image: "/heroslides1.jpg",
+    image: "./heroslides1.JPG",
     title: "WAR FOR THE BADGE",
     description: "",
   },
