@@ -9,13 +9,13 @@ const heroSlides = [
     description: "Where champions are forged and legends are born",
   },
   {
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop",
+    image: "/heroslides1.jpg",
     title: "WAR FOR THE BADGE",
-    description: "Together we soar, together we conquer",
+    description: "",
   },
   {
     image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1920&h=1080&fit=crop",
-    title: "LEGACY OF EXCELLENCE",
+    title: "MORE THAN A CLUB",
     description: "Building tomorrow's champions today",
   },
 ];
@@ -215,6 +215,7 @@ const styles: { [key: string]: CSSProperties } = {
     WebkitTextFillColor: "transparent",
     backgroundClip: "text",
     fontFamily: "'Cinzel', serif",
+    whiteSpace: "nowrap",
   },
   heroDescription: {
     fontSize: "1.25rem",
@@ -798,7 +799,10 @@ const Index = () => {
           </div>
         ))}
 
-        <div style={styles.heroContent}>
+        <div style={{
+          ...styles.heroContent,
+          marginTop: currentSlide === 1 ? "-500px" : "0" // Slightly increased negative margin to move text higher
+        }}>
           {mounted && (
             <>
               <div style={styles.heroSubtitle}>{heroSlides[currentSlide]?.subtitle}</div>
@@ -807,35 +811,37 @@ const Index = () => {
             </>
           )}
           <div style={styles.heroButtons}>
-            <button 
-              className="shadow__btn"
-              style={{
-                ...styles.shadowBtn,
-                margin: "0 auto",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px"
-              }}
-              onClick={() => window.location.href = '/register'}
-            >
-              Join The Club
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-                style={{ display: "inline-block", verticalAlign: "middle" }}
+            {currentSlide !== 1 && (
+              <button 
+                className="shadow__btn"
+                style={{
+                  ...styles.shadowBtn,
+                  margin: "0 auto",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px"
+                }}
+                onClick={() => window.location.href = '/register'}
               >
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
+                Join The Club
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  style={{ display: "inline-block", verticalAlign: "middle" }}
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            )}
           </div>
         </div>
       </section>
