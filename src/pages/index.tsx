@@ -513,7 +513,7 @@ const styles: { [key: string]: CSSProperties } = {
     margin: "0 auto",
   },
   partnershipLink: {
-    color: "#e9a090",
+    color: "#8cf57d",
     textDecoration: "none",
     fontSize: "1.1rem",
     fontWeight: 600,
@@ -1058,12 +1058,6 @@ const Index = () => {
             <a 
               href="/jerseys" 
               style={styles.partnershipLink}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#ffffff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#e9a090";
-              }}
             >
               Click here for the Kit's!
             </a>

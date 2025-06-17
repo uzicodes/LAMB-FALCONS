@@ -137,14 +137,15 @@ const styles: { [key: string]: CSSProperties } = {
     fontSize: '18px',
     fontWeight: 'bold',
     marginBottom: '10px',
-    fontFamily: "'PT Serif', serif",
+    fontFamily: "'Alatsi', sans-serif",
     textAlign: 'center',
-    color: '#e8df2a',
+    color: '#efb7ee',
+    letterSpacing: '2px',
   },
   productPrice: {
     fontSize: '22px',
     fontWeight: 'bold',
-    color: '#3b82f6',
+    color: '#88bd15',
     marginBottom: '15px',
     textAlign: 'center',
   },
@@ -174,19 +175,31 @@ const styles: { [key: string]: CSSProperties } = {
     borderColor: '#3b82f6',
   },
   orderButton: {
-    width: '100%',
-    padding: '12px',
-    borderRadius: '8px',
-    border: 'none',
-    backgroundColor: '#3b82f6',
-    color: 'white',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    width: 'fit-content',
+    display: 'flex',
+    padding: '0.9em 2rem',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    gap: '0.4rem',
+    fontWeight: 'bold',
+    borderRadius: '30px',
+    textShadow: '2px 2px 3px rgb(136 0 136 / 50%)',
+    background: 'linear-gradient(15deg, #880088, #aa2068, #cc3f47, #de6f3d, #f09f33, #de6f3d, #cc3f47, #aa2068, #880088) no-repeat',
+    backgroundSize: '300%',
+    color: '#fff',
+    border: 'none',
+    backgroundPosition: 'left center',
+    boxShadow: '0 30px 10px -20px rgba(0,0,0,.2)',
+    transition: 'background .3s ease',
+    margin: '0 auto',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: "'Alumni Sans SC', sans-serif",
+    fontSize: '1.2rem',
+    letterSpacing: '1px',
   },
   orderButtonHover: {
-    backgroundColor: '#2563eb',
+    backgroundSize: '320%',
+    backgroundPosition: 'right center',
   },
   sizeChartSection: {
     marginTop: '60px',
@@ -256,6 +269,8 @@ const Jerseys = () => {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Alatsi&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
       {/* Navbar */}
       <div style={styles.navbar}>
@@ -326,14 +341,16 @@ const Jerseys = () => {
                   ))}
                 </div>
                 
-                <button 
+                <button
                   style={{
                     ...styles.orderButton,
                     ...(hoveredCard === product.id ? styles.orderButtonHover : {})
                   }}
+                  onMouseEnter={() => setHoveredCard(product.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
                   onClick={() => handleOrder(product.id)}
                 >
-                  Order Now
+                  order now
                 </button>
               </div>
             </div>
