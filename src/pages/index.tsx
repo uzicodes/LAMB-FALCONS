@@ -22,7 +22,7 @@ const heroSlides = [
 
 const stats = [
   { number: "30+", label: "Active Members" },
-  { number: "25", label: "Championships" },
+  { number: "∞", label: "Sports" },
   { number: "2020", label: "Established" },
 ];
 
