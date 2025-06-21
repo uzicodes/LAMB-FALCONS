@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from 'react';
+import React, { useState, CSSProperties, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Mail, Phone, MapPin, Calendar, Edit, LogOut, User } from 'lucide-react';
 import Head from 'next/head';
@@ -246,6 +246,19 @@ const styles: { [key: string]: CSSProperties } = {
     backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: '8px',
   },
+  logoutBtn: {
+    background: "linear-gradient(to right, #2563eb, #1d4ed8)",
+    color: "white",
+    border: "none",
+    padding: "8px 24px",
+    borderRadius: "25px",
+    fontWeight: 500,
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
   popup: {
     display: 'inline-block',
     textRendering: 'optimizeLegibility',
@@ -340,18 +353,52 @@ const Profile = () => {
     role: "User",
     avatar: ""
   });
+  const [editedProfile, setEditedProfile] = useState<UserProfile | null>(null);
 
-  // Load user data from localStorage when component mounts
-  React.useEffect(() => {
-    const storedUserData = localStorage.getItem('userData');
-    if (storedUserData) {
-      setUserProfile(JSON.parse(storedUserData));
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await fetch('/api/auth/me');
+        if (!response.ok) {
+          // If the token is invalid or expired, the middleware should have already
+          // redirected, but as a fallback, we can redirect here too.
+          router.push('/login');
+          return;
+        }
+        const data = await response.json();
+        if (data.success) {
+          // The API returns a user object with firstName, lastName, email, contactNumber
+          // Let's map it to the structure the component expects.
+          const profile: UserProfile = {
+            firstName: data.user.firstName,
+            lastName: data.user.lastName,
+            email: data.user.email,
+            phone: data.user.contactNumber,
+            // These fields are not in our User model, so we'll provide defaults
+            location: 'Not Set', 
+            joinDate: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+            role: "User",
+            avatar: "" // Default avatar
+          };
+          setUserProfile(profile);
+          setEditedProfile(profile);
+        }
+      } catch (error) {
+        console.error('Failed to fetch user profile:', error);
+        router.push('/login');
+      }
+    };
+
+    fetchUserProfile();
+  }, [router]);
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
     }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('userData');
-    router.push('/login');
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -409,14 +456,13 @@ const Profile = () => {
             >
               <User size={14} color="#333" />
             </button>
-            <button 
+            <button
               onClick={handleLogout}
-              className="button"
+              onMouseEnter={() => setIsLogoutHovered(true)}
+              onMouseLeave={() => setIsLogoutHovered(false)}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '10px 20px',
+                ...styles.logoutBtn,
+                ...(isLogoutHovered ? { opacity: 0.9, transform: 'scale(1.02)' } : {})
               }}
             >
               <LogOut size={16} />

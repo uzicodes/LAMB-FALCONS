@@ -121,13 +121,31 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log('Login attempt with:', { email, password });
     
-    // After successful login, redirect to profile
-    router.push('/profile');
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || 'Login failed!');
+        return;
+      }
+
+      // After successful login, redirect to profile
+      router.push('/profile');
+    } catch (error) {
+      console.error('Login request failed:', error);
+      alert('An error occurred during login.');
+    }
   };
 
   return (

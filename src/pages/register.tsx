@@ -153,7 +153,7 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate all fields on submission
@@ -184,20 +184,31 @@ const Register = () => {
       return;
     }
 
-    // If validation passes, proceed with registration
-    const userData = {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: formData.phoneNumber,
-      location: "",
-      joinDate: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-      role: "User",
-      avatar: ""
-    };
-    
-    localStorage.setItem('userData', JSON.stringify(userData));
-    router.push('/profile');
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // You can set an error state here to show the message to the user
+        console.error(data.message);
+        alert(data.message); // Simple alert for now
+        return;
+      }
+
+      // On successful registration, redirect to the login page
+      router.push('/login');
+
+    } catch (error) {
+      console.error('Registration failed:', error);
+      alert('An unexpected error occurred. Please try again.');
+    }
   };
 
   return (
