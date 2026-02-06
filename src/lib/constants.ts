@@ -1,6 +1,5 @@
 // Navigation Links for the Navbar
 export const NAV_LINKS = [
-    { name: "Home", href: "/" },
     { name: "Members", href: "/members" },
     { name: "Jersey", href: "/jersey" },
     { name: "About Us", href: "/about" },
