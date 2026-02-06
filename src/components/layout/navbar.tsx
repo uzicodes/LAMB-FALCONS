@@ -3,11 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
 
 const Navbar = () => {
+	const pathname = usePathname();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -58,12 +60,21 @@ const Navbar = () => {
 										}}
 										transition={{ duration: 0.2 }}
 									/>
-									<span className="relative z-10">{link.name}</span>
+									<span className={`relative z-10 ${pathname === link.href ? "text-white" : ""}`}>
+										{link.name}
+									</span>
+									{pathname === link.href && (
+										<motion.div
+											layoutId="activeTab"
+											className="absolute bottom-1.5 left-1/4 w-1/2 h-0.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+											transition={{ type: "spring", stiffness: 300, damping: 30 }}
+										/>
+									)}
 								</motion.div>
 							</Link>
 						))}
 
-						{/* Join Button - Now directly next to nav links */}
+						{/* Join Button  */}
 						<Link
 							href="/join"
 							className="ml-2 inline-flex items-center px-5 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30"
