@@ -20,13 +20,15 @@ const Navbar = () => {
 			<motion.nav
 				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[95%]"
 			>
-				<div className="relative flex items-center justify-between px-6 py-2.5 bg-black/70 backdrop-blur-xl rounded-full border border-white/10 shadow-lg shadow-blue-500/5">
-					{/* Subtle blue glow effect */}
-					<div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+				<div className="relative flex items-center justify-between px-6 py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
+					{/* Modern internal gradient glow */}
+					<div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-blue-500/10 pointer-events-none" />
+					<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
+					<div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-50" />
 
 					{/* Logo Area */}
 					<Link href="/" className="relative flex items-center gap-2.5 group">
-						<div className="relative w-8 h-8 overflow-hidden rounded-full">
+						<div className="relative w-9 h-9 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110">
 							<Image
 								src={BRAND.logo}
 								alt="Lamb Falcons Logo"
@@ -66,7 +68,7 @@ const Navbar = () => {
 									{pathname === link.href && (
 										<motion.div
 											layoutId="activeTab"
-											className="absolute bottom-1.5 left-1/4 w-1/2 h-0.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+											className="absolute bottom-1.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
 											transition={{ type: "spring", stiffness: 300, damping: 30 }}
 										/>
 									)}
@@ -77,10 +79,10 @@ const Navbar = () => {
 						{/* Join Button  */}
 						<Link
 							href="/join"
-							className="ml-2 inline-flex items-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] group overflow-hidden relative"
+							className="ml-2 inline-flex items-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
 						>
 							<span className="relative z-10">Join</span>
-							<div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+							<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 						</Link>
 					</div>
 
