@@ -16,9 +16,6 @@ const Navbar = () => {
 		<>
 			{/* Main Navbar */}
 			<motion.nav
-				initial={{ y: -100, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ duration: 0.6, ease: "easeOut" }}
 				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[95%]"
 			>
 				<div className="relative flex items-center justify-between px-6 py-2.5 bg-black/70 backdrop-blur-xl rounded-full border border-white/10 shadow-lg shadow-blue-500/5">
