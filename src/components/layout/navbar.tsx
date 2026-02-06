@@ -48,7 +48,7 @@ const Navbar = () => {
 						{NAV_LINKS.map((link) => (
 							<Link key={link.name} href={link.href} className="relative group">
 								<motion.div
-									className="px-4 py-2 rounded-full text-sm font-medium text-gray-300 transition-colors duration-200 group-hover:text-white"
+									className="px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
 									whileHover="hover"
 								>
 									{/* Glowing background on hover */}
