@@ -78,7 +78,7 @@ const Navbar = () => {
 
 						{/* Join Button  */}
 						<Link
-							href="/join"
+							href="/login"
 							className="ml-2 inline-flex items-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
 						>
 							<span className="relative z-10">Join</span>
