@@ -12,10 +12,19 @@ const Register = () => {
     const [verifying, setVerifying] = useState(false);
     const [code, setCode] = useState("");
     const [loading, setLoading] = useState(false);
+    const [countryCode, setCountryCode] = useState("+880");
 
     // Mock Register Handler
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const email = formData.get("email") as string;
+
+        if (!email || (email.match(/@/g) || []).length !== 1) {
+            alert("Email must contain exactly one '@' symbol.");
+            return;
+        }
+
         setLoading(true);
 
         // Simulate API call
@@ -47,8 +56,8 @@ const Register = () => {
         <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-zinc-950 overflow-hidden">
 
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-zinc-950/90 z-10" />
-                <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-50" />
+                <div className="absolute inset-0 bg-zinc-950/70 z-10" />
+                <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-25" />
             </div>
 
             <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden pb-4">
@@ -91,7 +100,7 @@ const Register = () => {
                         <a
                             href="#"
                             onClick={handleGoogleSignUp}
-                            className="flex items-center justify-center w-full py-2 text-sm font-medium text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-all duration-200"
+                            className="flex items-center justify-center w-3/4 mx-auto py-2 text-sm font-medium text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-all duration-200"
                         >
                             <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -137,18 +146,26 @@ const Register = () => {
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Phone className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
-                                <div className="absolute inset-y-0 left-8 flex items-center pointer-events-none">
-                                    <span className="text-zinc-400 text-xs font-medium">+880</span>
+                                <div className="absolute inset-y-0 left-8 flex items-center">
+                                    <select
+                                        name="countryCode"
+                                        value={countryCode}
+                                        onChange={(e) => setCountryCode(e.target.value)}
+                                        className="h-full bg-transparent text-zinc-400 text-xs font-medium border-none focus:ring-0 cursor-pointer py-0 pl-0 pr-4 appearance-none outline-none"
+                                        style={{ backgroundImage: 'none' }}
+                                    >
+                                        <option value="+880" className="bg-zinc-900 text-white">+880 (BD)</option>
+                                        <option value="+1" className="bg-zinc-900 text-white">+1 (US)</option>
+                                        <option value="+44" className="bg-zinc-900 text-white">+44 (UK)</option>
+                                        <option value="+91" className="bg-zinc-900 text-white">+91 (IN)</option>
+                                    </select>
                                 </div>
                                 <input
                                     type="tel"
                                     name="phoneNumber"
-                                    pattern="[0-9]{11}"
-                                    maxLength={11}
-                                    minLength={11}
-                                    className="block w-full py-2 pl-[4.5rem] pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
-                                    placeholder="XXXXXXXXXX"
-                                    title="Please enter exactly 11 digits"
+                                    pattern="[0-9]*"
+                                    className="block w-full py-2 pl-[5rem] pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="Number"
                                     required
                                 />
                             </div>
