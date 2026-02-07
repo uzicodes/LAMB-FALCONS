@@ -18,9 +18,9 @@ const Navbar = () => {
 		<>
 			{/* Main Navbar */}
 			<motion.nav
-				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[95%]"
+				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[98%] md:max-w-[95%]"
 			>
-				<div className="relative flex items-center justify-between px-6 py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5">
+				<div className="relative flex items-center justify-between px-3 md:px-6 py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5 w-full mx-auto">
 					{/* Modern internal gradient glow */}
 					<div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-blue-500/10 pointer-events-none" />
 					<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
@@ -37,18 +37,18 @@ const Navbar = () => {
 								priority
 							/>
 						</div>
-						<span className="text-base font-bold tracking-wide">
+						<span className="hidden md:block text-base font-bold tracking-wide">
 							<span className="text-white">LAMB</span>{" "}
 							<span className="text-blue-400">FALCONS</span>
 						</span>
 					</Link>
 
-					{/* Desktop Navigation Links + Join Button */}
-					<div className="hidden md:flex items-center gap-1 ml-12">
+					{/* Navigation Links (Visible on Mobile & Desktop) + Join Button (Desktop only) */}
+					<div className="flex items-center gap-1 ml-4 md:ml-12">
 						{NAV_LINKS.map((link) => (
 							<Link key={link.name} href={link.href} className="relative group">
 								<motion.div
-									className="px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
+									className="px-2 py-1 md:px-4 md:py-2 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
 									whileHover="hover"
 								>
 									{/* Glowing background on hover */}
@@ -68,7 +68,7 @@ const Navbar = () => {
 									{pathname === link.href && (
 										<motion.div
 											layoutId="activeTab"
-											className="absolute bottom-1.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
+											className="absolute bottom-1 md:bottom-1.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
 											transition={{ type: "spring", stiffness: 300, damping: 30 }}
 										/>
 									)}
@@ -76,10 +76,10 @@ const Navbar = () => {
 							</Link>
 						))}
 
-						{/* Join Button  */}
+						{/* Join Button - Hidden on Mobile, Visible on Desktop */}
 						<Link
 							href="/login"
-							className="ml-2 inline-flex items-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
+							className="hidden md:inline-flex ml-2 items-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
 						>
 							<span className="relative z-10">Join</span>
 							<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -127,44 +127,28 @@ const Navbar = () => {
 			<AnimatePresence>
 				{isMobileMenuOpen && (
 					<motion.div
-						initial={{ opacity: 0, y: -20 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: -20 }}
+						initial={{ opacity: 0, y: -20, x: "-50%" }}
+						animate={{ opacity: 1, y: 0, x: "-50%" }}
+						exit={{ opacity: 0, y: -20, x: "-50%" }}
 						transition={{ duration: 0.3, ease: "easeOut" }}
-						className="fixed top-20 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-md md:hidden"
+						className="fixed top-20 left-1/2 z-40 w-[90%] max-w-md md:hidden"
 					>
 						<div className="bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-xl shadow-blue-500/10 overflow-hidden">
 							<div className="flex flex-col p-4 gap-1">
-								{NAV_LINKS.map((link, index) => (
-									<motion.div
-										key={link.name}
-										initial={{ opacity: 0, x: -20 }}
-										animate={{ opacity: 1, x: 0 }}
-										transition={{ delay: index * 0.05 + 0.1 }}
-									>
-										<Link
-											href={link.href}
-											onClick={() => setIsMobileMenuOpen(false)}
-											className="flex items-center px-4 py-3 text-gray-300 hover:text-white hover:bg-blue-500/10 rounded-xl transition-all duration-200 font-medium"
-										>
-											{link.name}
-										</Link>
-									</motion.div>
-								))}
-
-								{/* Mobile Join Button */}
+								{/* Mobile Join Button (Only item in menu now) */}
 								<motion.div
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
-									transition={{ delay: NAV_LINKS.length * 0.05 + 0.15 }}
-									className="mt-2 pt-2 border-t border-white/10"
+									transition={{ delay: 0.1 }}
+									className="pt-1"
 								>
 									<Link
-										href="/join"
+										href="/login"
 										onClick={() => setIsMobileMenuOpen(false)}
-										className="flex items-center justify-center px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-all duration-200"
+										className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-green-900/30 to-emerald-900/30 backdrop-blur-md border border-green-500/30 hover:from-green-900/50 hover:to-emerald-900/50 hover:border-green-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(34,197,94,0.1)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative w-fit mx-auto"
 									>
-										Join Now
+										<span className="relative z-10">Join Now</span>
+										<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 									</Link>
 								</motion.div>
 							</div>
