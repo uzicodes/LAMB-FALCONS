@@ -10,7 +10,7 @@ const Login = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
-    // Mock login handler since Clerk is removed
+
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
