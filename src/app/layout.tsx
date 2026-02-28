@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "../components/layout/navbar";
 import SmoothScrollProvider from "../components/providers/smooth-scroll";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "LAMB FALCONS",
@@ -23,7 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={`${inter.variable} font-satoshi`}>
         <SmoothScrollProvider>
           <Navbar />
           {children}
