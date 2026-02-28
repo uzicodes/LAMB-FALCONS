@@ -145,7 +145,6 @@ export default function JerseyPage() {
 
       {/* ── Jersey Showcase ── */}
       <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">

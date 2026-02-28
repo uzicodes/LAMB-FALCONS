@@ -146,12 +146,6 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
 
-        {/* Grid lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-[10%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-          <div className="absolute left-[90%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-        </div>
-
         <div ref={heroRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
           <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
@@ -184,8 +178,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Mission / Vision ── */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <section className="relative py-24 md:py-32 overflow-hidden">        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 p-10 md:p-12 overflow-hidden group">
@@ -227,8 +220,6 @@ export default function AboutPage() {
 
       {/* ── Core Values ── */}
       <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.04),transparent_60%)]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -262,7 +253,7 @@ export default function AboutPage() {
 
       {/* ── Timeline ── */}
       <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -287,7 +278,7 @@ export default function AboutPage() {
                 >
                   {/* Dot */}
                   <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-white/10 bg-black flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">
-                    <span className="text-[10px] md:text-xs font-bold text-blue-400">
+                    <span className="text-[10px] md:text-xs font-bold text-pink-400">
                       {item.year}
                     </span>
                   </div>
@@ -303,61 +294,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ── Staff ── */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.04),transparent_60%)]" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
-              Behind the Scenes
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
-              Coaching Staff
-            </h2>
-          </div>
-
-          <div ref={staffRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {STAFF.map((person) => (
-              <div
-                key={person.name}
-                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500"
-              >
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Avatar placeholder */}
-                <div className="w-full aspect-square bg-gradient-to-br from-gray-900 to-gray-950 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-5xl font-black text-white/[0.04]">
-                      {person.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                </div>
-
-                <div className="p-5">
-                  <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-                    {person.name}
-                  </h3>
-                  <p className="text-xs text-blue-400/70 uppercase tracking-[0.15em] font-semibold mt-0.5">
-                    {person.role}
-                  </p>
-                  <p className="text-xs text-gray-600 mt-2">
-                    Since {person.since}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Bottom spacer */}
       <div className="h-20" />
     </main>
