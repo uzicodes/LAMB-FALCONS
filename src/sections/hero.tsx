@@ -82,9 +82,9 @@ export default function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background video/image placeholder */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-[url('/heroslides1.JPG')] bg-cover bg-center bg-no-repeat blur-[0.7px] scale-[1.02]" />
       </div>
 
       {/* Dark overlay */}
@@ -99,22 +99,13 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <div ref={badgeRef} className="opacity-0">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
-              Season 2025–26 is Live
-            </span>
-          </div>
-        </div>
-
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto -mt-10">
         <h1
           ref={headingRef}
-          className="opacity-0 text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.85] mb-6"
+          className="opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-6"
         >
-          <span className="block text-white">LAMB</span>
-          <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
+          <span className="text-white">LAMB</span>{" "}
+          <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
             FALCONS
           </span>
         </h1>
@@ -127,7 +118,7 @@ export default function Hero() {
           Dominating since day one.
         </p>
 
-        <div ref={ctaRef} className="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div ref={ctaRef} className="opacity-0 mt-2 flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link
             href="/register"
             className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] overflow-hidden"
@@ -143,13 +134,22 @@ export default function Hero() {
           </Link>
         </div>
 
+        <div ref={badgeRef} className="opacity-0 mt-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
+              Season 2025–26 is Live
+            </span>
+          </div>
+        </div>
+
         {/* Quick stats ticker */}
         <div
           ref={statsRowRef}
           className="opacity-0 mt-20 flex flex-wrap items-center justify-center gap-8 md:gap-16"
         >
           {[
-            { value: "14", label: "Trophies" },
+
             { value: "200+", label: "Members" },
             { value: "2019", label: "Founded" },
             { value: "#1", label: "Regional Rank" },
@@ -164,14 +164,6 @@ export default function Hero() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
-          Scroll
-        </span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
       </div>
     </section>
   );

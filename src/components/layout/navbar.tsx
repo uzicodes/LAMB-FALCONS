@@ -20,7 +20,7 @@ const Navbar = () => {
 			<motion.nav
 				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[98%] md:max-w-[95%]"
 			>
-				<div className="relative flex items-center justify-between px-3 md:px-6 py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5 w-full mx-auto">
+				<div className="relative flex items-center justify-between px-3 md:px-2 py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5 w-full mx-auto">
 					{/* Modern internal gradient glow */}
 					<div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-blue-500/10 pointer-events-none" />
 					<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
@@ -28,7 +28,7 @@ const Navbar = () => {
 
 					{/* Logo Area */}
 					<Link href="/" className="relative flex items-center gap-2.5 group">
-						<div className="relative w-9 h-9 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110">
+						<div className="relative w-12 h-12 -my-1.5 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110">
 							<Image
 								src={BRAND.logo}
 								alt="Lamb Falcons Logo"

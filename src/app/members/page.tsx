@@ -1,19 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-type Position = "All" | "Forward" | "Midfielder" | "Defender" | "Goalkeeper" | "Staff";
-
-const FILTERS: Position[] = [
-  "All",
-  "Forward",
-  "Midfielder",
-  "Defender",
-  "Goalkeeper",
-  "Staff",
-];
+// No filters: show full roster
 
 const MEMBERS = [
   { name: "Marcus Reid", position: "Forward", number: "9", joined: "2020", status: "Captain" },
@@ -37,12 +28,7 @@ const MEMBERS = [
 export default function MembersPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const [activeFilter, setActiveFilter] = useState<Position>("All");
-
-  const filtered =
-    activeFilter === "All"
-      ? MEMBERS
-      : MEMBERS.filter((m) => m.position === activeFilter);
+  const filtered = MEMBERS;
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -56,7 +42,7 @@ export default function MembersPage() {
     }
   }, []);
 
-  // Animate grid cards on filter change
+  // Animate grid cards on mount
   useEffect(() => {
     const cards = gridRef.current?.children;
     if (cards && cards.length > 0) {
@@ -66,7 +52,7 @@ export default function MembersPage() {
         { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out" }
       );
     }
-  }, [activeFilter]);
+  }, []);
 
   return (
     <main className="relative text-white">
@@ -85,12 +71,6 @@ export default function MembersPage() {
         </div>
 
         <div ref={heroRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-          <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
-              {MEMBERS.length} Members Strong
-            </span>
-          </div>
           <h1 data-animate className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
             <span className="text-white">Our</span>{" "}
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
@@ -104,47 +84,13 @@ export default function MembersPage() {
         </div>
       </section>
 
-      {/* ── Roster Stats Bar ── */}
-      <section className="relative border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: "13", label: "Players" },
-              { value: "3", label: "Staff" },
-              { value: "6", label: "Nationalities" },
-              { value: "24.5", label: "Avg. Age" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-black text-white">{stat.value}</p>
-                <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── Filter + Grid ── */}
+
+      {/* ── Grid ── */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.03),transparent_60%)]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Filter tabs */}
-          <div className="flex flex-wrap items-center gap-2 mb-12">
-            {FILTERS.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 ${
-                  activeFilter === filter
-                    ? "bg-blue-600 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-                    : "bg-white/[0.02] border-white/10 text-gray-400 hover:bg-white/5 hover:border-white/20 hover:text-white"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-
           {/* Members grid */}
           <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {filtered.map((member) => (
@@ -163,15 +109,6 @@ export default function MembersPage() {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                  {/* Status badge */}
-                  {(member.status === "Captain" || member.status === "Vice-Captain") && (
-                    <div className="absolute top-3 left-3">
-                      <span className="inline-block text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
-                        {member.status}
-                      </span>
-                    </div>
-                  )}
                 </div>
 
                 <div className="p-5">
@@ -189,17 +126,7 @@ export default function MembersPage() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/5">
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                      <span className="text-[10px] text-gray-500 uppercase tracking-wider">
-                        {member.status === "Head Coach" ||
-                        member.status === "Assistant Coach" ||
-                        member.status === "Physiotherapist"
-                          ? member.status
-                          : "Active"}
-                      </span>
-                    </div>
+                  <div className="mt-4 pt-3 border-t border-white/5">
                     <span className="text-[10px] text-gray-600">
                       Since {member.joined}
                     </span>
