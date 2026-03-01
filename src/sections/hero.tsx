@@ -90,13 +90,6 @@ export default function Hero() {
       {/* Dark overlay */}
       <div ref={overlayRef} className="absolute inset-0 bg-black/40" />
 
-      {/* Grid lines decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute left-[10%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-        <div className="absolute left-[90%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-        <div className="absolute top-[20%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-        <div className="absolute top-[80%] left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto -mt-10">
@@ -112,13 +105,13 @@ export default function Hero() {
 
         <p
           ref={subRef}
-          className="opacity-0 text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
+          className="opacity-0 mt-64 text-lg sm:text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
         >
           Built on grit. Fueled by passion. <br className="hidden sm:block" />
           Dominating since day one.
         </p>
 
-        <div ref={ctaRef} className="opacity-0 mt-2 flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div ref={ctaRef} className="opacity-0 mt-24 flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link
             href="/register"
             className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] overflow-hidden"
@@ -146,19 +139,19 @@ export default function Hero() {
         {/* Quick stats ticker */}
         <div
           ref={statsRowRef}
-          className="opacity-0 mt-20 flex flex-wrap items-center justify-center gap-8 md:gap-16"
+          className="opacity-0 mt-8 md:mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-16"
         >
           {[
 
-            { value: "200+", label: "Members" },
-            { value: "2019", label: "Founded" },
+            { value: "30+", label: "Members" },
+            { value: "2020", label: "Founded" },
             { value: "#1", label: "Regional Rank" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl md:text-3xl font-bold text-white">
                 {stat.value}
               </p>
-              <p className="text-xs uppercase tracking-widest text-gray-500 mt-1">
+              <p className="text-xs uppercase tracking-widest text-yellow-500 mt-1">
                 {stat.label}
               </p>
             </div>
