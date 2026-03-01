@@ -37,42 +37,41 @@ export default function CallToAction() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 md:py-40 overflow-hidden"
+      className="relative py-20 md:py-28 overflow-hidden"
     >
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={contentRef}
-          className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-10 md:p-16 text-center overflow-hidden"
+          className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-6 md:p-10 text-center overflow-hidden"
         >
           {/* Internal glows */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1),transparent_50%)]" />
 
           <div className="relative z-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-6">
+            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
               Be Part of It
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mb-4">
               Ready to Fly?
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-6 leading-relaxed">
               Whether you&apos;re a player, a supporter, or someone who wants to
-              be part of something bigger — there&apos;s a place for you at Lamb
-              Falcons.
+              be part of something bigger — there&apos;s a place for you.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/register"
-                className="group relative px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_50px_rgba(59,130,246,0.4)] overflow-hidden"
+                className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-none transition-all duration-300 hover:shadow-[0_0_34px_rgba(59,130,246,0.35)] overflow-hidden"
               >
-                <span className="relative z-10">Become a Member</span>
+                <span className="relative z-10">Be a Member</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
               <Link
                 href="/jersey"
-                className="px-10 py-4 border border-white/15 text-white font-semibold text-sm uppercase tracking-widest rounded-full hover:bg-white/5 hover:border-white/30 transition-all duration-300"
+                className="px-8 py-3 border border-white/15 text-white font-semibold text-sm uppercase tracking-widest rounded-none hover:bg-white/5 hover:border-white/30 transition-all duration-300"
               >
                 Shop Jerseys
               </Link>
