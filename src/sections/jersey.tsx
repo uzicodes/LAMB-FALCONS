@@ -163,18 +163,9 @@ export default function JerseySection() {
             {/* CTA */}
             <div className="relative py-12 overflow-hidden">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-                        Members Exclusives
-                    </h2>
                     <p className="text-gray-400 mb-8 max-w-lg mx-auto">
-                        Join the Falcons family and unlock exclusive discounts on all kits and merchandise.
+                        Join the Falcons family & unlock exclusive discounts on all merchandise.
                     </p>
-                    <Link
-                        href="/register"
-                        className="inline-flex px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]"
-                    >
-                        Join Today !
-                    </Link>
                 </div>
             </div>
         </section>

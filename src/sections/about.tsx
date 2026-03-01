@@ -91,7 +91,7 @@ export default function About() {
         {/* Section header */}
         <div ref={headingRef} className="text-center mb-12">
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
-            Who We Are
+            Who Are We
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
             More Than a Club

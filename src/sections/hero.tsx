@@ -122,7 +122,7 @@ export default function Hero() {
 
             { value: "30+", label: "Members" },
             { value: "2020", label: "Founded" },
-            { value: "#1", label: "Regional Rank" },
+            { value: "# 1", label: "Regional Rank" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl md:text-3xl font-bold text-white">
