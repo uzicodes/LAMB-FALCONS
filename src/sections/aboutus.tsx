@@ -1,8 +1,4 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 
 const VALUES = [
     {
@@ -42,91 +38,29 @@ const TIMELINE = [
 ];
 
 export default function AboutUsSection() {
-    const headerRef = useRef<HTMLDivElement>(null);
-    const valuesRef = useRef<HTMLDivElement>(null);
-    const timelineRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        const ctx = gsap.context(() => {
-            // Header entrance
-            const headerChildren = headerRef.current?.querySelectorAll("[data-animate]");
-            if (headerChildren) {
-                gsap.fromTo(
-                    headerChildren,
-                    { opacity: 0, y: 40 },
-                    {
-                        opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: headerRef.current,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse",
-                        },
-                    }
-                );
-            }
-
-            // Values cards
-            const valueCards = valuesRef.current?.children;
-            if (valueCards) {
-                gsap.fromTo(
-                    valueCards,
-                    { opacity: 0, y: 50, scale: 0.95 },
-                    {
-                        opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12, ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: valuesRef.current,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse",
-                        },
-                    }
-                );
-            }
-
-            // Timeline items
-            const timelineItems = timelineRef.current?.querySelectorAll("[data-timeline]");
-            if (timelineItems) {
-                gsap.fromTo(
-                    timelineItems,
-                    { opacity: 0, x: -30 },
-                    {
-                        opacity: 1, x: 0, duration: 0.6, stagger: 0.1, ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: timelineRef.current,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse",
-                        },
-                    }
-                );
-            }
-        });
-
-        return () => ctx.revert();
-    }, []);
-
     return (
         <section id="about" className="relative overflow-hidden">
             {/* Header */}
             <div className="relative py-24 md:py-32">
-                <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+                <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
                         <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                         <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
                             Our Story
                         </span>
                     </div>
-                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-6">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-6">
                         <span className="text-white">About</span>{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Lamb Falcons
                         </span>
                     </h2>
-                    <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
+                    <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
                         What started as a small group of 12 passionate footballers in 2019 has
                         grown into the region&apos;s most dominant force — a club built on
                         grit, brotherhood, and an unrelenting will to win.
                     </p>
-                    <div data-animate className="flex items-center justify-center gap-6 text-sm text-gray-500">
+                    <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-px bg-gradient-to-r from-blue-500 to-transparent" />
                             <span className="uppercase tracking-widest">Est. 2019</span>
@@ -191,7 +125,7 @@ export default function AboutUsSection() {
                             Core Values
                         </h2>
                     </div>
-                    <div ref={valuesRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                         {VALUES.map((v) => (
                             <div
                                 key={v.title}
@@ -222,13 +156,12 @@ export default function AboutUsSection() {
                             Our Journey
                         </h2>
                     </div>
-                    <div ref={timelineRef} className="relative">
+                    <div className="relative">
                         <div className="absolute left-[22px] md:left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/30 via-white/10 to-transparent" />
                         <div className="space-y-8">
                             {TIMELINE.map((item) => (
                                 <div
                                     key={item.year}
-                                    data-timeline
                                     className="relative flex items-start gap-6 md:gap-8 group"
                                 >
                                     <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-white/10 bg-black flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">

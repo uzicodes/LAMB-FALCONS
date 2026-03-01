@@ -2,9 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const SPONSORS = [
   "APEX Sports",
@@ -18,52 +15,33 @@ const SPONSORS = [
 ];
 
 export default function Sponsors() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    // Infinite marquee (not scroll-triggered)
+    const track = trackRef.current;
+    if (track) {
+      const totalWidth = track.scrollWidth / 2;
+      gsap.to(track, {
+        x: -totalWidth,
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+      });
+    }
 
-      // Infinite marquee
-      const track = trackRef.current;
-      if (track) {
-        const totalWidth = track.scrollWidth / 2;
-        gsap.to(track, {
-          x: -totalWidth,
-          duration: 30,
-          ease: "none",
-          repeat: -1,
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => {
+      gsap.killTweensOf(trackRef.current);
+    };
   }, []);
 
   return (
     <section
-      ref={sectionRef}
       className="relative py-24 md:py-32 overflow-hidden"
     >
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={headingRef} className="text-center mb-16">
+        <div className="text-center mb-16">
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-gray-500 mb-4">
             Proudly Supported By
           </span>

@@ -1,11 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 const TESTIMONIALS = [
   {
     name: "Alex Turner",
@@ -28,61 +20,13 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      const cards = cardsRef.current?.children;
-      if (cards) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 50, scale: 0.96 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       className="relative py-32 md:py-40 overflow-hidden"
     >
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={headingRef} className="text-center mb-20">
+        <div className="text-center mb-20">
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
             Voices
           </span>
@@ -92,7 +36,6 @@ export default function Testimonials() {
         </div>
 
         <div
-          ref={cardsRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
         >
           {TESTIMONIALS.map((item, i) => (
