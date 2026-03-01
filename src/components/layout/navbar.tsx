@@ -3,18 +3,49 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
 
 const Navbar = () => {
+	const pathname = usePathname();
+	const router = useRouter();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState<string>("");
+	const isHomePage = pathname === "/";
 
 	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-	// Detect which section is currently in view
+	// Scroll to section when landing on homepage from another page navigation
 	useEffect(() => {
+		if (isHomePage) {
+			const sectionId = sessionStorage.getItem("scrollToSection");
+			if (sectionId) {
+				sessionStorage.removeItem("scrollToSection");
+				// Small delay to ensure sections are rendered
+				setTimeout(() => {
+					const element = document.getElementById(sectionId);
+					if (element) {
+						const offset = 80;
+						const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+						window.scrollTo({
+							top: elementPosition - offset,
+							behavior: "smooth",
+						});
+					}
+				}, 300);
+			}
+		}
+	}, [isHomePage]);
+
+	// Detect which section is currently in view (only on homepage)
+	useEffect(() => {
+		if (!isHomePage) {
+			setActiveSection("");
+			return;
+		}
+
 		const handleScroll = () => {
 			const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
 			let current = "";
@@ -35,12 +66,21 @@ const Navbar = () => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		handleScroll(); // Run once on mount
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+	}, [isHomePage]);
 
 	// Handle smooth scroll on nav link click
 	const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
 		e.preventDefault();
 		const sectionId = href.replace("#", "");
+
+		if (!isHomePage) {
+			// Navigate to homepage without hash — pass section via sessionStorage
+			sessionStorage.setItem("scrollToSection", sectionId);
+			router.push(`/`);
+			setIsMobileMenuOpen(false);
+			return;
+		}
+
 		const element = document.getElementById(sectionId);
 		if (element) {
 			const offset = 80; // Account for navbar height
@@ -49,9 +89,11 @@ const Navbar = () => {
 				top: elementPosition - offset,
 				behavior: "smooth",
 			});
+			// Keep URL clean without hash
+			window.history.replaceState(null, "", "/");
 		}
 		setIsMobileMenuOpen(false);
-	}, []);
+	}, [isHomePage, router]);
 
 	return (
 		<>
