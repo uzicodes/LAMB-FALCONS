@@ -151,7 +151,7 @@ export default function MembersSection() {
                             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-6">
                                 Open Recruitment
                             </span>
-                            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">
+                            <h2 className="text-2xl md:text-4xl font-black tracking-tight text-white mb-4">
                                 Think You&apos;ve Got What It Takes?
                             </h2>
                             <p className="text-gray-400 max-w-md mx-auto mb-8 leading-relaxed">

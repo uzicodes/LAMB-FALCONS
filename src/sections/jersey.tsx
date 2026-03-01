@@ -90,15 +90,15 @@ export default function JerseySection() {
     return (
         <section id="jersey" className="relative overflow-hidden">
             {/* Header */}
-            <div className="relative py-24 md:py-32">
+            <div className="relative py-12 md:py-16">
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+                    <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                         <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
                             2025/26 Collection
                         </span>
                     </div>
-                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-6">
+                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-4">
                         <span className="text-white">Official</span>{" "}
                         <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                             Kit Shop
@@ -111,7 +111,7 @@ export default function JerseySection() {
             </div>
 
             {/* Jersey Showcase */}
-            <div className="relative py-24 md:py-32 overflow-hidden">
+            <div className="relative py-8 md:py-12 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div ref={jerseyGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {JERSEYS.map((jersey) => (
