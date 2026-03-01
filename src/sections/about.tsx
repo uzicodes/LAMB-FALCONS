@@ -7,10 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
-  { value: "200+", label: "Active Members", suffix: "" },
-  { value: "14", label: "Championship Titles", suffix: "" },
-  { value: "96%", label: "Win Rate (Home)", suffix: "" },
-  { value: "6", label: "Years of Legacy", suffix: "" },
+  { value: "30+", label: "Active Members", suffix: "" },
+  { value: "6 +", label: "years of Legacy", suffix: "" },
+  { value: "2020", label: "Established", suffix: "" },
+  { value: "Location", label: "LAMB Compound", suffix: "" },
 ];
 
 export default function About() {
@@ -85,12 +85,11 @@ export default function About() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 md:py-40 overflow-hidden"
+      className="relative py-12 md:py-16 overflow-hidden"
     >
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div ref={headingRef} className="text-center mb-20">
+        <div ref={headingRef} className="text-center mb-12">
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
             Who We Are
           </span>
@@ -100,25 +99,40 @@ export default function About() {
         </div>
 
         {/* Two column layout */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center mb-24">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-24 mt-16 md:mt-24">
           {/* Text side */}
           <div ref={textRef}>
             <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
-              Lamb Falcons was founded with a clear mission — to create a
+              LAMB Falcons was founded with a clear mission to create a
               community-driven club that pushes boundaries on and off the field.
               What started as a small group of passionate players has grown into a
               powerhouse in the regional circuit.
             </p>
             <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8">
-              Our philosophy is simple: develop talent, foster unity, and compete
-              with relentless intensity. We don&apos;t just play — we set the
-              standard.
+              Our philosophy is simple: develop talent, foster unity & compete
+              with relentless intensity. We don&apos;t just play we set the
+              standard. Join us on this journey as we continue to soar higher, break records & make history together. Falcons isn&apos;t just a club, it&apos;s a legacy in the making.
             </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-gradient-to-r from-blue-500 to-transparent" />
-              <span className="text-sm text-gray-500 uppercase tracking-widest">
-                Est. 2019
-              </span>
+
+            {/* Inline Stats */}
+            <div
+              ref={cardsRef}
+              className="flex flex-wrap gap-3"
+            >
+              {STATS.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="group relative px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500 hover:bg-white/[0.04]"
+                >
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <p className="relative text-lg font-black text-white">
+                    {stat.value}
+                  </p>
+                  <p className="relative text-[10px] text-gray-500 uppercase tracking-widest">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -143,26 +157,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Stats grid */}
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
-        >
-          {STATS.map((stat) => (
-            <div
-              key={stat.label}
-              className="group relative p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500 hover:bg-white/[0.04]"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <p className="relative text-3xl md:text-4xl font-black text-white mb-2">
-                {stat.value}
-              </p>
-              <p className="relative text-xs md:text-sm text-gray-500 uppercase tracking-widest">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   );
