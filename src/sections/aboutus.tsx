@@ -108,7 +108,7 @@ export default function AboutUsSection() {
         <section id="about" className="relative overflow-hidden">
             {/* Header */}
             <div className="relative py-24 md:py-32">
-                <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
                         <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                         <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
@@ -121,12 +121,12 @@ export default function AboutUsSection() {
                             Lamb Falcons
                         </span>
                     </h2>
-                    <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
+                    <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-8">
                         What started as a small group of 12 passionate footballers in 2019 has
                         grown into the region&apos;s most dominant force — a club built on
                         grit, brotherhood, and an unrelenting will to win.
                     </p>
-                    <div data-animate className="flex items-center gap-6 text-sm text-gray-500">
+                    <div data-animate className="flex items-center justify-center gap-6 text-sm text-gray-500">
                         <div className="flex items-center gap-2">
                             <div className="w-8 h-px bg-gradient-to-r from-blue-500 to-transparent" />
                             <span className="uppercase tracking-widest">Est. 2019</span>

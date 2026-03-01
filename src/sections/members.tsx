@@ -67,14 +67,14 @@ export default function MembersSection() {
         <section id="members" className="relative overflow-hidden">
             {/* Header */}
             <div className="relative py-24 md:py-32">
-                <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-6">
                         <span className="text-white">Our</span>{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Members
                         </span>
                     </h2>
-                    <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed">
+                    <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
                         The players, coaches, and staff who make Lamb Falcons the
                         powerhouse it is. Every member brings something unique to the table.
                     </p>
