@@ -1,18 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
 
 const Navbar = () => {
-	const pathname = usePathname();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const [activeSection, setActiveSection] = useState<string>("");
 
 	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+	// Detect which section is currently in view
+	useEffect(() => {
+		const handleScroll = () => {
+			const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
+			let current = "";
+
+			for (const sectionId of sections) {
+				const element = document.getElementById(sectionId);
+				if (element) {
+					const rect = element.getBoundingClientRect();
+					if (rect.top <= 150 && rect.bottom >= 150) {
+						current = `#${sectionId}`;
+					}
+				}
+			}
+
+			setActiveSection(current);
+		};
+
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		handleScroll(); // Run once on mount
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	// Handle smooth scroll on nav link click
+	const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+		e.preventDefault();
+		const sectionId = href.replace("#", "");
+		const element = document.getElementById(sectionId);
+		if (element) {
+			const offset = 80; // Account for navbar height
+			const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+			window.scrollTo({
+				top: elementPosition - offset,
+				behavior: "smooth",
+			});
+		}
+		setIsMobileMenuOpen(false);
+	}, []);
 
 	return (
 		<>
@@ -46,7 +85,12 @@ const Navbar = () => {
 					{/* Navigation Links (Visible on Mobile & Desktop) + Join Button (Desktop only) */}
 					<div className="flex items-center gap-1 ml-4 md:ml-12">
 						{NAV_LINKS.map((link) => (
-							<Link key={link.name} href={link.href} className="relative group">
+							<a
+								key={link.name}
+								href={link.href}
+								onClick={(e) => handleNavClick(e, link.href)}
+								className="relative group"
+							>
 								<motion.div
 									className="px-2 py-1 md:px-3.5 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
 									whileHover="hover"
@@ -62,10 +106,10 @@ const Navbar = () => {
 										}}
 										transition={{ duration: 0.2 }}
 									/>
-									<span className={`relative z-10 ${pathname === link.href ? "text-white" : ""}`}>
+									<span className={`relative z-10 ${activeSection === link.href ? "text-white" : ""}`}>
 										{link.name}
 									</span>
-									{pathname === link.href && (
+									{activeSection === link.href && (
 										<motion.div
 											layoutId="activeTab"
 											className="absolute bottom-0 md:bottom-0.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
@@ -73,7 +117,7 @@ const Navbar = () => {
 										/>
 									)}
 								</motion.div>
-							</Link>
+							</a>
 						))}
 
 						{/* Join Button - Hidden on Mobile, Visible on Desktop */}

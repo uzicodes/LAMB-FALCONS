@@ -1,8 +1,8 @@
 // Navigation Links for the Navbar
 export const NAV_LINKS = [
-    { name: "Members", href: "/members" },
-    { name: "Jersey", href: "/jersey" },
-    { name: "About Us", href: "/about" },
+    { name: "Members", href: "#members" },
+    { name: "Jersey", href: "#jersey" },
+    { name: "About Us", href: "#about" },
 ] as const;
 
 // Brand Info
