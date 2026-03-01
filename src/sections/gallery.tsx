@@ -5,6 +5,12 @@ const GALLERY_ITEMS = [
   { title: "Matchday Atmosphere", aspect: "aspect-[4/5]" },
   { title: "Award Night Gala", aspect: "aspect-[4/3]" },
   { title: "Youth Academy Session", aspect: "aspect-square" },
+  { title: "Derby Day Celebrations", aspect: "aspect-[4/3]" },
+  { title: "Captain's Armband Ceremony", aspect: "aspect-[4/5]" },
+  { title: "Half-Time Show", aspect: "aspect-square" },
+  { title: "Fan Wall of Fame", aspect: "aspect-[4/3]" },
+  { title: "Training Ground Aerials", aspect: "aspect-[4/5]" },
+  { title: "Trophy Parade 2025", aspect: "aspect-square" },
 ];
 
 export default function Gallery() {
