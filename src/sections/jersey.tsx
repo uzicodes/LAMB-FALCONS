@@ -105,8 +105,7 @@ export default function JerseySection() {
                         </span>
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        Represent the Falcons. Premium quality kits and merchandise designed
-                        for matchday, training, and everyday wear.
+                        Representing the Falcons with premium quality kits & merchandise
                     </p>
                 </div>
             </div>
@@ -114,15 +113,6 @@ export default function JerseySection() {
             {/* Jersey Showcase */}
             <div className="relative py-24 md:py-32 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
-                            Match Kits
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
-                            Season Jerseys
-                        </h2>
-                    </div>
-
                     <div ref={jerseyGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {JERSEYS.map((jersey) => (
                             <div
