@@ -55,6 +55,10 @@ export default function AboutPage() {
   const staffRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       // Hero entrance
@@ -178,7 +182,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Mission / Vision ── */}
-      <section className="relative py-24 md:py-32 overflow-hidden">        
+      <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 p-10 md:p-12 overflow-hidden group">

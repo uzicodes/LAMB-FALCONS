@@ -31,6 +31,10 @@ export default function MembersPage() {
   const filtered = MEMBERS;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const heroChildren = heroRef.current?.querySelectorAll("[data-animate]");
     if (heroChildren) {
