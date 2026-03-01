@@ -68,7 +68,7 @@ const Navbar = () => {
 									{pathname === link.href && (
 										<motion.div
 											layoutId="activeTab"
-											className="absolute bottom-1 md:bottom-1.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
+											className="absolute bottom-0 md:bottom-0.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
 											transition={{ type: "spring", stiffness: 300, damping: 30 }}
 										/>
 									)}

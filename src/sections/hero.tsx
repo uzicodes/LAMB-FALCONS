@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
+
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -26,12 +26,7 @@ export default function Hero() {
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8, delay: 0.3 }
       )
-        .fromTo(
-          headingRef.current,
-          { opacity: 0, y: 60, clipPath: "inset(100% 0 0 0)" },
-          { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", duration: 1.2 },
-          "-=0.4"
-        )
+
         .fromTo(
           subRef.current,
           { opacity: 0, y: 30 },
@@ -62,16 +57,7 @@ export default function Hero() {
         opacity: 0.9,
       });
 
-      gsap.to(headingRef.current, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-        y: -80,
-        opacity: 0,
-      });
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -93,15 +79,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto -mt-10">
-        <h1
-          ref={headingRef}
-          className="opacity-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-6"
-        >
-          <span className="text-white">LAMB</span>{" "}
-          <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
-            FALCONS
-          </span>
-        </h1>
 
         <p
           ref={subRef}

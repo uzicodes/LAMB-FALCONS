@@ -65,10 +65,6 @@ export default function MembersPage() {
       {/* ── Hero ── */}
       <section className="relative min-h-[55vh] flex items-center overflow-hidden">
 
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-[10%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-          <div className="absolute left-[90%] top-0 w-px h-full bg-gradient-to-b from-transparent via-white/5 to-transparent" />
-        </div>
 
         <div ref={heroRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
           <h1 data-animate className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
