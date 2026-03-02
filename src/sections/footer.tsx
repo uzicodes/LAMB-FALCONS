@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const FOOTER_LINKS = {
   Club: [
@@ -23,11 +24,18 @@ const FOOTER_LINKS = {
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-1">
-            <h3 className="text-xl font-black tracking-tight mb-4">
+            <h3 className="text-xl font-black tracking-tight mb-4 flex items-center gap-2">
+              <Image
+                src="/falcons_logo.png"
+                alt="Lamb Falcons Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
               <span className="text-white">LAMB</span>{" "}
               <span className="text-blue-400">FALCONS</span>
             </h3>
@@ -66,7 +74,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-600">
             © {new Date().getFullYear()} Lamb Falcons FC. All rights reserved.
           </p>

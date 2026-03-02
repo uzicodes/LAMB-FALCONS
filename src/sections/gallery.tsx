@@ -53,7 +53,7 @@ export default function Gallery() {
               {/* Title overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
                 <p className="text-sm font-semibold text-white">{item.title}</p>
-                <p className="text-xs text-gray-400 mt-1">Tap to view</p>
+                <p className="text-xs text-gray-400 mt-1">Lamb Falcons</p>
               </div>
 
               {/* Corner accent */}
