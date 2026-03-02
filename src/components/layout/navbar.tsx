@@ -181,7 +181,7 @@ const Navbar = () => {
 						</SignedIn>
 						<SignedOut>
 							<Link
-								href="/sign-in"
+								href="/login"
 								className="hidden md:inline-flex ml-2 items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative"
 							>
 								<span className="relative z-10">Join</span>
@@ -260,7 +260,7 @@ const Navbar = () => {
 									</SignedIn>
 									<SignedOut>
 										<Link
-											href="/sign-in"
+											href="/login"
 											onClick={() => setIsMobileMenuOpen(false)}
 											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-blue-900/30 to-blue-800/30 backdrop-blur-md border border-blue-500/30 hover:from-blue-900/50 hover:to-blue-800/50 hover:border-blue-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative w-fit mx-auto"
 										>
