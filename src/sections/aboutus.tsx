@@ -11,7 +11,7 @@ const VALUES = [
     },
     {
         title: "Winning Culture",
-        description: "14 trophies and counting. Our mentality is built to compete at the highest level.",
+        description: "Our mentality is built to compete at the highest level.",
     },
     {
         title: "Community First",
@@ -20,7 +20,7 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-    { year: "2019", event: "Club founded by a group of 12 passionate footballers" },
+    { year: "2020", event: "Club founded by a group of passionate athletes" },
     { year: "2020", event: "First regional tournament win — unbeaten season" },
     { year: "2021", event: "Youth Academy launched with 40+ trainees enrolled" },
     { year: "2022", event: "Falcon Arena inaugurated as permanent home ground" },
@@ -77,9 +77,9 @@ export default function AboutUsSection() {
                                 Redefining What a Club Can Be
                             </h3>
                             <p className="relative text-gray-400 leading-relaxed">
-                                To create a world-class football community that develops talent at
+                                To create a community that develops talent at
                                 every level, fosters deep bonds between members, and competes with
-                                relentless intensity — while giving back to the community that
+                                relentless intensity while giving back to the community that
                                 fuels us.
                             </p>
                         </div>
@@ -91,11 +91,10 @@ export default function AboutUsSection() {
                                 Our Vision
                             </span>
                             <h3 className="relative text-2xl md:text-3xl font-bold text-white mb-4">
-                                The Standard for Modern Football
+                                Standard for Modern Sports
                             </h3>
                             <p className="relative text-gray-400 leading-relaxed">
-                                To be recognised as the gold standard in community-driven football
-                                — a club that proves you don&apos;t need a century of history to
+                                To be recognised as the gold standard in community-driven sports a club that proves you don&apos;t need a century of history to
                                 build a legacy. Just hunger, discipline, and unity.
                             </p>
                         </div>
@@ -107,7 +106,7 @@ export default function AboutUsSection() {
             <div className="relative py-24 md:py-32 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
+                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
                             What Drives Us
                         </span>
                         <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
@@ -135,30 +134,36 @@ export default function AboutUsSection() {
 
             {/* Timeline */}
             <div className="relative py-12 md:py-16 overflow-hidden">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-8">
-                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-2">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-10">
+                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-2">
                             Milestones
                         </span>
                         <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
                             Our Journey
                         </h2>
                     </div>
-                    <div className="relative">
-                        <div className="absolute left-[22px] md:left-[28px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/30 via-white/10 to-transparent" />
-                        <div className="space-y-8">
-                            {TIMELINE.map((item) => (
+                    <div className="relative overflow-x-auto pb-4 mt-16 md:mt-22">
+                        <div className="flex items-start min-w-max px-4">
+                            {TIMELINE.map((item, index) => (
                                 <div
-                                    key={item.year}
-                                    className="relative flex items-start gap-6 md:gap-8 group"
+                                    key={`${item.year}-${index}`}
+                                    className="relative flex flex-col items-center group"
+                                    style={{ minWidth: "160px" }}
                                 >
+                                    {/* Connector line */}
+                                    {index < TIMELINE.length - 1 && (
+                                        <div className="absolute top-[22px] md:top-[28px] left-1/2 w-full h-px bg-gradient-to-r from-blue-500/30 to-white/10" />
+                                    )}
+                                    {/* Circle with year */}
                                     <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-white/10 bg-black flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">
-                                        <span className="text-[10px] md:text-xs font-bold text-pink-400">
+                                        <span className="text-[10px] md:text-xs font-bold text-green-800">
                                             {item.year}
                                         </span>
                                     </div>
-                                    <div className="pt-2 md:pt-3">
-                                        <p className="text-sm md:text-base text-gray-300 group-hover:text-white transition-colors duration-300">
+                                    {/* Event text */}
+                                    <div className="mt-4 text-center max-w-[140px]">
+                                        <p className="text-xs md:text-sm text-gray-300 group-hover:text-white transition-colors duration-300 leading-relaxed">
                                             {item.event}
                                         </p>
                                     </div>

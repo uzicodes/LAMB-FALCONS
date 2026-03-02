@@ -27,7 +27,7 @@ export default function Testimonials() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
             Voices
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">

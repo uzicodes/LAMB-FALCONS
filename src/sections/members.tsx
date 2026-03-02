@@ -75,7 +75,7 @@ export default function MembersSection() {
                         </span>
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        The players who make Lamb Falcons the
+                        The players who make LAMB FALCONS the
                         powerhouse it is. Every member brings something unique to the table.
                     </p>
                 </div>

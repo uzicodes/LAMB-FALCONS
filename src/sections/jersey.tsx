@@ -95,7 +95,7 @@ export default function JerseySection() {
                     <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                         <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
-                            2025/26 Collection
+                            Our Collections
                         </span>
                     </div>
                     <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-4">
