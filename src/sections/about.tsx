@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const STATS = [
   { value: "30+", label: "Active Members", suffix: "" },
-  { value: "6 +", label: "years of Legacy", suffix: "" },
   { value: "2020", label: "Established", suffix: "" },
-  { value: "Location", label: "LAMB Compound", suffix: "" },
+  { value: "6 +", label: "years of Legacy", suffix: "" },
+
 ];
 
 export default function About() {
@@ -90,11 +90,11 @@ export default function About() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div ref={headingRef} className="text-center mb-12">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
             Who Are We
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
-            More Than a Club
+            LAMB FALCONS
           </h2>
         </div>
 
@@ -125,10 +125,10 @@ export default function About() {
                   className="group relative px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500 hover:bg-white/[0.04]"
                 >
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <p className="relative text-lg font-black text-white">
+                  <p className="relative text-lg font-black text-yellow-400">
                     {stat.value}
                   </p>
-                  <p className="relative text-[10px] text-gray-500 uppercase tracking-widest">
+                  <p className="relative text-[10px] text-green-500 uppercase tracking-widest">
                     {stat.label}
                   </p>
                 </div>
