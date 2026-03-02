@@ -1,15 +1,13 @@
 "use client";
 
-import { useAuth } from "@/lib/auth-context";
-import { useRouter } from "next/navigation";
+import { useUser, useClerk, SignedIn, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
     User,
     Mail,
-    Phone,
     Shield,
     CalendarDays,
     LogOut,
@@ -21,42 +19,47 @@ import {
     Star,
 } from "lucide-react";
 
-const ProfilePage = () => {
-    const { user, isLoggedIn, logout, updateProfile } = useAuth();
-    const router = useRouter();
+const ProfileContent = () => {
+    const { user, isLoaded } = useUser();
+    const { signOut } = useClerk();
     const [isEditing, setIsEditing] = useState(false);
-    const [editForm, setEditForm] = useState({ name: "", phone: "" });
+    const [editForm, setEditForm] = useState({ firstName: "", lastName: "" });
 
-    // Redirect to login if not authenticated
-    useEffect(() => {
-        if (!isLoggedIn) {
-            router.push("/login");
-        }
-    }, [isLoggedIn, router]);
-
-    useEffect(() => {
-        if (user) {
-            setEditForm({ name: user.name, phone: user.phone });
-        }
-    }, [user]);
-
-    if (!isLoggedIn || !user) {
+    if (!isLoaded) {
         return (
             <section className="min-h-screen bg-zinc-950 flex items-center justify-center">
-                <div className="animate-pulse text-zinc-500 text-sm">Redirecting...</div>
+                <div className="animate-pulse text-zinc-500 text-sm">Loading profile...</div>
             </section>
         );
     }
 
-    const handleSave = () => {
-        updateProfile({ name: editForm.name, phone: editForm.phone });
-        setIsEditing(false);
+    if (!user) return null;
+
+    const displayName = user.fullName || user.firstName || user.username || "Falcon Member";
+    const email = user.primaryEmailAddress?.emailAddress || "—";
+    const avatar = user.imageUrl || "/falcons_logo.png";
+    const joinedDate = user.createdAt
+        ? new Date(user.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })
+        : "—";
+
+    const handleEditStart = () => {
+        setEditForm({ firstName: user.firstName || "", lastName: user.lastName || "" });
+        setIsEditing(true);
     };
 
-    const handleLogout = () => {
-        logout();
-        router.push("/");
+    const handleSave = async () => {
+        try {
+            await user.update({
+                firstName: editForm.firstName,
+                lastName: editForm.lastName,
+            });
+            setIsEditing(false);
+        } catch (err) {
+            console.error("Failed to update profile:", err);
+        }
     };
+
+    const handleSignOut = () => signOut({ redirectUrl: "/" });
 
     const stats = [
         { label: "Matches", value: "0", icon: Trophy },
@@ -70,7 +73,7 @@ const ProfilePage = () => {
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-zinc-950/80 z-10" />
                 <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-10" />
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px]" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]" />
             </div>
 
             <div className="relative z-20 max-w-2xl mx-auto">
@@ -82,7 +85,7 @@ const ProfilePage = () => {
                     className="bg-zinc-900/70 backdrop-blur-xl border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl"
                 >
                     {/* Banner */}
-                    <div className="relative h-32 bg-gradient-to-r from-emerald-900/40 via-zinc-900 to-emerald-900/40 overflow-hidden">
+                    <div className="relative h-32 bg-gradient-to-r from-blue-900/40 via-zinc-900 to-blue-900/40 overflow-hidden">
                         <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-20" />
                         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-900/70 to-transparent" />
                     </div>
@@ -91,26 +94,26 @@ const ProfilePage = () => {
                     <div className="px-6 -mt-14">
                         <div className="flex items-end gap-4">
                             <div className="relative group">
-                                <div className="relative w-24 h-24 rounded-full border-4 border-zinc-900 bg-zinc-800 overflow-hidden shadow-lg ring-2 ring-emerald-500/30">
+                                <div className="relative w-24 h-24 rounded-full border-4 border-zinc-900 bg-zinc-800 overflow-hidden shadow-lg ring-2 ring-blue-500/30">
                                     <Image
-                                        src={user.avatar}
-                                        alt={user.name}
+                                        src={avatar}
+                                        alt={displayName}
                                         fill
                                         className="object-cover"
                                     />
                                 </div>
-                                <button className="absolute bottom-0 right-0 p-1.5 bg-emerald-500 rounded-full text-black hover:bg-emerald-400 transition-colors shadow-lg opacity-0 group-hover:opacity-100">
+                                <button className="absolute bottom-0 right-0 p-1.5 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-colors shadow-lg opacity-0 group-hover:opacity-100">
                                     <Camera className="w-3 h-3" />
                                 </button>
                             </div>
                             <div className="pb-2">
-                                <h1 className="text-xl font-bold text-white">{user.name}</h1>
+                                <h1 className="text-xl font-bold text-white">{displayName}</h1>
                                 <div className="flex items-center gap-2 mt-0.5">
-                                    <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">
-                                        {user.role}
+                                    <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full">
+                                        Member
                                     </span>
                                     <span className="text-[11px] text-zinc-500">
-                                        Joined {user.joinedDate}
+                                        Joined {joinedDate}
                                     </span>
                                 </div>
                             </div>
@@ -125,7 +128,7 @@ const ProfilePage = () => {
                                     key={stat.label}
                                     className="flex flex-col items-center p-3 bg-zinc-800/50 rounded-xl border border-zinc-700/50"
                                 >
-                                    <stat.icon className="w-4 h-4 text-emerald-400 mb-1.5" />
+                                    <stat.icon className="w-4 h-4 text-blue-400 mb-1.5" />
                                     <span className="text-lg font-bold text-white">{stat.value}</span>
                                     <span className="text-[10px] text-zinc-500 uppercase tracking-wider">{stat.label}</span>
                                 </div>
@@ -148,7 +151,7 @@ const ProfilePage = () => {
                         <button
                             onClick={() => {
                                 if (isEditing) handleSave();
-                                else setIsEditing(true);
+                                else handleEditStart();
                             }}
                             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200
                                 bg-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-700 border border-zinc-700"
@@ -165,22 +168,42 @@ const ProfilePage = () => {
                     </div>
 
                     <div className="divide-y divide-zinc-800/50">
-                        {/* Name */}
+                        {/* First Name */}
                         <div className="flex items-center gap-4 px-6 py-4">
-                            <div className="flex-shrink-0 p-2 bg-emerald-500/10 rounded-lg">
-                                <User className="w-4 h-4 text-emerald-400" />
+                            <div className="flex-shrink-0 p-2 bg-blue-500/10 rounded-lg">
+                                <User className="w-4 h-4 text-blue-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Full Name</p>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">First Name</p>
                                 {isEditing ? (
                                     <input
                                         type="text"
-                                        value={editForm.name}
-                                        onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
-                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
+                                        value={editForm.firstName}
+                                        onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
+                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
                                     />
                                 ) : (
-                                    <p className="text-sm text-white font-medium truncate">{user.name}</p>
+                                    <p className="text-sm text-white font-medium truncate">{user.firstName || "—"}</p>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Last Name */}
+                        <div className="flex items-center gap-4 px-6 py-4">
+                            <div className="flex-shrink-0 p-2 bg-blue-500/10 rounded-lg">
+                                <User className="w-4 h-4 text-blue-400" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Last Name</p>
+                                {isEditing ? (
+                                    <input
+                                        type="text"
+                                        value={editForm.lastName}
+                                        onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
+                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
+                                    />
+                                ) : (
+                                    <p className="text-sm text-white font-medium truncate">{user.lastName || "—"}</p>
                                 )}
                             </div>
                         </div>
@@ -192,27 +215,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Email Address</p>
-                                <p className="text-sm text-white font-medium truncate">{user.email}</p>
-                            </div>
-                        </div>
-
-                        {/* Phone */}
-                        <div className="flex items-center gap-4 px-6 py-4">
-                            <div className="flex-shrink-0 p-2 bg-violet-500/10 rounded-lg">
-                                <Phone className="w-4 h-4 text-violet-400" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Phone Number</p>
-                                {isEditing ? (
-                                    <input
-                                        type="text"
-                                        value={editForm.phone}
-                                        onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
-                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
-                                    />
-                                ) : (
-                                    <p className="text-sm text-white font-medium truncate">{user.phone}</p>
-                                )}
+                                <p className="text-sm text-white font-medium truncate">{email}</p>
                             </div>
                         </div>
 
@@ -223,7 +226,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Role</p>
-                                <p className="text-sm text-white font-medium">{user.role}</p>
+                                <p className="text-sm text-white font-medium">Member</p>
                             </div>
                         </div>
 
@@ -234,7 +237,7 @@ const ProfilePage = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Member Since</p>
-                                <p className="text-sm text-white font-medium">{user.joinedDate}</p>
+                                <p className="text-sm text-white font-medium">{joinedDate}</p>
                             </div>
                         </div>
                     </div>
@@ -265,7 +268,7 @@ const ProfilePage = () => {
                         </Link>
 
                         <button
-                            onClick={handleLogout}
+                            onClick={handleSignOut}
                             className="flex items-center gap-2 w-full px-6 py-3.5 hover:bg-red-500/5 transition-colors group"
                         >
                             <LogOut className="w-4 h-4 text-red-400" />
@@ -284,10 +287,7 @@ const ProfilePage = () => {
                         className="mt-4 text-center"
                     >
                         <button
-                            onClick={() => {
-                                setIsEditing(false);
-                                if (user) setEditForm({ name: user.name, phone: user.phone });
-                            }}
+                            onClick={() => setIsEditing(false)}
                             className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-2"
                         >
                             Cancel editing
@@ -296,6 +296,19 @@ const ProfilePage = () => {
                 )}
             </div>
         </section>
+    );
+};
+
+const ProfilePage = () => {
+    return (
+        <>
+            <SignedIn>
+                <ProfileContent />
+            </SignedIn>
+            <SignedOut>
+                <RedirectToSignIn />
+            </SignedOut>
+        </>
     );
 };
 
