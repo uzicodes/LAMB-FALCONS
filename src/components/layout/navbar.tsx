@@ -7,8 +7,22 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { clerkAppearance } from "@/lib/clerk-theme";
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+
+const ProfileAvatar = () => {
+	const { user } = useUser();
+	return (
+		<Link href="/profile">
+			<Image
+				src={user?.imageUrl || "/falcons_logo.png"}
+				alt="Profile"
+				width={32}
+				height={32}
+				className="rounded-full border-2 border-blue-500/50 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_12px_rgba(37,99,235,0.4)] cursor-pointer"
+			/>
+		</Link>
+	);
+};
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -166,17 +180,8 @@ const Navbar = () => {
 
 						{/* Auth Buttons - Hidden on Mobile, Visible on Desktop */}
 						<SignedIn>
-							<div className="hidden md:flex ml-2 items-center gap-2">
-								<Link
-									href="/profile"
-									className="inline-flex items-center px-4 py-1.5 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-500/50 text-blue-400 hover:text-blue-300 text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] relative"
-								>
-									<span className="relative z-10">Profile</span>
-								</Link>
-								<UserButton
-									appearance={clerkAppearance}
-									afterSignOutUrl="/"
-								/>
+							<div className="hidden md:flex ml-2 items-center">
+								<ProfileAvatar />
 							</div>
 						</SignedIn>
 						<SignedOut>
@@ -247,15 +252,8 @@ const Navbar = () => {
 									className="pt-1"
 								>
 									<SignedIn>
-										<div className="flex flex-col items-center gap-3">
-											<Link
-												href="/profile"
-												onClick={() => setIsMobileMenuOpen(false)}
-												className="flex items-center justify-center gap-2 px-10 py-3 bg-gradient-to-r from-blue-900/30 to-blue-800/30 backdrop-blur-md border border-blue-500/30 hover:from-blue-900/50 hover:to-blue-800/50 hover:border-blue-500/50 text-blue-400 text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative w-fit mx-auto"
-											>
-												<span className="relative z-10">My Profile</span>
-											</Link>
-											<UserButton appearance={clerkAppearance} afterSignOutUrl="/" />
+										<div className="flex items-center justify-center" onClick={() => setIsMobileMenuOpen(false)}>
+											<ProfileAvatar />
 										</div>
 									</SignedIn>
 									<SignedOut>
