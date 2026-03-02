@@ -1,14 +1,15 @@
 "use client";
 
-import { Phone, User, Mail, Lock } from "lucide-react"; // Replaced react-icons
+import { Phone, User, Mail, Lock } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "@/lib/auth-context";
 
 const Register = () => {
     const router = useRouter();
-
+    const { login } = useAuth();
     const [verifying, setVerifying] = useState(false);
     const [code, setCode] = useState("");
     const [loading, setLoading] = useState(false);
@@ -42,8 +43,8 @@ const Register = () => {
 
         setTimeout(() => {
             setLoading(false);
-            alert("Account Created! Redirecting...");
-            router.push("/");
+            login("member@lambfalcons.com");
+            router.push("/profile");
         }, 1500);
     };
 

@@ -5,9 +5,11 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { useAuth } from "@/lib/auth-context";
 
 const Login = () => {
     const router = useRouter();
+    const { login } = useAuth();
     const [loading, setLoading] = useState(false);
 
 
@@ -26,8 +28,8 @@ const Login = () => {
         // Simulate network request
         setTimeout(() => {
             setLoading(false);
-            alert("Login functionality would be here (UI Only Mode)");
-            router.push("/");
+            login(email);
+            router.push("/profile");
         }, 1500);
     };
 

@@ -5,12 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, UserCircle } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
+import { useAuth } from "@/lib/auth-context";
 
 const Navbar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
+	const { isLoggedIn } = useAuth();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState<string>("");
 	const isHomePage = pathname === "/";
@@ -162,14 +164,24 @@ const Navbar = () => {
 							</a>
 						))}
 
-						{/* Join Button - Hidden on Mobile, Visible on Desktop */}
-						<Link
-							href="/login"
-							className="hidden md:inline-flex ml-2 items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
-						>
-							<span className="relative z-10">Join</span>
-							<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-						</Link>
+						{/* Join / Profile Button - Hidden on Mobile, Visible on Desktop */}
+						{isLoggedIn ? (
+							<Link
+								href="/profile"
+								className="hidden md:inline-flex ml-2 items-center gap-1.5 px-4 py-1.5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-500/50 text-emerald-400 hover:text-emerald-300 text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] group overflow-hidden relative"
+							>
+								<UserCircle className="w-4 h-4 relative z-10" />
+								<span className="relative z-10">Profile</span>
+							</Link>
+						) : (
+							<Link
+								href="/login"
+								className="hidden md:inline-flex ml-2 items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
+							>
+								<span className="relative z-10">Join</span>
+								<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+							</Link>
+						)}
 					</div>
 
 					{/* Mobile Menu Toggle - Hidden on Desktop */}
@@ -228,14 +240,25 @@ const Navbar = () => {
 									transition={{ delay: 0.1 }}
 									className="pt-1"
 								>
-									<Link
-										href="/login"
-										onClick={() => setIsMobileMenuOpen(false)}
-										className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-green-900/30 to-emerald-900/30 backdrop-blur-md border border-green-500/30 hover:from-green-900/50 hover:to-emerald-900/50 hover:border-green-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(34,197,94,0.1)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative w-fit mx-auto"
-									>
-										<span className="relative z-10">Join Now</span>
-										<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-									</Link>
+									{isLoggedIn ? (
+										<Link
+											href="/profile"
+											onClick={() => setIsMobileMenuOpen(false)}
+											className="flex items-center justify-center gap-2 px-10 py-3 bg-gradient-to-r from-emerald-900/30 to-green-900/30 backdrop-blur-md border border-emerald-500/30 hover:from-emerald-900/50 hover:to-green-900/50 hover:border-emerald-500/50 text-emerald-400 text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(16,185,129,0.1)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] group overflow-hidden relative w-fit mx-auto"
+										>
+											<UserCircle className="w-4 h-4 relative z-10" />
+											<span className="relative z-10">My Profile</span>
+										</Link>
+									) : (
+										<Link
+											href="/login"
+											onClick={() => setIsMobileMenuOpen(false)}
+											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-green-900/30 to-emerald-900/30 backdrop-blur-md border border-green-500/30 hover:from-green-900/50 hover:to-emerald-900/50 hover:border-green-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(34,197,94,0.1)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative w-fit mx-auto"
+										>
+											<span className="relative z-10">Join Now</span>
+											<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+										</Link>
+									)}
 								</motion.div>
 							</div>
 						</div>
