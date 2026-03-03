@@ -12,14 +12,15 @@ import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 const ProfileAvatar = () => {
 	const { user } = useUser();
 	return (
-		<Link href="/profile">
-			<Image
-				src={user?.imageUrl || "/falcons_logo.png"}
-				alt="Profile"
-				width={32}
-				height={32}
-				className="rounded-full border-2 border-blue-500/50 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_12px_rgba(37,99,235,0.4)] cursor-pointer"
-			/>
+		<Link href="/profile" className="block">
+			<div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-blue-500/50 hover:border-blue-400 transition-all duration-300 hover:shadow-[0_0_12px_rgba(37,99,235,0.4)] cursor-pointer flex-shrink-0">
+				<Image
+					src={user?.imageUrl || "/falcons_logo.png"}
+					alt="Profile"
+					fill
+					className="object-cover"
+				/>
+			</div>
 		</Link>
 	);
 };

@@ -3,7 +3,7 @@
 import { useUser, useClerk, SignedIn, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
     User,
@@ -18,6 +18,8 @@ import {
     Trophy,
     Activity,
     Star,
+    Loader2,
+    Trash2,
 } from "lucide-react";
 
 const ProfileContent = () => {
@@ -25,6 +27,8 @@ const ProfileContent = () => {
     const { signOut } = useClerk();
     const [isEditing, setIsEditing] = useState(false);
     const [editForm, setEditForm] = useState({ fullName: "", phoneNumber: "" });
+    const [uploadingImage, setUploadingImage] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     if (!isLoaded) {
         return (
@@ -75,6 +79,34 @@ const ProfileContent = () => {
 
     const handleSignOut = () => signOut({ redirectUrl: "/" });
 
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingImage(true);
+        try {
+            await user.setProfileImage({ file });
+        } catch (err) {
+            console.error("Failed to upload profile image:", err);
+        } finally {
+            setUploadingImage(false);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = "";
+            }
+        }
+    };
+
+    const handleRemoveImage = async () => {
+        setUploadingImage(true);
+        try {
+            await user.setProfileImage({ file: null });
+        } catch (err) {
+            console.error("Failed to remove profile image:", err);
+        } finally {
+            setUploadingImage(false);
+        }
+    };
+
     return (
         <section className="relative min-h-screen bg-zinc-950 pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Background effects */}
@@ -110,8 +142,24 @@ const ProfileContent = () => {
                                         fill
                                         className="object-cover"
                                     />
+                                    {uploadingImage && (
+                                        <div className="absolute inset-0 bg-zinc-900/70 flex items-center justify-center">
+                                            <Loader2 className="w-6 h-6 text-blue-400 animate-spin" />
+                                        </div>
+                                    )}
                                 </div>
-                                <button className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0">
+                                <input
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/png, image/jpeg, image/gif, image/webp"
+                                    onChange={handleImageUpload}
+                                    className="hidden"
+                                />
+                                <button
+                                    onClick={() => fileInputRef.current?.click()}
+                                    disabled={uploadingImage}
+                                    className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
+                                >
                                     <Camera className="w-3.5 h-3.5" />
                                 </button>
                             </div>
