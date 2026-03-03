@@ -1,0 +1,271 @@
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { useSignIn } from "@clerk/nextjs";
+
+const ForgotPassword = () => {
+    const router = useRouter();
+    const { signIn, isLoaded, setActive } = useSignIn();
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [successfulCreation, setSuccessfulCreation] = useState(false);
+    const [code, setCode] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [email, setEmail] = useState("");
+
+    // Send reset code to email
+    const handleSendCode = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!isLoaded) return;
+
+        if (!email || (email.match(/@/g) || []).length !== 1) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        try {
+            await signIn.create({
+                strategy: "reset_password_email_code",
+                identifier: email,
+            });
+            setSuccessfulCreation(true);
+        } catch (err: unknown) {
+            const clerkError = err as { errors?: { message: string }[] };
+            setError(clerkError.errors?.[0]?.message || "Failed to send reset code. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Reset password with code
+    const handleResetPassword = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!isLoaded) return;
+
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
+
+        if (password.length < 6 || password.length > 30) {
+            setError("Password must be between 6 and 30 characters.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        try {
+            const result = await signIn.attemptFirstFactor({
+                strategy: "reset_password_email_code",
+                code,
+                password,
+            });
+
+            if (result.status === "complete") {
+                await setActive({ session: result.createdSessionId });
+                router.push("/profile");
+            }
+        } catch (err: unknown) {
+            const clerkError = err as { errors?: { message: string }[] };
+            setError(clerkError.errors?.[0]?.message || "Failed to reset password. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-zinc-950 overflow-hidden">
+
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-zinc-950/70 z-10" />
+                <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-25" />
+            </div>
+
+            <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden pb-4">
+
+                <div className="px-6 pt-4 pb-2 text-center">
+                    <div className="relative w-12 h-12 mx-auto mb-2">
+                        <Image
+                            src="/falcons_logo.png"
+                            alt="Lamb Falcons Logo"
+                            fill
+                            className="object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                        />
+                    </div>
+                    <h2 className="text-xl font-bold text-white tracking-tight">
+                        {successfulCreation ? "Reset Password" : "Forgot Password"}
+                    </h2>
+                    <p className="text-[11px] text-zinc-400 mt-1">
+                        {successfulCreation
+                            ? "Enter the code sent to your email and your new password"
+                            : "Enter your email to receive a password reset code"}
+                    </p>
+                </div>
+
+                {error && (
+                    <div className="mx-5 mb-2 px-3 py-2 text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg">
+                        {error}
+                    </div>
+                )}
+
+                {!successfulCreation ? (
+                    // Email form
+                    <form onSubmit={handleSendCode} className="px-5 pb-2 space-y-3">
+                        <div>
+                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Email Address</label>
+                            <div className="relative group mt-0.5">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <Mail className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                </div>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="name@example.com"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="pt-2">
+                            <button
+                                disabled={loading}
+                                type="submit"
+                                className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transform active:scale-[0.98] disabled:opacity-50"
+                            >
+                                {loading ? "Sending Code..." : "Send Reset Code"}
+                            </button>
+                        </div>
+
+                        <div className="text-center">
+                            <Link
+                                href="/login"
+                                className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors"
+                            >
+                                <ArrowLeft className="w-3 h-3" />
+                                Back to Login
+                            </Link>
+                        </div>
+                    </form>
+                ) : (
+                    // Code + New Password form
+                    <form onSubmit={handleResetPassword} className="px-5 pb-2 space-y-1.5">
+                        {/* Verification Code */}
+                        <div>
+                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
+                            <div className="mt-0.5">
+                                <input
+                                    value={code}
+                                    onChange={(e) => setCode(e.target.value)}
+                                    className="block w-full py-2 px-3 text-center text-base tracking-[0.5em] font-mono text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="000000"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        {/* New Password */}
+                        <div>
+                            <label className="text-[11px] font-medium text-zinc-300 ml-1">New Password</label>
+                            <div className="relative group mt-0.5">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                </div>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    minLength={6}
+                                    maxLength={30}
+                                    className="block w-full py-2 pl-8 pr-10 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
+                                >
+                                    {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                                </button>
+                            </div>
+                            <p className="text-[9px] text-zinc-500 ml-1 mt-0.5">
+                                Min 6 characters, Max 30 characters
+                            </p>
+                        </div>
+
+                        {/* Confirm New Password */}
+                        <div>
+                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Confirm New Password</label>
+                            <div className="relative group mt-0.5">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                </div>
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    minLength={6}
+                                    maxLength={30}
+                                    className="block w-full py-2 pl-8 pr-10 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
+                                >
+                                    {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="pt-5">
+                            <button
+                                disabled={loading}
+                                type="submit"
+                                className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transform active:scale-[0.98] disabled:opacity-50"
+                            >
+                                {loading ? "Resetting..." : "Reset Password"}
+                            </button>
+                        </div>
+
+                        <div className="text-center">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setSuccessfulCreation(false);
+                                    setError("");
+                                    setCode("");
+                                    setPassword("");
+                                    setConfirmPassword("");
+                                }}
+                                className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors"
+                            >
+                                <ArrowLeft className="w-3 h-3" />
+                                Use a different email
+                            </button>
+                        </div>
+                    </form>
+                )}
+            </div>
+        </section>
+    );
+};
+
+export default ForgotPassword;

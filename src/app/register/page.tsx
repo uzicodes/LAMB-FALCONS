@@ -102,7 +102,7 @@ const Register = () => {
             <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden pb-4">
 
                 <div className="px-6 pt-4 pb-2 text-center">
-                    <div className="relative w-8 h-8 mx-auto mb-2">
+                    <div className="relative w-12 h-12 mx-auto mb-2">
                         <Image
                             src="/falcons_logo.png"
                             alt="Lamb Falcons Logo"
