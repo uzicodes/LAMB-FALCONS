@@ -162,6 +162,15 @@ const ProfileContent = () => {
                                 >
                                     <Camera className="w-3.5 h-3.5" />
                                 </button>
+                                {user.hasImage && (
+                                    <button
+                                        onClick={handleRemoveImage}
+                                        disabled={uploadingImage}
+                                        className="absolute bottom-1 left-1 p-2 bg-red-600 rounded-full text-white hover:bg-red-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
+                                    >
+                                        <Trash2 className="w-3.5 h-3.5" />
+                                    </button>
+                                )}
                             </div>
                             <div className="pb-3">
                                 <h1 className="text-2xl font-black text-white tracking-tight drop-shadow-md">
