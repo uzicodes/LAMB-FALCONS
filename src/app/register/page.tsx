@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, User, Mail, Lock } from "lucide-react";
+import { Phone, User, Mail, Lock, CheckCircle2, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -14,6 +14,10 @@ const Register = () => {
     const [verifying, setVerifying] = useState(false);
     const [code, setCode] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
 
@@ -28,6 +32,16 @@ const Register = () => {
 
         if (!email || (email.match(/@/g) || []).length !== 1) {
             setError("Email must contain exactly one '@' symbol.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            return;
+        }
+
+        if (password.length < 6 || password.length > 30) {
+            setError("Password must be between 6 and 30 characters.");
             return;
         }
 
@@ -100,7 +114,7 @@ const Register = () => {
                         {verifying ? "Verify Email" : "Create Account"}
                     </h2>
                     <p className="text-[11px] text-zinc-400 mt-1">
-                        {verifying ? "Enter the code sent to your email" : "Join the Lamb Falcons community today"}
+                        {verifying ? "Enter the code sent to your email" : "Join the Falcons community today !"}
                     </p>
                 </div>
 
@@ -178,14 +192,69 @@ const Register = () => {
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
-                                <input type="password" name="password" className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600" placeholder="••••••••" required />
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    minLength={6}
+                                    maxLength={30}
+                                    className="block w-full py-2 pl-8 pr-16 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
+                                    >
+                                        {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                                    </button>
+                                    {password && confirmPassword && password === confirmPassword && (
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 animate-in zoom-in duration-300 mr-1.5" />
+                                    )}
+                                </div>
                             </div>
                             <p className="text-[9px] text-zinc-500 ml-1 mt-0.5">
-                                1 uppercase, 1 special char, 1 number (min 6)
+                                Min 6 characters, Max 30 characters
                             </p>
                         </div>
 
-                        <div className="pt-1">
+                        {/* Confirm Password */}
+                        <div>
+                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Confirm Password</label>
+                            <div className="relative group mt-0.5">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                </div>
+                                <input
+                                    type={showConfirmPassword ? "text" : "password"}
+                                    name="confirmPassword"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    minLength={6}
+                                    maxLength={30}
+                                    className="block w-full py-2 pl-8 pr-16 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                                <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                        className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
+                                    >
+                                        {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                                    </button>
+                                    {password && confirmPassword && password === confirmPassword && (
+                                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 animate-in zoom-in duration-300 mr-1.5" />
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="pt-5">
                             <button disabled={loading} type="submit" className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transform active:scale-[0.98] disabled:opacity-50">
                                 {loading ? "Creating Account..." : "Create Account"}
                             </button>
