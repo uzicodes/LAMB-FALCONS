@@ -23,7 +23,7 @@ const ProfileContent = () => {
     const { user, isLoaded } = useUser();
     const { signOut } = useClerk();
     const [isEditing, setIsEditing] = useState(false);
-    const [editForm, setEditForm] = useState({ firstName: "", lastName: "" });
+    const [editForm, setEditForm] = useState({ fullName: "" });
 
     if (!isLoaded) {
         return (
@@ -43,15 +43,19 @@ const ProfileContent = () => {
         : "—";
 
     const handleEditStart = () => {
-        setEditForm({ firstName: user.firstName || "", lastName: user.lastName || "" });
+        setEditForm({ fullName: (user.firstName && user.lastName) ? `${user.firstName} ${user.lastName}` : (user.firstName || user.lastName || "") });
         setIsEditing(true);
     };
 
     const handleSave = async () => {
         try {
+            const nameParts = editForm.fullName.trim().split(/\s+/);
+            const firstName = nameParts[0] || "";
+            const lastName = nameParts.slice(1).join(" ") || "";
+
             await user.update({
-                firstName: editForm.firstName,
-                lastName: editForm.lastName,
+                firstName,
+                lastName,
             });
             setIsEditing(false);
         } catch (err) {
@@ -149,42 +153,22 @@ const ProfileContent = () => {
                     </div>
 
                     <div className="divide-y divide-zinc-800/50">
-                        {/* First Name */}
+                        {/* Full Name */}
                         <div className="flex items-center gap-4 px-6 py-4">
-                            <div className="flex-shrink-0 p-2 bg-blue-500/10 rounded-lg">
-                                <User className="w-4 h-4 text-blue-400" />
+                            <div className="flex-shrink-0 p-2 bg-green-500/5 rounded-lg">
+                                <User className="w-4 h-4 text-green-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">First Name</p>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Full Name</p>
                                 {isEditing ? (
                                     <input
                                         type="text"
-                                        value={editForm.firstName}
-                                        onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
-                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
+                                        value={editForm.fullName}
+                                        onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
                                     />
                                 ) : (
-                                    <p className="text-sm text-white font-medium truncate">{user.firstName || "—"}</p>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Last Name */}
-                        <div className="flex items-center gap-4 px-6 py-4">
-                            <div className="flex-shrink-0 p-2 bg-blue-500/10 rounded-lg">
-                                <User className="w-4 h-4 text-blue-400" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Last Name</p>
-                                {isEditing ? (
-                                    <input
-                                        type="text"
-                                        value={editForm.lastName}
-                                        onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
-                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all"
-                                    />
-                                ) : (
-                                    <p className="text-sm text-white font-medium truncate">{user.lastName || "—"}</p>
+                                    <p className="text-sm text-white font-medium truncate">{displayName}</p>
                                 )}
                             </div>
                         </div>
@@ -197,17 +181,6 @@ const ProfileContent = () => {
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Email Address</p>
                                 <p className="text-sm text-white font-medium truncate">{email}</p>
-                            </div>
-                        </div>
-
-                        {/* Role */}
-                        <div className="flex items-center gap-4 px-6 py-4">
-                            <div className="flex-shrink-0 p-2 bg-amber-500/10 rounded-lg">
-                                <Shield className="w-4 h-4 text-amber-400" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Role</p>
-                                <p className="text-sm text-white font-medium">Member</p>
                             </div>
                         </div>
 
