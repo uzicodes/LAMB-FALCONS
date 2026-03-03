@@ -15,7 +15,7 @@ const Register = () => {
     const [code, setCode] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const [countryCode, setCountryCode] = useState("+880");
+
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -156,26 +156,16 @@ const Register = () => {
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Phone className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
-                                <div className="absolute inset-y-0 left-8 flex items-center">
-                                    <select
-                                        name="countryCode"
-                                        value={countryCode}
-                                        onChange={(e) => setCountryCode(e.target.value)}
-                                        className="h-full bg-transparent text-zinc-400 text-xs font-medium border-none focus:ring-0 cursor-pointer py-0 pl-0 pr-4 appearance-none outline-none"
-                                        style={{ backgroundImage: 'none' }}
-                                    >
-                                        <option value="+880" className="bg-zinc-900 text-white">+880 (BD)</option>
-                                        <option value="+1" className="bg-zinc-900 text-white">+1 (US)</option>
-                                        <option value="+44" className="bg-zinc-900 text-white">+44 (UK)</option>
-                                        <option value="+91" className="bg-zinc-900 text-white">+91 (IN)</option>
-                                    </select>
-                                </div>
                                 <input
                                     type="tel"
                                     name="phoneNumber"
+                                    maxLength={15}
                                     pattern="[0-9]*"
-                                    className="block w-full py-2 pl-[5rem] pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
-                                    placeholder="Number"
+                                    onInput={(e) => {
+                                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                                    }}
+                                    className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                    placeholder="Enter your phone number"
                                     required
                                 />
                             </div>
