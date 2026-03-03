@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useSignUp } from "@clerk/nextjs";
+import { useSignUp, useUser } from "@clerk/nextjs";
 
 const Register = () => {
     const router = useRouter();
@@ -19,6 +19,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
 
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,6 +30,9 @@ const Register = () => {
         const name = formData.get("name") as string;
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
+        const phone = formData.get("phoneNumber") as string;
+
+        setPhoneNumber(phone);
 
         if (!email || (email.match(/@/g) || []).length !== 1) {
             setError("Email must contain exactly one '@' symbol.");
@@ -58,6 +62,9 @@ const Register = () => {
                 password,
                 firstName,
                 lastName,
+                unsafeMetadata: {
+                    phoneNumber: phone,
+                },
             });
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });

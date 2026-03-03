@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import {
     User,
     Mail,
+    Phone,
     Shield,
     CalendarDays,
     LogOut,
@@ -23,7 +24,7 @@ const ProfileContent = () => {
     const { user, isLoaded } = useUser();
     const { signOut } = useClerk();
     const [isEditing, setIsEditing] = useState(false);
-    const [editForm, setEditForm] = useState({ fullName: "" });
+    const [editForm, setEditForm] = useState({ fullName: "", phoneNumber: "" });
 
     if (!isLoaded) {
         return (
@@ -41,9 +42,14 @@ const ProfileContent = () => {
     const joinedDate = user.createdAt
         ? new Date(user.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })
         : "—";
+    const phoneNumber = (user.unsafeMetadata as { phoneNumber?: string })?.phoneNumber || "—";
 
     const handleEditStart = () => {
-        setEditForm({ fullName: (user.firstName && user.lastName) ? `${user.firstName} ${user.lastName}` : (user.firstName || user.lastName || "") });
+        const currentPhone = (user.unsafeMetadata as { phoneNumber?: string })?.phoneNumber || "";
+        setEditForm({
+            fullName: (user.firstName && user.lastName) ? `${user.firstName} ${user.lastName}` : (user.firstName || user.lastName || ""),
+            phoneNumber: currentPhone,
+        });
         setIsEditing(true);
     };
 
@@ -56,6 +62,10 @@ const ProfileContent = () => {
             await user.update({
                 firstName,
                 lastName,
+                unsafeMetadata: {
+                    ...user.unsafeMetadata,
+                    phoneNumber: editForm.phoneNumber,
+                },
             });
             setIsEditing(false);
         } catch (err) {
@@ -181,6 +191,31 @@ const ProfileContent = () => {
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Email Address</p>
                                 <p className="text-sm text-white font-medium truncate">{email}</p>
+                            </div>
+                        </div>
+
+                        {/* Phone Number */}
+                        <div className="flex items-center gap-4 px-6 py-4">
+                            <div className="flex-shrink-0 p-2 bg-purple-500/10 rounded-lg">
+                                <Phone className="w-4 h-4 text-purple-400" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Phone Number</p>
+                                {isEditing ? (
+                                    <input
+                                        type="tel"
+                                        value={editForm.phoneNumber}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/[^0-9]/g, '');
+                                            setEditForm({ ...editForm, phoneNumber: val });
+                                        }}
+                                        maxLength={15}
+                                        className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
+                                        placeholder="Enter your phone number"
+                                    />
+                                ) : (
+                                    <p className="text-sm text-white font-medium truncate">{phoneNumber}</p>
+                                )}
                             </div>
                         </div>
 
