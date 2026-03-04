@@ -36,6 +36,26 @@ const JERSEYS = [
         accent: "from-cyan-500/10 to-gray-900/20",
         badgeColor: "bg-cyan-500/10 border-cyan-500/20 text-cyan-400",
     },
+    {
+        name: "Training Kit 2025/26",
+        price: "$69",
+        tag: "Essential",
+        colors: "Graphite / Lime",
+        description:
+            "Built for the grind. Lightweight construction with moisture-wicking technology.",
+        accent: "from-lime-500/10 to-gray-900/20",
+        badgeColor: "bg-lime-500/10 border-lime-500/20 text-lime-400",
+    },
+    {
+        name: "Retro Kit 2025/26",
+        price: "$95",
+        tag: "Exclusive",
+        colors: "Crimson / Navy",
+        description:
+            "A tribute to the legacy. Classic design meets modern performance fabric.",
+        accent: "from-red-600/10 to-gray-900/20",
+        badgeColor: "bg-red-500/10 border-red-500/20 text-red-400",
+    },
 ];
 
 
@@ -113,44 +133,44 @@ export default function JerseySection() {
             {/* Jersey Showcase */}
             <div className="relative py-8 md:py-12 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div ref={jerseyGridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div ref={jerseyGridRef} className="flex flex-wrap justify-center gap-5">
                         {JERSEYS.map((jersey) => (
                             <div
                                 key={jersey.name}
-                                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500"
+                                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)]"
                             >
                                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className={`w-full aspect-[3/4] bg-gradient-to-br ${jersey.accent} relative`}>
+                                <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative`}>
                                     <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-950" />
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <div className="w-32 h-40 rounded-t-3xl border-2 border-white/[0.06] relative">
-                                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 h-3 rounded-b-lg border-b-2 border-x-2 border-white/[0.06]" />
+                                        <div className="w-24 h-32 rounded-t-3xl border-2 border-white/[0.06] relative">
+                                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-6 h-2.5 rounded-b-lg border-b-2 border-x-2 border-white/[0.06]" />
                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <span className="text-4xl font-black text-white/[0.06]">LF</span>
+                                                <span className="text-3xl font-black text-white/[0.06]">LF</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                    <div className="absolute top-4 left-4">
-                                        <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1 rounded-full border ${jersey.badgeColor}`}>
+                                    <div className="absolute top-3 left-3">
+                                        <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full border ${jersey.badgeColor}`}>
                                             {jersey.tag}
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-6">
-                                    <div className="flex items-start justify-between mb-2">
-                                        <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                                <div className="p-4">
+                                    <div className="flex items-start justify-between mb-1.5">
+                                        <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
                                             {jersey.name}
                                         </h3>
-                                        <span className="text-lg font-black text-white">{jersey.price}</span>
+                                        <span className="text-base font-black text-white">{jersey.price}</span>
                                     </div>
-                                    <p className="text-xs text-blue-400/60 uppercase tracking-[0.15em] font-semibold mb-3">
+                                    <p className="text-[10px] text-blue-400/60 uppercase tracking-[0.15em] font-semibold mb-2">
                                         {jersey.colors}
                                     </p>
-                                    <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                                    <p className="text-xs text-gray-500 leading-relaxed mb-4">
                                         {jersey.description}
                                     </p>
-                                    <button className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-white hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 uppercase tracking-widest">
+                                    <button className="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-[10px] font-semibold text-white hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 uppercase tracking-widest">
                                         View Details
                                     </button>
                                 </div>
