@@ -135,23 +135,23 @@ const Navbar = () => {
 								priority
 							/>
 						</div>
-						<span className="hidden md:block text-base font-bold tracking-wide">
+						<span className="text-xs md:text-base font-bold tracking-wide">
 							<span className="text-white">LAMB</span>{" "}
 							<span className="text-blue-400">FALCONS</span>
 						</span>
 					</Link>
 
 					{/* Navigation Links (Visible on Mobile & Desktop) + Join Button (Desktop only) */}
-					<div className="flex items-center gap-1 ml-4 md:ml-12">
+					<div className="flex items-center gap-1 ml-8 md:ml-20">
 						{NAV_LINKS.map((link) => (
 							<a
 								key={link.name}
 								href={link.href}
 								onClick={(e) => handleNavClick(e, link.href)}
-								className="relative group"
+								className={`relative group ${link.name === "About Us" ? "hidden md:block" : ""}`}
 							>
 								<motion.div
-									className="px-2 py-1 md:px-3.5 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
+									className="px-1.5 py-1 md:px-2 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
 									whileHover="hover"
 								>
 									{/* Glowing background on hover */}
@@ -245,7 +245,22 @@ const Navbar = () => {
 					>
 						<div className="bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-xl shadow-blue-500/10 overflow-hidden">
 							<div className="flex flex-col p-4 gap-1">
-								{/* Mobile Join Button (Only item in menu now) */}
+								{/* About Us Link (Mobile Only) */}
+								<motion.div
+									initial={{ opacity: 0, x: -20 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{ delay: 0.05 }}
+								>
+									<a
+										href="#about"
+										onClick={(e) => { handleNavClick(e, "#about"); setIsMobileMenuOpen(false); }}
+										className="flex items-center justify-center px-10 py-3 text-gray-300 hover:text-white text-sm font-semibold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white/5"
+									>
+										About Us
+									</a>
+								</motion.div>
+
+								{/* Join / Profile */}
 								<motion.div
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
