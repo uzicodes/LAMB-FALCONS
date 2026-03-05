@@ -182,7 +182,10 @@ const Navbar = () => {
 
 						{/* Auth Buttons - Hidden on Mobile, Visible on Desktop */}
 						<div className="hidden md:flex ml-2 items-center">
-							{isAuthLoaded && isSignedIn ? (
+							{!isAuthLoaded ? (
+								/* Subtle skeleton placeholder while auth loads */
+								<div className="w-8 h-8 rounded-full bg-white/10 animate-pulse" />
+							) : isSignedIn ? (
 								<ProfileAvatar />
 							) : (
 								<Link
