@@ -190,10 +190,10 @@ const Navbar = () => {
 							) : (
 								<Link
 									href="/login"
-									className="inline-flex items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative"
+									className="inline-flex items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-green-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative"
 								>
 									<span className="relative z-10">Join</span>
-									<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+									<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-green-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 								</Link>
 							)}
 						</div>
@@ -279,10 +279,10 @@ const Navbar = () => {
 										<Link
 											href="/login"
 											onClick={() => setIsMobileMenuOpen(false)}
-											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-blue-900/30 to-blue-800/30 backdrop-blur-md border border-blue-500/30 hover:from-blue-900/50 hover:to-blue-800/50 hover:border-blue-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative w-fit mx-auto"
+											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-green-900/30 to-green-800/30 backdrop-blur-md border border-green-500/30 hover:from-green-900/50 hover:to-green-800/50 hover:border-green-500/50 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(34,197,94,0.1)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] group overflow-hidden relative w-fit mx-auto"
 										>
 											<span className="relative z-10">Join Now</span>
-											<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+											<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-green-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										</Link>
 									</SignedOut>
 								</motion.div>

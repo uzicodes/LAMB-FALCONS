@@ -132,45 +132,45 @@ export default function JerseySection() {
 
             {/* Jersey Showcase */}
             <div className="relative py-8 md:py-12 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div ref={jerseyGridRef} className="flex flex-wrap justify-center gap-5">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div ref={jerseyGridRef} className="flex flex-wrap justify-center gap-4 lg:gap-3">
                         {JERSEYS.map((jersey) => (
                             <div
                                 key={jersey.name}
-                                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)]"
+                                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-12px)]"
                             >
                                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative`}>
                                     <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-950" />
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                        <div className="w-24 h-32 rounded-t-3xl border-2 border-white/[0.06] relative">
-                                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-6 h-2.5 rounded-b-lg border-b-2 border-x-2 border-white/[0.06]" />
+                                        <div className="w-18 h-26 rounded-t-3xl border-2 border-white/[0.06] relative">
+                                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-5 h-2 rounded-b-lg border-b-2 border-x-2 border-white/[0.06]" />
                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <span className="text-3xl font-black text-white/[0.06]">LF</span>
+                                                <span className="text-2xl font-black text-white/[0.06]">LF</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                    <div className="absolute top-3 left-3">
-                                        <span className={`inline-block text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full border ${jersey.badgeColor}`}>
+                                    <div className="absolute top-2.5 left-2.5">
+                                        <span className={`inline-block text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full border ${jersey.badgeColor}`}>
                                             {jersey.tag}
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-4">
-                                    <div className="flex items-start justify-between mb-1.5">
-                                        <h3 className="text-base font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                                <div className="p-3.5">
+                                    <div className="flex flex-col mb-1.5">
+                                        <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 line-clamp-1">
                                             {jersey.name}
                                         </h3>
-                                        <span className="text-base font-black text-white">{jersey.price}</span>
+                                        <span className="text-xs font-black text-blue-400 mt-0.5">{jersey.price}</span>
                                     </div>
-                                    <p className="text-[10px] text-blue-400/60 uppercase tracking-[0.15em] font-semibold mb-2">
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-[0.1em] font-semibold mb-2">
                                         {jersey.colors}
                                     </p>
-                                    <p className="text-xs text-gray-500 leading-relaxed mb-4">
+                                    <p className="text-[11px] text-gray-400 leading-tight mb-3 line-clamp-2">
                                         {jersey.description}
                                     </p>
-                                    <button className="w-full py-2.5 rounded-xl bg-white/5 border border-white/10 text-[10px] font-semibold text-white hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 uppercase tracking-widest">
+                                    <button className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-semibold text-white hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 uppercase tracking-widest">
                                         View Details
                                     </button>
                                 </div>
