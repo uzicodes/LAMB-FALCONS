@@ -13,7 +13,7 @@ import Footer from "@/sections/footer";
 export default function Home() {
   return (
     <main className="relative text-white">
-      {/* Fixed hero background — stays pinned while content scrolls over */}
+      {/* Fixed hero background — content scrolls over */}
       <Hero />
 
       {/* Spacer: pushes the scrollable content below the hero viewport */}

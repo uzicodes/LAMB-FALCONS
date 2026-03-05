@@ -139,7 +139,7 @@ export default function JerseySection() {
                                 key={jersey.name}
                                 className="group relative rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-12px)]"
                             >
-                                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative`}>
                                     <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-950" />
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -150,7 +150,7 @@ export default function JerseySection() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     <div className="absolute top-2.5 left-2.5">
                                         <span className={`inline-block text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full border ${jersey.badgeColor}`}>
                                             {jersey.tag}
@@ -159,10 +159,10 @@ export default function JerseySection() {
                                 </div>
                                 <div className="p-3.5 text-center flex flex-col items-center">
                                     <div className="flex flex-col items-center mb-1.5">
-                                        <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 line-clamp-1">
+                                        <h3 className="text-sm font-bold text-white group-hover:text-green-400 transition-colors duration-300 line-clamp-1">
                                             {jersey.name}
                                         </h3>
-                                        <span className="text-xs font-black text-blue-400 mt-0.5">{jersey.price}</span>
+                                        <span className="text-xs font-black text-green-400 mt-0.5">{jersey.price}</span>
                                     </div>
                                     <p className="text-[10px] text-gray-500 uppercase tracking-[0.1em] font-semibold mb-2">
                                         {jersey.colors}
@@ -170,7 +170,7 @@ export default function JerseySection() {
                                     <p className="text-[11px] text-gray-400 leading-tight mb-3 line-clamp-2">
                                         {jersey.description}
                                     </p>
-                                    <button className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-semibold text-white hover:bg-white/10 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 uppercase tracking-widest">
+                                    <button className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-semibold text-white hover:bg-white/10 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition-all duration-300 uppercase tracking-widest">
                                         View Details
                                     </button>
                                 </div>

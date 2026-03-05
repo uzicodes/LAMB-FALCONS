@@ -46,11 +46,11 @@ export default function News() {
               key={i}
               className="group relative rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-white/15 transition-all duration-500 cursor-pointer"
             >
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Image placeholder */}
               <div className="w-full aspect-[16/9] bg-gradient-to-br from-gray-900 to-gray-950 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center">
                     <div className="w-6 h-6 rounded-full border border-white/5" />
@@ -60,12 +60,12 @@ export default function News() {
 
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-blue-400 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-green-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
                     {article.tag}
                   </span>
                   <span className="text-xs text-gray-600">{article.date}</span>
                 </div>
-                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300 mb-2 leading-snug">
+                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300 mb-2 leading-snug">
                   {article.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
