@@ -157,8 +157,8 @@ export default function JerseySection() {
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-3.5">
-                                    <div className="flex flex-col mb-1.5">
+                                <div className="p-3.5 text-center flex flex-col items-center">
+                                    <div className="flex flex-col items-center mb-1.5">
                                         <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-300 line-clamp-1">
                                             {jersey.name}
                                         </h3>
