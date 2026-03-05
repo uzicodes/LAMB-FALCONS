@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
-import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/nextjs";
 
 const ProfileAvatar = () => {
 	const { user } = useUser();
@@ -28,6 +28,7 @@ const ProfileAvatar = () => {
 const Navbar = () => {
 	const pathname = usePathname();
 	const router = useRouter();
+	const { isLoaded: isAuthLoaded, isSignedIn } = useAuth();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState<string>("");
 	const isHomePage = pathname === "/";
@@ -180,20 +181,19 @@ const Navbar = () => {
 						))}
 
 						{/* Auth Buttons - Hidden on Mobile, Visible on Desktop */}
-						<SignedIn>
-							<div className="hidden md:flex ml-2 items-center">
+						<div className="hidden md:flex ml-2 items-center">
+							{isAuthLoaded && isSignedIn ? (
 								<ProfileAvatar />
-							</div>
-						</SignedIn>
-						<SignedOut>
-							<Link
-								href="/login"
-								className="hidden md:inline-flex ml-2 items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative"
-							>
-								<span className="relative z-10">Join</span>
-								<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-							</Link>
-						</SignedOut>
+							) : (
+								<Link
+									href="/login"
+									className="inline-flex items-center px-5 py-1.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-blue-500/30 text-white text-sm font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] group overflow-hidden relative"
+								>
+									<span className="relative z-10">Join</span>
+									<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+								</Link>
+							)}
+						</div>
 					</div>
 
 					{/* Mobile Menu Toggle - Hidden on Desktop */}
