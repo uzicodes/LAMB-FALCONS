@@ -42,7 +42,7 @@ export default function Sponsors() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-gray-500 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-500 mb-4">
             Proudly Supported By
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">

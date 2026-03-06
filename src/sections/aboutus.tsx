@@ -33,10 +33,10 @@ export default function AboutUsSection() {
     return (
         <section id="about" className="relative overflow-hidden">
             {/* Header */}
-            <div className="relative py-12 md:py-16">
+            <div className="relative pt-12 md:pt-16 pb-4 md:pb-6">
                 <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-4">
-                        <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                         <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
                             Our Story
                         </span>
@@ -63,7 +63,7 @@ export default function AboutUsSection() {
             </div>
 
             {/* Mission / Vision */}
-            <div className="relative py-8 md:py-12 overflow-hidden">
+            <div className="relative pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
                         <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 p-10 md:p-12 overflow-hidden group">
@@ -103,7 +103,7 @@ export default function AboutUsSection() {
             </div>
 
             {/* Core Values */}
-            <div className="relative py-24 md:py-32 overflow-hidden">
+            <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">

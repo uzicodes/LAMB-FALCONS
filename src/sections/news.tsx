@@ -25,7 +25,7 @@ const NEWS = [
 export default function News() {
   return (
     <section
-      className="relative py-32 md:py-40 overflow-hidden"
+      className="relative pt-12 md:pt-16 pb-32 md:pb-40 overflow-hidden"
     >
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

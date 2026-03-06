@@ -16,7 +16,7 @@ const GALLERY_ITEMS = [
 export default function Gallery() {
   return (
     <section
-      className="relative py-32 md:py-40 overflow-hidden"
+      className="relative pt-32 md:pt-40 pb-12 md:pb-16 overflow-hidden"
     >
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
