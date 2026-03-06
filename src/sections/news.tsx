@@ -1,14 +1,14 @@
 const NEWS = [
   {
     date: "Feb 26, 2026",
-    tag: "Match Report",
+    tag: "New Merch",
     title: "Falcons Dominate Phoenix SC in Commanding 3-1 Victory",
     excerpt:
       "A stellar performance from Marcus Reid sealed a comfortable win for the Falcons at home.",
   },
   {
     date: "Feb 20, 2026",
-    tag: "Transfer",
+    tag: "Partnership",
     title: "New Signing: Kofi Asante Joins from Continental League",
     excerpt:
       "The explosive winger brings pace and flair to the Falcons' attacking line-up.",
@@ -60,7 +60,7 @@ export default function News() {
 
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-green-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
                     {article.tag}
                   </span>
                   <span className="text-xs text-gray-600">{article.date}</span>

@@ -4,12 +4,26 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { SignedOut } from "@clerk/nextjs";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleShopJersey = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById("jersey");
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,19 +76,22 @@ export default function CallToAction() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
-                href="/register"
-                className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-none transition-all duration-300 hover:shadow-[0_0_34px_rgba(59,130,246,0.35)] overflow-hidden"
-              >
-                <span className="relative z-10">Be a Member</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
-              <Link
-                href="/jersey"
+              <SignedOut>
+                <Link
+                  href="/register"
+                  className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-none transition-all duration-300 hover:shadow-[0_0_34px_rgba(59,130,246,0.35)] overflow-hidden"
+                >
+                  <span className="relative z-10">Be a Member</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
+              </SignedOut>
+              <a
+                href="#jersey"
+                onClick={handleShopJersey}
                 className="px-8 py-3 border border-white/15 text-white font-semibold text-sm uppercase tracking-widest rounded-none hover:bg-white/5 hover:border-white/30 transition-all duration-300"
               >
                 Shop Jerseys
-              </Link>
+              </a>
             </div>
           </div>
         </div>
