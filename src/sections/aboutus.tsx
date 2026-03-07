@@ -41,7 +41,7 @@ export default function AboutUsSection() {
                             Our Story
                         </span>
                     </div>
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
                         <span className="text-white">About</span>{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Lamb Falcons

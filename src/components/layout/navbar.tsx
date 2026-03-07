@@ -137,8 +137,7 @@ const Navbar = () => {
 							/>
 						</div>
 						<span className="text-lg md:text-2xl font-bold tracking-wider font-tanker leading-none">
-							<span className="text-white">LAMB</span>{" "}
-							<span className="text-blue-400">FALCONS</span>
+							<span className="text-blue-400">LAMB FALCONS</span>
 						</span>
 					</Link>
 

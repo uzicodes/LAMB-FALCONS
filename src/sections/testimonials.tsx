@@ -30,7 +30,7 @@ export default function Testimonials() {
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
             Voices
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider text-white font-tanker">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-white font-tanker">
             What They Say
           </h2>
         </div>

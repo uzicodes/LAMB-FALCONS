@@ -68,7 +68,7 @@ export default function MembersSection() {
             {/* Header */}
             <div className="relative py-8 md:py-12">
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider leading-[0.9] mb-6 font-tanker">
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-6 font-tanker">
                         <span className="text-white">Meet The </span>{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Squad
