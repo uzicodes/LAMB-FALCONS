@@ -24,7 +24,7 @@ export default function Gallery() {
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
             Moments
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider text-white font-tanker">
             Gallery
           </h2>
         </div>

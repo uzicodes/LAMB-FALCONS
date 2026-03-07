@@ -41,7 +41,7 @@ export default function AboutUsSection() {
                             Our Story
                         </span>
                     </div>
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-3">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
                         <span className="text-white">About</span>{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                             Lamb Falcons
@@ -73,7 +73,7 @@ export default function AboutUsSection() {
                             <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
                                 Our Mission
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold text-white mb-4">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-white mb-4 font-tanker">
                                 Redefining What a Club Can Be
                             </h3>
                             <p className="relative text-gray-400 leading-relaxed">
@@ -90,7 +90,7 @@ export default function AboutUsSection() {
                             <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
                                 Our Vision
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold text-white mb-4">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-white mb-4 font-tanker">
                                 Standard for Modern Sports
                             </h3>
                             <p className="relative text-gray-400 leading-relaxed">
@@ -109,7 +109,7 @@ export default function AboutUsSection() {
                         <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
                             What Drives Us
                         </span>
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-white font-tanker">
                             Core Values
                         </h2>
                     </div>
@@ -139,7 +139,7 @@ export default function AboutUsSection() {
                         <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-2">
                             Milestones
                         </span>
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-white font-tanker">
                             Our Journey
                         </h2>
                     </div>

@@ -118,7 +118,7 @@ export default function JerseySection() {
                             Our Collections
                         </span>
                     </div>
-                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-4">
+                    <h2 data-animate className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider leading-[0.9] mb-4 font-tanker">
                         <span className="text-white">Official</span>{" "}
                         <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                             Kit Shop

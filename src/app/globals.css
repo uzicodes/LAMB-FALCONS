@@ -10,8 +10,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Boldonse';
+  src: url('/fonts/Boldonse.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tanker';
+  src: url('/fonts/Tanker.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-inter), sans-serif;
   }
 }
@@ -36,7 +58,8 @@
 }
 
 /* Lenis handles smooth scrolling — remove native */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -63,4 +86,3 @@ body {
   background: rgba(59, 130, 246, 0.3);
   color: #fff;
 }
-

@@ -45,7 +45,7 @@ export default function Sponsors() {
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-500 mb-4">
             Proudly Supported By
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-wider text-white font-tanker">
             Our Partners
           </h2>
         </div>

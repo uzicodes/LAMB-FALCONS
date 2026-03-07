@@ -10,6 +10,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 satoshi: ['Satoshi', 'sans-serif'],
+                boldonse: ['Boldonse', 'sans-serif'],
+                tanker: ['Tanker', 'sans-serif'],
             },
             colors: {
                 // Custom blue shades for the Falcons theme

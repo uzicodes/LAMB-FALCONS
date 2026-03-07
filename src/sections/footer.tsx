@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-1">
-            <h3 className="text-xl font-black tracking-tight mb-4 flex items-center gap-2">
+            <h3 className="text-xl font-black tracking-wider mb-4 flex items-center gap-2 font-tanker">
               <Image
                 src="/falcons_logo.png"
                 alt="Lamb Falcons Logo"
