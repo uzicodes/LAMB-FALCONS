@@ -136,7 +136,7 @@ const Navbar = () => {
 								priority
 							/>
 						</div>
-						<span className="text-xs md:text-base font-bold tracking-wide">
+						<span className="text-lg md:text-2xl font-bold tracking-wider font-tanker leading-none">
 							<span className="text-white">LAMB</span>{" "}
 							<span className="text-blue-400">FALCONS</span>
 						</span>
