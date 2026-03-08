@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, AlertCircle } from "lucide-react";
 
 const MEMBERS = [
     { name: "UTSHO HEAVEN CHOWDHURY", number: "8" },
@@ -26,6 +28,7 @@ const MEMBERS = [
 export default function MembersSection() {
     const headerRef = useRef<HTMLDivElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
+    const [showRecruitmentPopup, setShowRecruitmentPopup] = useState(false);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -158,16 +161,69 @@ export default function MembersSection() {
                                 We&apos;re always looking for dedicated individuals who want to
                                 compete, grow, and be part of something special.
                             </p>
-                            <a
-                                href="/register"
+                            <button
+                                onClick={() => setShowRecruitmentPopup(true)}
                                 className="inline-flex px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_50px_rgba(59,130,246,0.4)]"
                             >
                                 Apply Now
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Recruitment Popup */}
+            <AnimatePresence>
+                {showRecruitmentPopup && (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowRecruitmentPopup(false)}
+                            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md cursor-pointer"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none"
+                        >
+                            <div className="relative w-full max-w-lg bg-zinc-900 border border-white/10 rounded-3xl p-8 md:p-10 overflow-hidden shadow-2xl pointer-events-auto">
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500" />
+                                <div className="absolute top-4 right-4">
+                                    <button
+                                        onClick={() => setShowRecruitmentPopup(false)}
+                                        className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
+                                    >
+                                        <X size={20} />
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col items-center text-center">
+                                    <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20">
+                                        <AlertCircle className="w-8 h-8 text-blue-400" />
+                                    </div>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-satoshi tracking-wide">
+                                        Recruitment Closed
+                                    </h3>
+                                    <p className="text-gray-400 leading-relaxed mb-8">
+                                        Thank you for your interest in joining the <span className="text-blue-400 font-semibold">LAMB FALCONS</span>.
+                                        We aren&apos;t currently accepting new applications at this moment, but we&apos;re always headhunting for top-tier talent.
+                                        Keep training, keep pushing, and stay tuned to our website for when we reopen our gates.
+                                    </p>
+                                    <button
+                                        onClick={() => setShowRecruitmentPopup(false)}
+                                        className="w-full py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold uppercase tracking-[0.2em] text-xs rounded-xl transition-all duration-300"
+                                    >
+                                        Understood
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
