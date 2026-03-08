@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Github, Globe, Linkedin, Mail } from "lucide-react";
 
 const FOOTER_LINKS = {
   Club: [
     { name: "About Us", href: "/about" },
     { name: "Members", href: "/members" },
-    { name: "History", href: "/about" },
+    { name: "Latest", href: "/news" },
   ],
   Resources: [
     { name: "Jersey Shop", href: "/jersey" },
@@ -54,7 +55,7 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-4">
+              <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-yellow-500 mb-4">
                 {category}
               </h4>
               <ul className="space-y-3">
@@ -62,7 +63,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-500 hover:text-white transition-colors duration-200"
+                      className="text-sm text-gray-500 hover:text-green-500 transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -75,23 +76,37 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-600">
-            © {new Date().getFullYear()} Lamb Falcons FC. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <Link
-              href="#"
-              className="text-xs text-gray-600 hover:text-gray-400 transition-colors"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="#"
-              className="text-xs text-gray-600 hover:text-gray-400 transition-colors"
-            >
-              Terms
-            </Link>
+          <div className="flex items-center gap-4">
+            <span className="text-xs text-gray-500">DEVELOPER  </span>
+            <div className="flex items-center gap-3">
+              <Link
+                href="https://github.com/uzicodes"
+                target="_blank"
+                className="text-gray-600 hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={16} />
+              </Link>
+              <Link
+                href="https://www.utshochowdhury.me"
+                className="text-gray-600 hover:text-white transition-colors"
+                aria-label="Website"
+              >
+                <Globe size={16} />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/utsho-heaven-chowdhury"
+                target="_blank"
+                className="text-gray-600 hover:text-white transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={16} />
+              </Link>
+            </div>
           </div>
+          <p className="text-xs text-gray-500">
+            LAMB FALCONS  © All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
