@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Globe, Linkedin, Mail } from "lucide-react";
+import { Github, Globe, Linkedin, ArrowUp } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 
@@ -28,6 +28,13 @@ export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === "/";
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handleFooterClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -148,9 +155,23 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-          <p className="text-xs text-gray-500">
-            LAMB FALCONS  © All rights reserved.
-          </p>
+
+          <div className="flex items-center gap-6">
+            <p className="text-xs text-gray-500">
+              LAMB FALCONS  © All rights reserved.
+            </p>
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white transition-all duration-300 bg-transparent"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp
+                size={18}
+                className="text-white animate-bounce"
+                style={{ animationDuration: "2s" }}
+              />
+            </button>
+          </div>
         </div>
       </div>
     </footer>
