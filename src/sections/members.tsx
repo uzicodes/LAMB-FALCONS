@@ -148,10 +148,10 @@ export default function MembersSection() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.08),transparent_50%)]" />
                         <div className="relative z-10">
-                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-6">
+                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400/50 mb-6">
                                 Open Recruitment
                             </span>
-                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-white mb-4 font-tanker">
+                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-red-500/70 mb-4 font-tanker">
                                 Think You&apos;ve Got What It Takes?
                             </h2>
                             <p className="text-gray-400 max-w-md mx-auto mb-8 leading-relaxed">

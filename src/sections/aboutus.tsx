@@ -106,10 +106,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
-                            What Drives Us
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-white font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-red-500/70 font-tanker">
                             Core Values
                         </h2>
                     </div>
@@ -135,11 +132,8 @@ export default function AboutUsSection() {
             {/* Timeline */}
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-10">
-                        <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-2">
-                            Milestones
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-white font-tanker">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-red-500/70 font-tanker">
                             Our Journey
                         </h2>
                     </div>

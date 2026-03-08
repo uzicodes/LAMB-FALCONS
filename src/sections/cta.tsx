@@ -65,15 +65,15 @@ export default function CallToAction() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1),transparent_50%)]" />
 
           <div className="relative z-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
+            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400/50 mb-4">
               Be Part of It
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-white mb-4 font-tanker">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-red-500/70 mb-4 font-tanker">
               Ready to Fly?
             </h2>
             <p className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-6 leading-relaxed">
               Whether you&apos;re a player, a supporter, or someone who wants to
-              be part of something bigger — there&apos;s a place for you here.
+              be part of something bigger — there&apos;s a place for you here !
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
