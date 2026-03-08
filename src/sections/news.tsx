@@ -25,6 +25,7 @@ const NEWS = [
 export default function News() {
   return (
     <section
+      id="news"
       className="relative pt-12 md:pt-16 pb-32 md:pb-40 overflow-hidden"
     >
 

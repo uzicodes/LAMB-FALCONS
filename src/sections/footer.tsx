@@ -3,17 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Github, Globe, Linkedin, Mail } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 const FOOTER_LINKS = {
   Club: [
-    { name: "About Us", href: "/about" },
-    { name: "Members", href: "/members" },
-    { name: "Latest", href: "/news" },
+    { name: "About Us", href: "#about" },
+    { name: "Members", href: "#members" },
+    { name: "Latest", href: "#news" },
   ],
   Resources: [
-    { name: "Jersey Shop", href: "/jersey" },
+    { name: "Jersey Shop", href: "#jersey" },
     { name: "Register", href: "/register" },
-    { name: "Contact", href: "/about" },
+    { name: "Contact", href: "#about" },
   ],
   Social: [
     { name: "Instagram", href: "#" },
@@ -23,6 +25,38 @@ const FOOTER_LINKS = {
 };
 
 export default function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/";
+
+  const handleFooterClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (!href.startsWith("#")) return;
+
+      e.preventDefault();
+      const sectionId = href.replace("#", "");
+
+      if (!isHomePage) {
+        sessionStorage.setItem("scrollToSection", sectionId);
+        router.push("/");
+        return;
+      }
+
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: "smooth",
+        });
+        window.history.replaceState(null, "", "/");
+      }
+    },
+    [isHomePage, router]
+  );
+
   return (
     <footer className="relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
@@ -61,12 +95,22 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-gray-500 hover:text-green-500 transition-colors duration-200"
-                    >
-                      {link.name}
-                    </Link>
+                    {link.href.startsWith("#") ? (
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleFooterClick(e, link.href)}
+                        className="text-sm text-gray-500 hover:text-green-500 transition-colors duration-200 cursor-pointer"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-gray-500 hover:text-green-500 transition-colors duration-200"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
