@@ -9,7 +9,7 @@ const JERSEYS = [
     {
         name: "Home Kit 2025/26",
         price: "$89",
-        tag: "Bestseller",
+        tag: "Latest",
         colors: "Royal Blue / White",
         description:
             "The iconic Falcon blue. Engineered with breathable Dri-Motion fabric for peak performance.",
@@ -19,7 +19,7 @@ const JERSEYS = [
     {
         name: "Away Kit 2025/26",
         price: "$89",
-        tag: "New",
+        tag: "Exclusive",
         colors: "Stealth Black / Gold",
         description:
             "Sleek black with gold accents. Built for the road. Designed to intimidate.",
@@ -29,7 +29,7 @@ const JERSEYS = [
     {
         name: "Third Kit 2025/26",
         price: "$85",
-        tag: "Limited",
+        tag: "Partnered",
         colors: "Arctic White / Cyan",
         description:
             "Clean. Minimal. The third kit features a bold monochrome palette with cyan detail work.",
@@ -39,7 +39,7 @@ const JERSEYS = [
     {
         name: "Training Kit 2025/26",
         price: "$69",
-        tag: "Essential",
+        tag: "2nd Kit",
         colors: "Graphite / Lime",
         description:
             "Built for the grind. Lightweight construction with moisture-wicking technology.",
@@ -49,7 +49,7 @@ const JERSEYS = [
     {
         name: "Retro Kit 2025/26",
         price: "$95",
-        tag: "Exclusive",
+        tag: "Debut",
         colors: "Crimson / Navy",
         description:
             "A tribute to the legacy. Classic design meets modern performance fabric.",

@@ -3,11 +3,11 @@ import React from "react";
 const VALUES = [
     {
         title: "Relentless Drive",
-        description: "We push limits every day. Mediocrity isn't in our vocabulary only excellence.",
+        description: "We push limits every day. Mediocrity isn't in our vocabulary ",
     },
     {
         title: "Brotherhood",
-        description: "More than teammates. We're a family that stands together through every challenge.",
+        description: "We're a family that stands together through every challenge.",
     },
     {
         title: "Winning Culture",
@@ -15,7 +15,7 @@ const VALUES = [
     },
     {
         title: "Community First",
-        description: "We invest in our community through outreach programs, youth academies, and local events.",
+        description: "We invest in our community through local events.",
     },
 ];
 
@@ -114,7 +114,7 @@ export default function AboutUsSection() {
                         {VALUES.map((v) => (
                             <div
                                 key={v.title}
-                                className="group relative p-7 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-500"
+                                className="group relative p-7 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-500 text-center"
                             >
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <h3 className="relative text-lg font-bold text-white mb-2">
