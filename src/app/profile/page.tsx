@@ -49,7 +49,7 @@ const ProfileContent = () => {
     const email = user.primaryEmailAddress?.emailAddress || "—";
     const avatar = user.imageUrl || "/falcons_logo.png";
     const joinedDate = user.createdAt
-        ? new Date(user.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })
+        ? new Date(user.createdAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })
         : "—";
     const phoneNumber = (user.unsafeMetadata as { phoneNumber?: string })?.phoneNumber || "—";
 

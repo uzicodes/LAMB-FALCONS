@@ -1,9 +1,6 @@
 import type { Appearance } from "@clerk/types";
 
-/**
- * Shared Clerk appearance configuration for SignIn & SignUp components.
- * Black & Blue theme matching the LAMB FALCONS brand.
- */
+
 export const clerkAppearance: Appearance = {
   variables: {
     colorPrimary: "#2563eb",           // blue-600

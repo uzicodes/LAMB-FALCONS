@@ -66,7 +66,7 @@ export default function CallToAction() {
 
           <div className="relative z-10">
             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400/50 mb-4">
-              Be Part of It
+              Be Part of Us
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-red-500/70 mb-4 font-tanker">
               Ready to Fly?
