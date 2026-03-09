@@ -8,7 +8,7 @@ import Link from "next/link";
 const JERSEYS = [
     {
         name: "Home Kit 2025/26",
-        price: "$89",
+        price: "600 Tk",
         tag: "Latest",
         colors: "Royal Blue / White",
         description:
@@ -18,7 +18,7 @@ const JERSEYS = [
     },
     {
         name: "Away Kit 2025/26",
-        price: "$89",
+        price: "600 Tk",
         tag: "Exclusive",
         colors: "Stealth Black / Gold",
         description:
@@ -28,7 +28,7 @@ const JERSEYS = [
     },
     {
         name: "Third Kit 2025/26",
-        price: "$85",
+        price: "550 Tk",
         tag: "Partnered",
         colors: "Arctic White / Cyan",
         description:
@@ -38,7 +38,7 @@ const JERSEYS = [
     },
     {
         name: "Training Kit 2025/26",
-        price: "$69",
+        price: "450 Tk",
         tag: "2nd Kit",
         colors: "Graphite / Lime",
         description:
@@ -48,7 +48,7 @@ const JERSEYS = [
     },
     {
         name: "Retro Kit 2025/26",
-        price: "$95",
+        price: "650 Tk",
         tag: "Debut",
         colors: "Crimson / Navy",
         description:
@@ -162,7 +162,7 @@ export default function JerseySection() {
                                         <h3 className="text-sm font-bold text-white group-hover:text-green-400 transition-colors duration-300 line-clamp-1">
                                             {jersey.name}
                                         </h3>
-                                        <span className="text-xs font-black text-green-400 mt-0.5">{jersey.price}</span>
+                                        <span className="text-xs font-black text-orange-400 mt-0.5">{jersey.price}</span>
                                     </div>
                                     <p className="text-[10px] text-gray-500 uppercase tracking-[0.1em] font-semibold mb-2">
                                         {jersey.colors}
