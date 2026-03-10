@@ -12,7 +12,7 @@ export default function SplashScreen({
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // If the page is already fully loaded (e.g., fast cache hit)
+        // If the page is already fully loaded 
         if (document.readyState === "complete") {
             // Small delay so the animation is still visible briefly
             const timeout = setTimeout(() => setIsLoading(false), 800);
@@ -60,11 +60,7 @@ export default function SplashScreen({
                             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                         >
                             {/* ── Logo ── */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.7 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                            >
+                            <div>
                                 <Image
                                     src="/falcons_logo.png"
                                     alt="Falcons Logo"
@@ -73,7 +69,8 @@ export default function SplashScreen({
                                     className="object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
                                     priority
                                 />
-                            </motion.div>
+                            </div>
+
                         </motion.div>
 
                         {/* ── Loading bar ── */}
