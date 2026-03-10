@@ -119,10 +119,7 @@ export default function JerseySection() {
                         </span>
                     </div>
                     <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-4 font-tanker">
-                        <span className="text-white">Official</span>{" "}
-                        <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                            Kit Shop
-                        </span>
+                        <span className="text-white">Official Merchandise</span>{" "}
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
                         Representing the Falcons with premium quality kits & merchandise
@@ -188,6 +185,6 @@ export default function JerseySection() {
                     </p>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
