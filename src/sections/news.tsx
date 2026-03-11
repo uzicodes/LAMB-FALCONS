@@ -59,14 +59,12 @@ export default function News() {
                 </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
-                    {article.tag}
-                  </span>
-                  <span className="text-xs text-gray-600">{article.date}</span>
-                </div>
-                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300 mb-2 leading-snug">
+              <div className="p-6 flex flex-col items-center text-center">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+                  {article.tag}
+                </span>
+                <span className="text-xs text-gray-600 mb-2">{article.date}</span>
+                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300 mb-2 leading-snug font-satoshi">
                   {article.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">

@@ -122,7 +122,7 @@ export default function JerseySection() {
                         <span className="text-white">Official Merchandise</span>{" "}
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        Representing the Falcons with premium quality kits & merchandise
+                        Representing with Premium Quality Kits & Merchandise
                     </p>
                 </div>
             </div>
