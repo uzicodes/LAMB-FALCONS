@@ -106,7 +106,7 @@ export default function MembersSection() {
                                 </div>
                                 <div className="p-5">
                                     <div className="mb-1 text-center">
-                                        <h3 className="text-base font-bold text-white group-hover:text-green-400 transition-colors duration-300 leading-tight font-satoshi">
+                                        <h3 className="text-base font-bold text-green-400 leading-tight font-satoshi">
                                             {member.name}
                                         </h3>
                                     </div>

@@ -46,56 +46,58 @@ export default function SplashScreen({
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />
 
-                        {/* ── Pulsing ring ── */}
+                        {/* ── Center Content ── */}
                         <motion.div
-                            className="relative flex items-center justify-center w-44 h-44 rounded-full border-2 border-blue-600 shadow-[0_0_30px_rgba(59,130,246,0.5),0_0_60px_rgba(59,130,246,0.25)]"
-                            animate={{
-                                boxShadow: [
-                                    "0 0 20px rgba(59,130,246,0.4), 0 0 40px rgba(59,130,246,0.2)",
-                                    "0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.35)",
-                                    "0 0 20px rgba(59,130,246,0.4), 0 0 40px rgba(59,130,246,0.2)",
-                                ],
-                                scale: [1, 1.04, 1],
-                            }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="flex flex-col items-center justify-center"
                         >
-                            {/* ── Logo ── */}
-                            <div>
-                                <Image
-                                    src="/falcons_logo.png"
-                                    alt="Falcons Logo"
-                                    width={120}
-                                    height={120}
-                                    className="object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
-                                    priority
+                            {/* ── Pulsing ring ── */}
+                            <motion.div
+                                className="relative flex items-center justify-center w-44 h-44 rounded-full border-2 border-blue-600 shadow-[0_0_30px_rgba(59,130,246,0.5),0_0_60px_rgba(59,130,246,0.25)]"
+                                animate={{
+                                    boxShadow: [
+                                        "0 0 20px rgba(59,130,246,0.4), 0 0 40px rgba(59,130,246,0.2)",
+                                        "0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.35)",
+                                        "0 0 20px rgba(59,130,246,0.4), 0 0 40px rgba(59,130,246,0.2)",
+                                    ],
+                                    scale: [1, 1.04, 1],
+                                }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                {/* ── Logo ── */}
+                                <div>
+                                    <Image
+                                        src="/falcons_logo.png"
+                                        alt="Falcons Logo"
+                                        width={120}
+                                        height={120}
+                                        className="object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+                                        priority
+                                    />
+                                </div>
+                            </motion.div>
+
+                            {/* ── Loading bar ── */}
+                            <div className="mt-10 w-48 h-1 rounded-full bg-white/10 overflow-hidden">
+                                <motion.div
+                                    className="h-full rounded-full bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600"
+                                    initial={{ x: "-100%" }}
+                                    animate={{ x: "100%" }}
+                                    transition={{
+                                        duration: 1.2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
                                 />
                             </div>
 
+                            {/* ── Bottom text ── */}
+                            <p className="mt-6 text-sm font-satoshi tracking-[0.3em] uppercase text-blue-400/70">
+                                LAMB FALCONS
+                            </p>
                         </motion.div>
-
-                        {/* ── Loading bar ── */}
-                        <div className="mt-10 w-48 h-1 rounded-full bg-white/10 overflow-hidden">
-                            <motion.div
-                                className="h-full rounded-full bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600"
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "100%" }}
-                                transition={{
-                                    duration: 1.2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                }}
-                            />
-                        </div>
-
-                        {/* ── Bottom text ── */}
-                        <motion.p
-                            className="mt-6 text-sm font-satoshi tracking-[0.3em] uppercase text-blue-400/70"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.6 }}
-                        >
-                            Loading
-                        </motion.p>
 
 
                     </motion.div>
