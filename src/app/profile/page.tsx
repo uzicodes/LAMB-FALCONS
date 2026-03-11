@@ -240,7 +240,7 @@ const ProfileContent = () => {
                                         className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
                                     />
                                 ) : (
-                                    <p className="text-sm text-white font-medium truncate">{displayName}</p>
+                                    <p className="text-sm text-[#AD7D0C] font-medium truncate">{displayName}</p>
                                 )}
                             </div>
                         </div>
@@ -252,7 +252,7 @@ const ProfileContent = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Email Address</p>
-                                <p className="text-sm text-white font-medium truncate">{email}</p>
+                                <p className="text-sm text-[#AD7D0C] font-medium truncate">{email}</p>
                             </div>
                         </div>
 
@@ -276,7 +276,7 @@ const ProfileContent = () => {
                                         placeholder="Enter your phone number"
                                     />
                                 ) : (
-                                    <p className="text-sm text-white font-medium truncate">{phoneNumber}</p>
+                                    <p className="text-sm text-[#AD7D0C] font-medium truncate">{phoneNumber}</p>
                                 )}
                             </div>
                         </div>
@@ -288,7 +288,7 @@ const ProfileContent = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Member Since</p>
-                                <p className="text-sm text-white font-medium">{joinedDate}</p>
+                                <p className="text-sm text-[#AD7D0C] font-medium">{joinedDate}</p>
                             </div>
                         </div>
                     </div>
@@ -339,7 +339,7 @@ const ProfileContent = () => {
                 >
                     <div className="px-6 py-4 border-b border-red-900/20">
                         <h2 className="text-sm font-bold text-red-400 uppercase tracking-wider">
-                            Danger Zone
+                            Delete Account
                         </h2>
                     </div>
                     <div className="px-6 py-4">
