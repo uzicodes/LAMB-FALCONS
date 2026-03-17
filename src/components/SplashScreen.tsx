@@ -94,7 +94,7 @@ export default function SplashScreen({
                             </div>
 
                             {/* ── Bottom text ── */}
-                            <p className="mt-6 text-sm font-satoshi tracking-[0.3em] uppercase text-blue-400/70">
+                            <p className="mt-6 text-sm font-tanker tracking-[0.3em] uppercase text-blue-400/70">
                                 LAMB FALCONS
                             </p>
                         </motion.div>
