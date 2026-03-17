@@ -87,11 +87,10 @@ export default function CallToAction() {
                 </Link>
               </SignedOut>
               <a
-                href="#jersey"
-                onClick={handleShopJersey}
+                href="/register"
                 className="px-8 py-3 border border-white/15 text-white font-semibold text-sm uppercase tracking-widest rounded-none hover:bg-white/5 hover:border-white/30 transition-all duration-300"
               >
-                Shop Jerseys
+                BE A FALCON TODAY
               </a>
             </div>
           </div>
