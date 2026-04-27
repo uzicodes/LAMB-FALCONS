@@ -77,20 +77,14 @@ export default function CallToAction() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <SignedOut>
-                <Link
-                  href="/register"
-                  className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-none transition-all duration-300 hover:shadow-[0_0_34px_rgba(59,130,246,0.35)] overflow-hidden"
-                >
-                  <span className="relative z-10">Be a Member</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </Link>
-              </SignedOut>
               <a
                 href="/register"
-                className="px-8 py-3 border border-white/15 text-white font-semibold text-sm uppercase tracking-widest rounded-none hover:bg-white/5 hover:border-white/30 transition-all duration-300"
+                className="group relative px-8 py-3 border border-white/20 text-blue-400 font-bold text-sm uppercase tracking-widest rounded-none overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               >
-                BE A FALCON TODAY
+                <span className="relative z-10 transition-colors duration-500 group-hover:text-white">
+                  BE A FALCON !
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 -translate-x-[102%] group-hover:translate-x-0 transition-transform duration-500 ease-in-out" />
               </a>
             </div>
           </div>
