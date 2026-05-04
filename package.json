@@ -19,6 +19,7 @@
     "next": "^14.2.25",
     "react": "^18",
     "react-dom": "^18",
+    "react-kino": "^0.3.1",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
