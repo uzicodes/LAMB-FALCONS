@@ -65,9 +65,10 @@ export default function Footer() {
   );
 
   return (
-    <footer className="relative border-t border-white/5 mt-10 md:mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
+    <footer className="relative mt-10 md:mt-20 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl px-6 sm:px-8 lg:px-16 py-12 md:py-16 border border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-1">
             <h3 className="text-xl font-black tracking-wider mb-4 flex items-center gap-2 font-tanker">
@@ -125,8 +126,8 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {/* Bottom bar */}
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <span className="text-xs text-gray-500">DEVELOPER  </span>
             <div className="flex items-center gap-3">
@@ -172,6 +173,7 @@ export default function Footer() {
               />
             </button>
           </div>
+        </div>
         </div>
       </div>
     </footer>
