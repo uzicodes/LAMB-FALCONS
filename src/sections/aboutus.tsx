@@ -147,11 +147,11 @@ export default function AboutUsSection() {
                                 >
                                     {/* Connector line */}
                                     {index < TIMELINE.length - 1 && (
-                                        <div className="absolute top-[22px] md:top-[28px] left-1/2 w-full h-px bg-gradient-to-r from-blue-500/30 to-white/10" />
+                                        <div className="absolute top-[22px] md:top-[28px] left-1/2 w-full h-px bg-gradient-to-r from-green-500/50 " />
                                     )}
                                     {/* Circle with year */}
                                     <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-white/10 bg-black flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">
-                                        <span className="text-[10px] md:text-xs font-bold text-green-800">
+                                        <span className="text-[10px] md:text-xs font-bold text-amber-600">
                                             {item.year}
                                         </span>
                                     </div>

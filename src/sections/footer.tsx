@@ -67,7 +67,7 @@ export default function Footer() {
   return (
     <footer className="relative mt-10 md:mt-20 mb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl px-6 sm:px-8 lg:px-16 py-12 md:py-16 border border-white/10">
+        <div className="rounded-3xl px-6 sm:px-8 lg:px-16 py-2 md:py-6 border border-white/10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-1">
@@ -127,21 +127,21 @@ export default function Footer() {
         </div>
 
           {/* Bottom bar */}
-          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-10 pt-2 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <span className="text-xs text-gray-500">DEVELOPER  </span>
             <div className="flex items-center gap-3">
               <Link
                 href="https://github.com/uzicodes"
                 target="_blank"
-                className="text-gray-600 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-green-500 transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={16} />
               </Link>
               <Link
                 href="https://www.utshochowdhury.me"
-                className="text-gray-600 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-green-500 transition-colors"
                 aria-label="Website"
               >
                 <Globe size={16} />
@@ -149,7 +149,7 @@ export default function Footer() {
               <Link
                 href="https://www.linkedin.com/in/utsho-heaven-chowdhury"
                 target="_blank"
-                className="text-gray-600 hover:text-white transition-colors"
+                className="text-gray-600 hover:text-green-500 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={16} />
