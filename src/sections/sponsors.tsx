@@ -60,7 +60,7 @@ export default function Sponsors() {
         <div ref={trackRef} className="flex items-center gap-12 w-max">
           {[...SPONSORS, ...SPONSORS].map((sponsor, i) => (
             <div
-              key={i}
+              key={`${sponsor}-${i >= SPONSORS.length ? "copy" : "orig"}`}
               className="flex-shrink-0 px-8 py-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
             >
               <span className="text-lg md:text-xl font-bold tracking-wider text-gray-500 hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">

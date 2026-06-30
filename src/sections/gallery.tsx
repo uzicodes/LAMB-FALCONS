@@ -32,9 +32,9 @@ export default function Gallery() {
         <div
           className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 space-y-4 md:space-y-5"
         >
-          {GALLERY_ITEMS.map((item, i) => (
+          {GALLERY_ITEMS.map((item) => (
             <div
-              key={i}
+              key={item.title}
               className={`group relative ${item.aspect} rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 overflow-hidden break-inside-avoid hover:border-white/15 transition-all duration-500 cursor-pointer`}
             >
               {/* Hover gradient */}

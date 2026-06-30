@@ -38,9 +38,9 @@ export default function Testimonials() {
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
         >
-          {TESTIMONIALS.map((item, i) => (
+          {TESTIMONIALS.map((item) => (
             <div
-              key={i}
+              key={item.name}
               className="group relative p-8 md:p-10 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

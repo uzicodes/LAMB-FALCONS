@@ -42,9 +42,9 @@ export default function News() {
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
         >
-          {NEWS.map((article, i) => (
+          {NEWS.map((article) => (
             <article
-              key={i}
+              key={article.title}
               className="group relative rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-white/15 transition-all duration-500 cursor-pointer"
             >
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
