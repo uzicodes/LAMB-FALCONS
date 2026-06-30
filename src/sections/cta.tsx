@@ -77,7 +77,7 @@ export default function CallToAction() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
+              <Link
                 href="/register"
                 className="group relative px-8 py-3 border border-white/20 text-blue-400 font-bold text-sm uppercase tracking-widest rounded-none overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               >
@@ -85,7 +85,7 @@ export default function CallToAction() {
                   BE A FALCON !
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 -translate-x-[102%] group-hover:translate-x-0 transition-transform duration-500 ease-in-out" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
