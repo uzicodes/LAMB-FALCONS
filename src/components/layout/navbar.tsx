@@ -42,7 +42,7 @@ const Navbar = () => {
 			if (sectionId) {
 				sessionStorage.removeItem("scrollToSection");
 				// Small delay to ensure sections are rendered
-				setTimeout(() => {
+				const timerId = setTimeout(() => {
 					const element = document.getElementById(sectionId);
 					if (element) {
 						const offset = 80;
@@ -53,6 +53,7 @@ const Navbar = () => {
 						});
 					}
 				}, 300);
+				return () => clearTimeout(timerId);
 			}
 		}
 	}, [isHomePage]);

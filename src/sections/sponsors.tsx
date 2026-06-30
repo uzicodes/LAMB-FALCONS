@@ -20,18 +20,18 @@ export default function Sponsors() {
   useEffect(() => {
     // Infinite marquee (not scroll-triggered)
     const track = trackRef.current;
-    if (track) {
-      const totalWidth = track.scrollWidth / 2;
-      gsap.to(track, {
-        x: -totalWidth,
-        duration: 30,
-        ease: "none",
-        repeat: -1,
-      });
-    }
+    if (!track) return;
+
+    const totalWidth = track.scrollWidth / 2;
+    const tween = gsap.to(track, {
+      x: -totalWidth,
+      duration: 30,
+      ease: "none",
+      repeat: -1,
+    });
 
     return () => {
-      gsap.killTweensOf(trackRef.current);
+      tween.kill();
     };
   }, []);
 
