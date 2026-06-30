@@ -145,6 +145,7 @@ const ProfileContent = () => {
                                         src={avatar}
                                         alt={displayName}
                                         fill
+                                        sizes="112px"
                                         className="object-cover"
                                     />
                                     {uploadingImage && (

@@ -79,6 +79,7 @@ const Login = () => {
                             src="/falcons_logo.png"
                             alt="Lamb Falcons Logo"
                             fill
+                            sizes="56px"
                             className="object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                         />
                     </div>

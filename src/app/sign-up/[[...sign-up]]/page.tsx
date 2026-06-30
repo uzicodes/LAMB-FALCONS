@@ -21,6 +21,7 @@ export default function SignUpPage() {
             src="/falcons_logo.png"
             alt="Lamb Falcons Logo"
             fill
+            sizes="56px"
             className="object-contain drop-shadow-[0_0_12px_rgba(37,99,235,0.5)]"
           />
         </div>

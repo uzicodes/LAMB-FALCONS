@@ -18,6 +18,7 @@ const ProfileAvatar = () => {
 					src={user?.imageUrl || "/falcons_logo.png"}
 					alt="Profile"
 					fill
+					sizes="32px"
 					className="object-cover"
 				/>
 			</div>
@@ -133,6 +134,7 @@ const Navbar = () => {
 								src={BRAND.logo}
 								alt="Lamb Falcons Logo"
 								fill
+								sizes="40px"
 								className="object-cover"
 								priority
 							/>
