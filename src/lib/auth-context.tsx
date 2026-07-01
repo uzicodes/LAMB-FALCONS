@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useMemo, useCallback, ReactNode } from "react";
 
 export interface UserProfile {
     name: string;
@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    const login = (email: string) => {
+    const login = useCallback((email: string) => {
         const newUser: UserProfile = {
             ...DEFAULT_USER,
             email,
@@ -53,22 +53,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         };
         setUser(newUser);
         localStorage.setItem("lamb_falcons_user:v1", JSON.stringify(newUser));
-    };
+    }, []);
 
-    const logout = () => {
+    const logout = useCallback(() => {
         setUser(null);
         localStorage.removeItem("lamb_falcons_user:v1");
-    };
+    }, []);
 
-    const updateProfile = (data: Partial<UserProfile>) => {
+    const updateProfile = useCallback((data: Partial<UserProfile>) => {
         if (!user) return;
         const updated = { ...user, ...data };
         setUser(updated);
         localStorage.setItem("lamb_falcons_user:v1", JSON.stringify(updated));
-    };
+    }, [user]);
+
+    const value = useMemo(() => ({
+        user,
+        isLoggedIn: !!user,
+        login,
+        logout,
+        updateProfile,
+    }), [user, login, logout, updateProfile]);
 
     return (
-        <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout, updateProfile }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );

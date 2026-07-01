@@ -4,7 +4,7 @@ import { useUser, useClerk, SignedIn, RedirectToSignIn, SignedOut } from "@clerk
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import {
     User,
     Mail,
@@ -113,6 +113,7 @@ const ProfileContent = () => {
     };
 
     return (
+        <LazyMotion features={domAnimation}>
         <section className="relative min-h-screen bg-zinc-950 pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Background effects */}
             <div className="absolute inset-0 z-0">
@@ -123,7 +124,7 @@ const ProfileContent = () => {
 
             <div className="relative z-20 max-w-2xl mx-auto">
                 {/* Profile Header Card */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -195,10 +196,10 @@ const ProfileContent = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* Profile Details Card */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
@@ -296,10 +297,10 @@ const ProfileContent = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* Quick Actions Card */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -333,10 +334,10 @@ const ProfileContent = () => {
                             </span>
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* Danger Zone */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -364,11 +365,11 @@ const ProfileContent = () => {
                             Delete Account
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {/* Cancel Edit */}
                 {isEditing && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="mt-4 text-center"
@@ -380,7 +381,7 @@ const ProfileContent = () => {
                         >
                             Cancel editing
                         </button>
-                    </motion.div>
+                    </m.div>
                 )}
             </div>
 
@@ -388,14 +389,14 @@ const ProfileContent = () => {
             <AnimatePresence>
                 {showDeleteModal && (
                     <>
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
                             onClick={() => !deleting && setShowDeleteModal(false)}
                         />
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -486,11 +487,12 @@ const ProfileContent = () => {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </>
                 )}
             </AnimatePresence>
         </section>
+        </LazyMotion>
     );
 };
 

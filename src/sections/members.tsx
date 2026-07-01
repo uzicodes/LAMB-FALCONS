@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import { X, AlertCircle } from "lucide-react";
 
 const MEMBERS = [
@@ -67,6 +67,7 @@ export default function MembersSection() {
     }, []);
 
     return (
+        <LazyMotion features={domAnimation}>
         <section id="members" className="relative overflow-hidden">
             {/* Header */}
             <div className="relative py-8 md:py-12">
@@ -177,14 +178,14 @@ export default function MembersSection() {
             <AnimatePresence>
                 {showRecruitmentPopup && (
                     <>
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setShowRecruitmentPopup(false)}
                             className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md cursor-pointer"
                         />
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -223,10 +224,11 @@ export default function MembersSection() {
                                     </button>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </>
                 )}
             </AnimatePresence>
         </section>
+        </LazyMotion>
     );
 }

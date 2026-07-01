@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domMax, m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
 import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/nextjs";
@@ -116,9 +116,9 @@ const Navbar = () => {
 	}, [isHomePage, router]);
 
 	return (
-		<>
+		<LazyMotion features={domMax}>
 			{/* Main Navbar */}
-			<motion.nav
+			<m.nav
 				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[98%] md:max-w-[95%]"
 			>
 				<div className="relative flex items-center justify-between px-3 md:px-2 py-1.5 md:py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5 w-full mx-auto">
@@ -153,12 +153,12 @@ const Navbar = () => {
 								onClick={(e) => handleNavClick(e, link.href)}
 								className={`relative group ${link.name === "About Us" ? "hidden md:block" : ""}`}
 							>
-								<motion.div
+								<m.div
 									className="px-1.5 py-1 md:px-2 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-gray-300 transition-colors duration-200 group-hover:text-white font-inter"
 									whileHover="hover"
 								>
 									{/* Glowing background on hover */}
-									<motion.span
+									<m.span
 										className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0"
 										variants={{
 											hover: {
@@ -172,13 +172,13 @@ const Navbar = () => {
 										{link.name}
 									</span>
 									{activeSection === link.href && (
-										<motion.div
+										<m.div
 											layoutId="activeTab"
 											className="absolute bottom-0 md:bottom-0.5 left-1/4 w-1/2 h-0.5 bg-green-500 rounded-full shadow-[0_0_8px_rgba(34,197,94,0.8)]"
 											transition={{ type: "spring", stiffness: 300, damping: 30 }}
 										/>
 									)}
-								</motion.div>
+								</m.div>
 							</a>
 						))}
 
@@ -213,7 +213,7 @@ const Navbar = () => {
 						>
 							<AnimatePresence mode="wait">
 								{isMobileMenuOpen ? (
-									<motion.div
+									<m.div
 										key="close"
 										initial={{ rotate: -90, opacity: 0 }}
 										animate={{ rotate: 0, opacity: 1 }}
@@ -221,9 +221,9 @@ const Navbar = () => {
 										transition={{ duration: 0.2 }}
 									>
 										<X size={22} />
-									</motion.div>
+									</m.div>
 								) : (
-									<motion.div
+									<m.div
 										key="menu"
 										initial={{ rotate: 90, opacity: 0 }}
 										animate={{ rotate: 0, opacity: 1 }}
@@ -231,18 +231,18 @@ const Navbar = () => {
 										transition={{ duration: 0.2 }}
 									>
 										<Menu size={22} />
-									</motion.div>
+									</m.div>
 								)}
 							</AnimatePresence>
 						</button>
 					</div>
 				</div>
-			</motion.nav>
+			</m.nav>
 
 			{/* Mobile Menu */}
 			<AnimatePresence>
 				{isMobileMenuOpen && (
-					<motion.div
+					<m.div
 						initial={{ opacity: 0, y: -20, x: "-50%" }}
 						animate={{ opacity: 1, y: 0, x: "-50%" }}
 						exit={{ opacity: 0, y: -20, x: "-50%" }}
@@ -252,7 +252,7 @@ const Navbar = () => {
 						<div className="bg-black/90 backdrop-blur-xl rounded-2xl border border-white/10 shadow-xl shadow-blue-500/10 overflow-hidden">
 							<div className="flex flex-col p-4 gap-1">
 								{/* About Us Link (Mobile Only) */}
-								<motion.div
+								<m.div
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: 0.05 }}
@@ -264,10 +264,10 @@ const Navbar = () => {
 									>
 										About Us
 									</a>
-								</motion.div>
+								</m.div>
 
 								{/* Join / Profile */}
-								<motion.div
+								<m.div
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: 0.1 }}
@@ -288,17 +288,17 @@ const Navbar = () => {
 											<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-green-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										</Link>
 									</SignedOut>
-								</motion.div>
+								</m.div>
 							</div>
 						</div>
-					</motion.div>
+					</m.div>
 				)}
 			</AnimatePresence>
 
 			{/* Mobile Menu Backdrop */}
 			<AnimatePresence>
 				{isMobileMenuOpen && (
-					<motion.div
+					<m.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -308,7 +308,7 @@ const Navbar = () => {
 					/>
 				)}
 			</AnimatePresence>
-		</>
+		</LazyMotion>
 	);
 };
 

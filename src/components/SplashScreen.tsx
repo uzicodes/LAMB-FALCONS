@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 
 export default function SplashScreen({
     children,
@@ -30,31 +30,31 @@ export default function SplashScreen({
     }, []);
 
     return (
-        <>
+        <LazyMotion features={domAnimation}>
             <AnimatePresence mode="wait">
                 {isLoading && (
-                    <motion.div
+                    <m.div
                         key="splash"
                         className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
                         exit={{ y: "-100%", opacity: 0 }}
                         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                     >
                         {/* ── Ambient glow behind the logo ── */}
-                        <motion.div
+                        <m.div
                             className="absolute w-72 h-72 rounded-full bg-blue-600/20 blur-[100px]"
                             animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />
 
                         {/* ── Center Content ── */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="flex flex-col items-center justify-center"
                         >
                             {/* ── Pulsing ring ── */}
-                            <motion.div
+                            <m.div
                                 className="relative flex items-center justify-center w-44 h-44 rounded-full border-2 border-blue-600 shadow-[0_0_30px_rgba(59,130,246,0.5),0_0_60px_rgba(59,130,246,0.25)]"
                                 animate={{
                                     boxShadow: [
@@ -77,11 +77,11 @@ export default function SplashScreen({
                                         priority
                                     />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* ── Loading bar ── */}
                             <div className="mt-10 w-48 h-1 rounded-full bg-white/10 overflow-hidden">
-                                <motion.div
+                                <m.div
                                     className="h-full rounded-full bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600"
                                     initial={{ x: "-100%" }}
                                     animate={{ x: "100%" }}
@@ -97,15 +97,13 @@ export default function SplashScreen({
                             <p className="mt-6 text-sm font-tanker tracking-[0.3em] uppercase text-blue-400/70">
                                 LAMB FALCONS
                             </p>
-                        </motion.div>
+                        </m.div>
 
 
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
-
-            {/* Page content is always rendered underneath so images start loading */}
             {children}
-        </>
+        </LazyMotion>
     );
 }
