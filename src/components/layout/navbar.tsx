@@ -274,7 +274,18 @@ const Navbar = () => {
 									className="pt-1"
 								>
 									<SignedIn>
-										<div className="flex items-center justify-center" onClick={() => setIsMobileMenuOpen(false)}>
+										<div
+											role="button"
+											tabIndex={0}
+											aria-label="Profile navigation"
+											onClick={() => setIsMobileMenuOpen(false)}
+											onKeyDown={(e) => {
+												if (e.key === "Enter" || e.key === " ") {
+													setIsMobileMenuOpen(false);
+												}
+											}}
+											className="flex items-center justify-center cursor-pointer"
+										>
 											<ProfileAvatar />
 										</div>
 									</SignedIn>
@@ -299,12 +310,20 @@ const Navbar = () => {
 			<AnimatePresence>
 				{isMobileMenuOpen && (
 					<m.div
+						role="button"
+						tabIndex={0}
+						aria-label="Close mobile menu backdrop"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm md:hidden"
+						className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm md:hidden cursor-pointer"
 						onClick={() => setIsMobileMenuOpen(false)}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" || e.key === "Escape" || e.key === " ") {
+								setIsMobileMenuOpen(false);
+							}
+						}}
 					/>
 				)}
 			</AnimatePresence>

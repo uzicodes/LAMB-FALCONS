@@ -463,7 +463,6 @@ const ProfileContent = () => {
                                             disabled={deleting}
                                             className="w-full px-3 py-2 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none transition-all placeholder-zinc-600"
                                             placeholder="Type DELETE here"
-                                            autoFocus
                                         />
                                     </div>
 
