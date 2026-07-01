@@ -162,6 +162,7 @@ export default function MembersSection() {
                                 compete, grow, and be part of something special.
                             </p>
                             <button
+                                type="button"
                                 onClick={() => setShowRecruitmentPopup(true)}
                                 className="inline-flex px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm uppercase tracking-widest rounded-full transition-all duration-300 hover:shadow-[0_0_50px_rgba(59,130,246,0.4)]"
                             >
@@ -193,6 +194,7 @@ export default function MembersSection() {
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500" />
                                 <div className="absolute top-4 right-4">
                                     <button
+                                        type="button"
                                         onClick={() => setShowRecruitmentPopup(false)}
                                         className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
                                     >
@@ -213,6 +215,7 @@ export default function MembersSection() {
                                         Keep training, keep pushing, and stay tuned to our website for when we reopen our gates.
                                     </p>
                                     <button
+                                        type="button"
                                         onClick={() => setShowRecruitmentPopup(false)}
                                         className="w-full py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold uppercase tracking-[0.2em] text-xs rounded-xl transition-all duration-300"
                                     >

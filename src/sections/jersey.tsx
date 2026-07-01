@@ -162,7 +162,7 @@ export default function JerseySection() {
                                         <p className="text-sm font-bold text-gray-400 mb-3">
                                             {year}
                                         </p>
-                                        <button className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-semibold text-white hover:bg-white/10 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition-all duration-300 uppercase tracking-widest">
+                                        <button type="button" className="w-full py-2 rounded-xl bg-white/5 border border-white/10 text-[9px] font-semibold text-white hover:bg-white/10 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition-all duration-300 uppercase tracking-widest">
                                             View Details
                                         </button>
                                     </div>

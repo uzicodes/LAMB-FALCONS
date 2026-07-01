@@ -162,6 +162,7 @@ const ProfileContent = () => {
                                     className="hidden"
                                 />
                                 <button
+                                    type="button"
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={uploadingImage}
                                     className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
@@ -170,6 +171,7 @@ const ProfileContent = () => {
                                 </button>
                                 {user.hasImage && (
                                     <button
+                                        type="button"
                                         onClick={handleRemoveImage}
                                         disabled={uploadingImage}
                                         className="absolute bottom-1 left-1 p-2 bg-red-600 rounded-full text-white hover:bg-red-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
@@ -207,6 +209,7 @@ const ProfileContent = () => {
                             Profile Details
                         </h2>
                         <button
+                            type="button"
                             onClick={() => {
                                 if (isEditing) handleSave();
                                 else handleEditStart();
@@ -320,6 +323,7 @@ const ProfileContent = () => {
                         </Link>
 
                         <button
+                            type="button"
                             onClick={handleSignOut}
                             className="flex items-center gap-2 w-full px-6 py-3.5 hover:bg-red-500/5 transition-colors group"
                         >
@@ -348,6 +352,7 @@ const ProfileContent = () => {
                             Permanently delete your account and all associated data. This action cannot be undone.
                         </p>
                         <button
+                            type="button"
                             onClick={() => {
                                 setShowDeleteModal(true);
                                 setDeleteConfirmText("");
@@ -369,6 +374,7 @@ const ProfileContent = () => {
                         className="mt-4 text-center"
                     >
                         <button
+                            type="button"
                             onClick={() => setIsEditing(false)}
                             className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-2"
                         >
@@ -433,6 +439,7 @@ const ProfileContent = () => {
 
                                     <div className="flex gap-3 pt-1">
                                         <button
+                                            type="button"
                                             onClick={() => setShowDeleteModal(false)}
                                             disabled={deleting}
                                             className="flex-1 py-2 text-sm font-semibold text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-all disabled:opacity-50"
@@ -440,6 +447,7 @@ const ProfileContent = () => {
                                             Cancel
                                         </button>
                                         <button
+                                            type="button"
                                             onClick={async () => {
                                                 if (deleteConfirmText !== "DELETE") {
                                                     setDeleteError("Please type DELETE exactly to confirm.");

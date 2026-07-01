@@ -162,6 +162,7 @@ export default function Footer() {
               LAMB FALCONS  © All rights reserved.
             </p>
             <button
+              type="button"
               onClick={scrollToTop}
               className="group flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:border-white transition-all duration-300 bg-transparent"
               aria-label="Scroll to top"

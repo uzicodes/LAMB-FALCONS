@@ -143,7 +143,7 @@ const Register = () => {
                                 placeholder="000000"
                             />
                         </div>
-                        <button disabled={loading} className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all disabled:opacity-50">
+                        <button type="submit" disabled={loading} className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all disabled:opacity-50">
                             {loading ? "Verifying..." : "Verify & Login"}
                         </button>
                     </form>
