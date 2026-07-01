@@ -24,17 +24,17 @@ const FOOTER_LINKS = {
   ],
 };
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
 export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === "/";
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   const handleFooterClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

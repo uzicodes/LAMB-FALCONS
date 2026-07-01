@@ -8,6 +8,19 @@ import { SignedOut } from "@clerk/nextjs";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const handleShopJersey = (e: React.MouseEvent) => {
+  e.preventDefault();
+  const element = document.getElementById("jersey");
+  if (element) {
+    const offset = 80;
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: elementPosition - offset,
+      behavior: "smooth",
+    });
+  }
+};
+
 export default function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
@@ -34,19 +47,6 @@ export default function CallToAction() {
 
     return () => ctx.revert();
   }, []);
-
-  const handleShopJersey = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById("jersey");
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: "smooth",
-      });
-    }
-  };
 
 
   return (
