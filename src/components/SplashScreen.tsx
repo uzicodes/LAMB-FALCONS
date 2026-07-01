@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function SplashScreen({
     children,
@@ -10,6 +10,7 @@ export default function SplashScreen({
     children: React.ReactNode;
 }) {
     const [isLoading, setIsLoading] = useState(true);
+    const shouldReduceMotion = useReducedMotion();
 
     useEffect(() => {
         // If the page is already fully loaded 
@@ -36,27 +37,27 @@ export default function SplashScreen({
                     <m.div
                         key="splash"
                         className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
-                        exit={{ y: "-100%", opacity: 0 }}
-                        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+                        exit={shouldReduceMotion ? { opacity: 0 } : { y: "-100%", opacity: 0 }}
+                        transition={{ duration: shouldReduceMotion ? 0.2 : 0.8, ease: [0.76, 0, 0.24, 1] }}
                     >
                         {/* ── Ambient glow behind the logo ── */}
                         <m.div
                             className="absolute w-72 h-72 rounded-full bg-blue-600/20 blur-[100px]"
-                            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            animate={shouldReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+                            transition={shouldReduceMotion ? {} : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         />
 
                         {/* ── Center Content ── */}
                         <m.div
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            transition={{ duration: shouldReduceMotion ? 0 : 0.8, ease: "easeOut" }}
                             className="flex flex-col items-center justify-center"
                         >
                             {/* ── Pulsing ring ── */}
                             <m.div
                                 className="relative flex items-center justify-center w-44 h-44 rounded-full border-2 border-blue-600 shadow-[0_0_30px_rgba(59,130,246,0.5),0_0_60px_rgba(59,130,246,0.25)]"
-                                animate={{
+                                animate={shouldReduceMotion ? {} : {
                                     boxShadow: [
                                         "0 0 20px rgba(59,130,246,0.4), 0 0 40px rgba(59,130,246,0.2)",
                                         "0 0 40px rgba(59,130,246,0.7), 0 0 80px rgba(59,130,246,0.35)",
@@ -64,7 +65,7 @@ export default function SplashScreen({
                                     ],
                                     scale: [1, 1.04, 1],
                                 }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                transition={shouldReduceMotion ? {} : { duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                             >
                                 {/* ── Logo ── */}
                                 <div>
