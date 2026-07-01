@@ -170,7 +170,7 @@ export default function Footer() {
               <ArrowUp
                 size={18}
                 className="text-white animate-bounce"
-                style={{ animationDuration: "2s" }}
+                style={{ animationDuration: "800ms" }}
               />
             </button>
           </div>

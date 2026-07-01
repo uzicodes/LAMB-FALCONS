@@ -4,22 +4,43 @@ import { Phone, User, Mail, Lock, CheckCircle2, Eye, EyeOff } from "lucide-react
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useReducer, useRef } from "react";
 import { useSignUp, useUser } from "@clerk/nextjs";
+
+const initialState = {
+    verifying: false,
+    code: "",
+    loading: false,
+    showPassword: false,
+    showConfirmPassword: false,
+    password: "",
+    confirmPassword: "",
+    error: "",
+};
+
+type State = typeof initialState;
+type Action = Partial<State>;
+
+function reducer(state: State, action: Action): State {
+    return { ...state, ...action };
+}
 
 const Register = () => {
     const router = useRouter();
     const { signUp, isLoaded, setActive } = useSignUp();
 
-    const [verifying, setVerifying] = useState(false);
-    const [code, setCode] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const {
+        verifying,
+        code,
+        loading,
+        showPassword,
+        showConfirmPassword,
+        password,
+        confirmPassword,
+        error,
+    } = state;
+    const phoneNumberRef = useRef("");
 
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,25 +53,24 @@ const Register = () => {
         const password = formData.get("password") as string;
         const phone = formData.get("phoneNumber") as string;
 
-        setPhoneNumber(phone);
+        phoneNumberRef.current = phone;
 
         if (!email || (email.match(/@/g) || []).length !== 1) {
-            setError("Email must contain exactly one '@' symbol.");
+            dispatch({ error: "Email must contain exactly one '@' symbol." });
             return;
         }
 
         if (password !== confirmPassword) {
-            setError("Passwords do not match.");
+            dispatch({ error: "Passwords do not match." });
             return;
         }
 
         if (password.length < 6 || password.length > 30) {
-            setError("Password must be between 6 and 30 characters.");
+            dispatch({ error: "Password must be between 6 and 30 characters." });
             return;
         }
 
-        setLoading(true);
-        setError("");
+        dispatch({ loading: true, error: "" });
 
         try {
             const nameParts = name.trim().split(/\s+/);
@@ -68,20 +88,19 @@ const Register = () => {
             });
 
             await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
-            setVerifying(true);
+            dispatch({ verifying: true });
         } catch (err: unknown) {
             const clerkError = err as { errors?: { message: string }[] };
-            setError(clerkError.errors?.[0]?.message || "Registration failed. Please try again.");
+            dispatch({ error: clerkError.errors?.[0]?.message || "Registration failed. Please try again." });
         } finally {
-            setLoading(false);
+            dispatch({ loading: false });
         }
     };
 
     const handleVerify = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!isLoaded || !code.trim()) return;
-        setLoading(true);
-        setError("");
+        dispatch({ loading: true, error: "" });
 
         try {
             const result = await signUp.attemptEmailAddressVerification({ code });
@@ -92,9 +111,9 @@ const Register = () => {
             }
         } catch (err: unknown) {
             const clerkError = err as { errors?: { message: string }[] };
-            setError(clerkError.errors?.[0]?.message || "Invalid verification code.");
+            dispatch({ error: clerkError.errors?.[0]?.message || "Invalid verification code." });
         } finally {
-            setLoading(false);
+            dispatch({ loading: false });
         }
     };
 
@@ -138,7 +157,7 @@ const Register = () => {
                             <label className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
                             <input
                                 value={code}
-                                onChange={(e) => setCode(e.target.value)}
+                                onChange={(e) => dispatch({ code: e.target.value })}
                                 className="block w-full py-2 px-3 text-center text-base tracking-[0.5em] font-mono text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
                                 placeholder="000000"
                             />
@@ -204,7 +223,7 @@ const Register = () => {
                                     type={showPassword ? "text" : "password"}
                                     name="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => dispatch({ password: e.target.value })}
                                     minLength={6}
                                     maxLength={30}
                                     className="block w-full py-2 pl-8 pr-16 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
@@ -214,7 +233,7 @@ const Register = () => {
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
                                     <button
                                         type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
+                                        onClick={() => dispatch({ showPassword: !showPassword })}
                                         className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                     >
                                         {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -240,7 +259,7 @@ const Register = () => {
                                     type={showConfirmPassword ? "text" : "password"}
                                     name="confirmPassword"
                                     value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    onChange={(e) => dispatch({ confirmPassword: e.target.value })}
                                     minLength={6}
                                     maxLength={30}
                                     className="block w-full py-2 pl-8 pr-16 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
@@ -250,7 +269,7 @@ const Register = () => {
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
                                     <button
                                         type="button"
-                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                        onClick={() => dispatch({ showConfirmPassword: !showConfirmPassword })}
                                         className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                     >
                                         {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}

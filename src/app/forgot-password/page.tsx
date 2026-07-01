@@ -4,22 +4,44 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useReducer } from "react";
 import { useSignIn } from "@clerk/nextjs";
+
+const initialState = {
+    loading: false,
+    error: "",
+    successfulCreation: false,
+    code: "",
+    password: "",
+    confirmPassword: "",
+    showPassword: false,
+    showConfirmPassword: false,
+    email: "",
+};
+
+type State = typeof initialState;
+type Action = Partial<State>;
+
+function reducer(state: State, action: Action): State {
+    return { ...state, ...action };
+}
 
 const ForgotPassword = () => {
     const router = useRouter();
     const { signIn, isLoaded, setActive } = useSignIn();
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const [successfulCreation, setSuccessfulCreation] = useState(false);
-    const [code, setCode] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [email, setEmail] = useState("");
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const {
+        loading,
+        error,
+        successfulCreation,
+        code,
+        password,
+        confirmPassword,
+        showPassword,
+        showConfirmPassword,
+        email,
+    } = state;
 
     // Send reset code to email
     const handleSendCode = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,24 +49,23 @@ const ForgotPassword = () => {
         if (!isLoaded) return;
 
         if (!email || (email.match(/@/g) || []).length !== 1) {
-            setError("Please enter a valid email address.");
+            dispatch({ error: "Please enter a valid email address." });
             return;
         }
 
-        setLoading(true);
-        setError("");
+        dispatch({ loading: true, error: "" });
 
         try {
             await signIn.create({
                 strategy: "reset_password_email_code",
                 identifier: email,
             });
-            setSuccessfulCreation(true);
+            dispatch({ successfulCreation: true });
         } catch (err: unknown) {
             const clerkError = err as { errors?: { message: string }[] };
-            setError(clerkError.errors?.[0]?.message || "Failed to send reset code. Please try again.");
+            dispatch({ error: clerkError.errors?.[0]?.message || "Failed to send reset code. Please try again." });
         } finally {
-            setLoading(false);
+            dispatch({ loading: false });
         }
     };
 
@@ -54,17 +75,16 @@ const ForgotPassword = () => {
         if (!isLoaded) return;
 
         if (password !== confirmPassword) {
-            setError("Passwords do not match.");
+            dispatch({ error: "Passwords do not match." });
             return;
         }
 
         if (password.length < 6 || password.length > 30) {
-            setError("Password must be between 6 and 30 characters.");
+            dispatch({ error: "Password must be between 6 and 30 characters." });
             return;
         }
 
-        setLoading(true);
-        setError("");
+        dispatch({ loading: true, error: "" });
 
         try {
             const result = await signIn.attemptFirstFactor({
@@ -79,9 +99,9 @@ const ForgotPassword = () => {
             }
         } catch (err: unknown) {
             const clerkError = err as { errors?: { message: string }[] };
-            setError(clerkError.errors?.[0]?.message || "Failed to reset password. Please try again.");
+            dispatch({ error: clerkError.errors?.[0]?.message || "Failed to reset password. Please try again." });
         } finally {
-            setLoading(false);
+            dispatch({ loading: false });
         }
     };
 
@@ -134,7 +154,7 @@ const ForgotPassword = () => {
                                 <input
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => dispatch({ email: e.target.value })}
                                     className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
                                     placeholder="name@example.com"
                                     required
@@ -171,7 +191,7 @@ const ForgotPassword = () => {
                             <div className="mt-0.5">
                                 <input
                                     value={code}
-                                    onChange={(e) => setCode(e.target.value)}
+                                    onChange={(e) => dispatch({ code: e.target.value })}
                                     className="block w-full py-2 px-3 text-center text-base tracking-[0.5em] font-mono text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
                                     placeholder="000000"
                                     required
@@ -189,7 +209,7 @@ const ForgotPassword = () => {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => dispatch({ password: e.target.value })}
                                     minLength={6}
                                     maxLength={30}
                                     className="block w-full py-2 pl-8 pr-10 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
@@ -198,7 +218,7 @@ const ForgotPassword = () => {
                                 />
                                 <button
                                     type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
+                                    onClick={() => dispatch({ showPassword: !showPassword })}
                                     className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                 >
                                     {showPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -219,7 +239,7 @@ const ForgotPassword = () => {
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    onChange={(e) => dispatch({ confirmPassword: e.target.value })}
                                     minLength={6}
                                     maxLength={30}
                                     className="block w-full py-2 pl-8 pr-10 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
@@ -228,7 +248,7 @@ const ForgotPassword = () => {
                                 />
                                 <button
                                     type="button"
-                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    onClick={() => dispatch({ showConfirmPassword: !showConfirmPassword })}
                                     className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                 >
                                     {showConfirmPassword ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -250,11 +270,13 @@ const ForgotPassword = () => {
                             <button
                                 type="button"
                                 onClick={() => {
-                                    setSuccessfulCreation(false);
-                                    setError("");
-                                    setCode("");
-                                    setPassword("");
-                                    setConfirmPassword("");
+                                    dispatch({
+                                        successfulCreation: false,
+                                        error: "",
+                                        code: "",
+                                        password: "",
+                                        confirmPassword: "",
+                                    });
                                 }}
                                 className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-emerald-400 transition-colors"
                             >

@@ -3,7 +3,7 @@
 import { useUser, useClerk, SignedIn, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useReducer } from "react";
 import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import {
     User,
@@ -23,17 +23,37 @@ import {
     AlertTriangle,
 } from "lucide-react";
 
+const initialProfileState = {
+    isEditing: false,
+    editForm: { fullName: "", phoneNumber: "" },
+    uploadingImage: false,
+    showDeleteModal: false,
+    deleteConfirmText: "",
+    deleting: false,
+    deleteError: "",
+};
+
+type ProfileState = typeof initialProfileState;
+type ProfileAction = Partial<ProfileState>;
+
+function profileReducer(state: ProfileState, action: ProfileAction): ProfileState {
+    return { ...state, ...action };
+}
+
 const ProfileContent = () => {
     const { user, isLoaded } = useUser();
     const { signOut } = useClerk();
-    const [isEditing, setIsEditing] = useState(false);
-    const [editForm, setEditForm] = useState({ fullName: "", phoneNumber: "" });
-    const [uploadingImage, setUploadingImage] = useState(false);
+    const [state, dispatch] = useReducer(profileReducer, initialProfileState);
+    const {
+        isEditing,
+        editForm,
+        uploadingImage,
+        showDeleteModal,
+        deleteConfirmText,
+        deleting,
+        deleteError,
+    } = state;
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [deleteConfirmText, setDeleteConfirmText] = useState("");
-    const [deleting, setDeleting] = useState(false);
-    const [deleteError, setDeleteError] = useState("");
 
     if (!isLoaded) {
         return (
@@ -55,11 +75,13 @@ const ProfileContent = () => {
 
     const handleEditStart = () => {
         const currentPhone = (user.unsafeMetadata as { phoneNumber?: string })?.phoneNumber || "";
-        setEditForm({
-            fullName: (user.firstName && user.lastName) ? `${user.firstName} ${user.lastName}` : (user.firstName || user.lastName || ""),
-            phoneNumber: currentPhone,
+        dispatch({
+            editForm: {
+                fullName: (user.firstName && user.lastName) ? `${user.firstName} ${user.lastName}` : (user.firstName || user.lastName || ""),
+                phoneNumber: currentPhone,
+            },
+            isEditing: true,
         });
-        setIsEditing(true);
     };
 
     const handleSave = async () => {
@@ -76,7 +98,7 @@ const ProfileContent = () => {
                     phoneNumber: editForm.phoneNumber,
                 },
             });
-            setIsEditing(false);
+            dispatch({ isEditing: false });
         } catch (err) {
             console.error("Failed to update profile:", err);
         }
@@ -88,13 +110,13 @@ const ProfileContent = () => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setUploadingImage(true);
+        dispatch({ uploadingImage: true });
         try {
             await user.setProfileImage({ file });
         } catch (err) {
             console.error("Failed to upload profile image:", err);
         } finally {
-            setUploadingImage(false);
+            dispatch({ uploadingImage: false });
             if (fileInputRef.current) {
                 fileInputRef.current.value = "";
             }
@@ -102,13 +124,13 @@ const ProfileContent = () => {
     };
 
     const handleRemoveImage = async () => {
-        setUploadingImage(true);
+        dispatch({ uploadingImage: true });
         try {
             await user.setProfileImage({ file: null });
         } catch (err) {
             console.error("Failed to remove profile image:", err);
         } finally {
-            setUploadingImage(false);
+            dispatch({ uploadingImage: false });
         }
     };
 
@@ -241,7 +263,7 @@ const ProfileContent = () => {
                                     <input
                                         type="text"
                                         value={editForm.fullName}
-                                        onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+                                        onChange={(e) => dispatch({ editForm: { ...editForm, fullName: e.target.value } })}
                                         className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
                                     />
                                 ) : (
@@ -274,7 +296,7 @@ const ProfileContent = () => {
                                         value={editForm.phoneNumber}
                                         onChange={(e) => {
                                             const val = e.target.value.replace(/[^0-9]/g, '');
-                                            setEditForm({ ...editForm, phoneNumber: val });
+                                            dispatch({ editForm: { ...editForm, phoneNumber: val } });
                                         }}
                                         maxLength={15}
                                         className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -355,9 +377,11 @@ const ProfileContent = () => {
                         <button
                             type="button"
                             onClick={() => {
-                                setShowDeleteModal(true);
-                                setDeleteConfirmText("");
-                                setDeleteError("");
+                                dispatch({
+                                    showDeleteModal: true,
+                                    deleteConfirmText: "",
+                                    deleteError: "",
+                                });
                             }}
                             className="flex items-center gap-2 px-4 py-2 bg-red-600/10 border border-red-500/30 text-red-400 text-sm font-semibold rounded-lg hover:bg-red-600/20 hover:border-red-500/50 hover:text-red-300 transition-all"
                         >
@@ -376,7 +400,7 @@ const ProfileContent = () => {
                     >
                         <button
                             type="button"
-                            onClick={() => setIsEditing(false)}
+                            onClick={() => dispatch({ isEditing: false })}
                             className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-2"
                         >
                             Cancel editing
@@ -394,7 +418,7 @@ const ProfileContent = () => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
-                            onClick={() => !deleting && setShowDeleteModal(false)}
+                            onClick={() => !deleting && dispatch({ showDeleteModal: false })}
                         />
                         <m.div
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -430,7 +454,7 @@ const ProfileContent = () => {
                                         <input
                                             type="text"
                                             value={deleteConfirmText}
-                                            onChange={(e) => setDeleteConfirmText(e.target.value)}
+                                            onChange={(e) => dispatch({ deleteConfirmText: e.target.value })}
                                             disabled={deleting}
                                             className="w-full px-3 py-2 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-red-500 focus:ring-1 focus:ring-red-500 focus:outline-none transition-all placeholder-zinc-600"
                                             placeholder="Type DELETE here"
@@ -441,7 +465,7 @@ const ProfileContent = () => {
                                     <div className="flex gap-3 pt-1">
                                         <button
                                             type="button"
-                                            onClick={() => setShowDeleteModal(false)}
+                                            onClick={() => dispatch({ showDeleteModal: false })}
                                             disabled={deleting}
                                             className="flex-1 py-2 text-sm font-semibold text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-all disabled:opacity-50"
                                         >
@@ -451,11 +475,10 @@ const ProfileContent = () => {
                                             type="button"
                                             onClick={async () => {
                                                 if (deleteConfirmText !== "DELETE") {
-                                                    setDeleteError("Please type DELETE exactly to confirm.");
+                                                    dispatch({ deleteError: "Please type DELETE exactly to confirm." });
                                                     return;
                                                 }
-                                                setDeleting(true);
-                                                setDeleteError("");
+                                                dispatch({ deleting: true, deleteError: "" });
                                                 try {
                                                     const res = await fetch("/api/delete-account", {
                                                         method: "DELETE",
@@ -468,8 +491,10 @@ const ProfileContent = () => {
                                                 } catch (err: unknown) {
                                                     const error = err as Error;
                                                     console.error("Failed to delete account:", error);
-                                                    setDeleteError(error.message || "Failed to delete account. Please try again.");
-                                                    setDeleting(false);
+                                                    dispatch({
+                                                        deleteError: error.message || "Failed to delete account. Please try again.",
+                                                        deleting: false,
+                                                    });
                                                 }
                                             }}
                                             disabled={deleting || deleteConfirmText !== "DELETE"}
