@@ -154,8 +154,9 @@ const Register = () => {
                 {verifying ? (
                     <form onSubmit={handleVerify} className="px-6 pb-2 space-y-3">
                         <div className="space-y-1">
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
+                            <label htmlFor="register-code" className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
                             <input
+                                id="register-code"
                                 value={code}
                                 onChange={(e) => dispatch({ code: e.target.value })}
                                 className="block w-full py-2 px-3 text-center text-base tracking-[0.5em] font-mono text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
@@ -170,34 +171,35 @@ const Register = () => {
                     <form onSubmit={handleRegister} className="px-5 pb-2 space-y-1.5">
                         {/* Name */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Full Name</label>
+                            <label htmlFor="register-name" className="text-[11px] font-medium text-zinc-300 ml-1">Full Name</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <User className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
-                                <input type="text" name="name" className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600" placeholder="Enter your full name" required />
+                                <input id="register-name" type="text" name="name" className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600" placeholder="Enter your full name" required />
                             </div>
                         </div>
 
                         {/* Email */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Email</label>
+                            <label htmlFor="register-email" className="text-[11px] font-medium text-zinc-300 ml-1">Email</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Mail className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
-                                <input type="email" name="email" className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600" placeholder="name@example.com" required />
+                                <input id="register-email" type="email" name="email" className="block w-full py-2 pl-8 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600" placeholder="name@example.com" required />
                             </div>
                         </div>
 
                         {/* Phone Number */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Phone Number</label>
+                            <label htmlFor="register-phone" className="text-[11px] font-medium text-zinc-300 ml-1">Phone Number</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Phone className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="register-phone"
                                     type="tel"
                                     name="phoneNumber"
                                     maxLength={15}
@@ -214,12 +216,13 @@ const Register = () => {
 
                         {/* Password */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Password</label>
+                            <label htmlFor="register-password" className="text-[11px] font-medium text-zinc-300 ml-1">Password</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="register-password"
                                     type={showPassword ? "text" : "password"}
                                     name="password"
                                     value={password}
@@ -233,6 +236,7 @@ const Register = () => {
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
                                     <button
                                         type="button"
+                                        aria-label={showPassword ? "Hide password" : "Show password"}
                                         onClick={() => dispatch({ showPassword: !showPassword })}
                                         className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                     >
@@ -250,12 +254,13 @@ const Register = () => {
 
                         {/* Confirm Password */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Confirm Password</label>
+                            <label htmlFor="register-confirm-password" className="text-[11px] font-medium text-zinc-300 ml-1">Confirm Password</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="register-confirm-password"
                                     type={showConfirmPassword ? "text" : "password"}
                                     name="confirmPassword"
                                     value={confirmPassword}
@@ -269,6 +274,7 @@ const Register = () => {
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 gap-1">
                                     <button
                                         type="button"
+                                        aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
                                         onClick={() => dispatch({ showConfirmPassword: !showConfirmPassword })}
                                         className="p-1 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                     >

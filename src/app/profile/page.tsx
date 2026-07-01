@@ -186,6 +186,7 @@ const ProfileContent = () => {
                                 />
                                 <button
                                     type="button"
+                                    aria-label="Upload profile photo"
                                     onClick={() => fileInputRef.current?.click()}
                                     disabled={uploadingImage}
                                     className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white hover:bg-blue-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
@@ -195,6 +196,7 @@ const ProfileContent = () => {
                                 {user.hasImage && (
                                     <button
                                         type="button"
+                                        aria-label="Remove profile photo"
                                         onClick={handleRemoveImage}
                                         disabled={uploadingImage}
                                         className="absolute bottom-1 left-1 p-2 bg-red-600 rounded-full text-white hover:bg-red-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
@@ -258,9 +260,10 @@ const ProfileContent = () => {
                                 <User className="w-4 h-4 text-green-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Full Name</p>
+                                <label htmlFor="edit-fullname" className="block text-[10px] text-zinc-500 uppercase tracking-wider">Full Name</label>
                                 {isEditing ? (
                                     <input
+                                        id="edit-fullname"
                                         type="text"
                                         value={editForm.fullName}
                                         onChange={(e) => dispatch({ editForm: { ...editForm, fullName: e.target.value } })}
@@ -289,9 +292,10 @@ const ProfileContent = () => {
                                 <Phone className="w-4 h-4 text-purple-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Phone Number</p>
+                                <label htmlFor="edit-phone" className="block text-[10px] text-zinc-500 uppercase tracking-wider">Phone Number</label>
                                 {isEditing ? (
                                     <input
+                                        id="edit-phone"
                                         type="tel"
                                         value={editForm.phoneNumber}
                                         onChange={(e) => {
@@ -448,10 +452,11 @@ const ProfileContent = () => {
                                     )}
 
                                     <div>
-                                        <label className="text-[11px] font-medium text-zinc-400 block mb-1">
+                                        <label htmlFor="delete-confirm-input" className="text-[11px] font-medium text-zinc-400 block mb-1">
                                             Type <span className="text-red-400 font-bold">DELETE</span> to confirm
                                         </label>
                                         <input
+                                            id="delete-confirm-input"
                                             type="text"
                                             value={deleteConfirmText}
                                             onChange={(e) => dispatch({ deleteConfirmText: e.target.value })}

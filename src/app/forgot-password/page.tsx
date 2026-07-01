@@ -146,12 +146,13 @@ const ForgotPassword = () => {
                     // Email form
                     <form onSubmit={handleSendCode} className="px-5 pb-2 space-y-3">
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Email Address</label>
+                            <label htmlFor="forgot-email" className="text-[11px] font-medium text-zinc-300 ml-1">Email Address</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Mail className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="forgot-email"
                                     type="email"
                                     value={email}
                                     onChange={(e) => dispatch({ email: e.target.value })}
@@ -187,9 +188,10 @@ const ForgotPassword = () => {
                     <form onSubmit={handleResetPassword} className="px-5 pb-2 space-y-1.5">
                         {/* Verification Code */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
+                            <label htmlFor="forgot-code" className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
                             <div className="mt-0.5">
                                 <input
+                                    id="forgot-code"
                                     value={code}
                                     onChange={(e) => dispatch({ code: e.target.value })}
                                     className="block w-full py-2 px-3 text-center text-base tracking-[0.5em] font-mono text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
@@ -201,12 +203,13 @@ const ForgotPassword = () => {
 
                         {/* New Password */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">New Password</label>
+                            <label htmlFor="forgot-new-password" className="text-[11px] font-medium text-zinc-300 ml-1">New Password</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="forgot-new-password"
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => dispatch({ password: e.target.value })}
@@ -218,6 +221,7 @@ const ForgotPassword = () => {
                                 />
                                 <button
                                     type="button"
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
                                     onClick={() => dispatch({ showPassword: !showPassword })}
                                     className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                 >
@@ -231,12 +235,13 @@ const ForgotPassword = () => {
 
                         {/* Confirm New Password */}
                         <div>
-                            <label className="text-[11px] font-medium text-zinc-300 ml-1">Confirm New Password</label>
+                            <label htmlFor="forgot-confirm-password" className="text-[11px] font-medium text-zinc-300 ml-1">Confirm New Password</label>
                             <div className="relative group mt-0.5">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <Lock className="w-3 h-3 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
                                 </div>
                                 <input
+                                    id="forgot-confirm-password"
                                     type={showConfirmPassword ? "text" : "password"}
                                     value={confirmPassword}
                                     onChange={(e) => dispatch({ confirmPassword: e.target.value })}
@@ -248,6 +253,7 @@ const ForgotPassword = () => {
                                 />
                                 <button
                                     type="button"
+                                    aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
                                     onClick={() => dispatch({ showConfirmPassword: !showConfirmPassword })}
                                     className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-500 hover:text-zinc-300 transition-colors focus:outline-none"
                                 >
