@@ -10,17 +10,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.39.5",
-    "@studio-freight/lenis": "^1.0.42",
-    "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
     "gsap": "^3.14.2",
     "lenis": "^1.3.17",
     "lucide-react": "^0.344.0",
     "next": "^15.5.19",
     "react": "^18",
-    "react-dom": "^18",
-    "react-kino": "^0.3.1",
-    "tailwind-merge": "^2.2.1"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
