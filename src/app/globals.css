@@ -1,8 +1,16 @@
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-satoshi: Satoshi, sans-serif;
+  --font-boldonse: Boldonse, sans-serif;
+  --font-tanker: Tanker, sans-serif;
+
+  --color-falcon-blue: #3B82F6;
+  --color-falcon-blue-light: #60A5FA;
+  --color-falcon-blue-dark: #2563EB;
+}
 
 @font-face {
   font-family: 'Winky Milky';
