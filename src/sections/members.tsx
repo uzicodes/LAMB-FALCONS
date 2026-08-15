@@ -104,7 +104,7 @@ export default function MembersSection() {
                                 </div>
                                 <div className="p-5">
                                     <div className="mb-1 text-center">
-                                        <h3 className="text-base font-bold text-[#f8f4e8] leading-tight font-space-grotesk">
+                                        <h3 className="text-base font-semibold text-[#f8f4e8] tracking-wide leading-tight font-space-grotesk">
                                             {member.name}
                                         </h3>
                                     </div>
@@ -149,7 +149,7 @@ export default function MembersSection() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#d2e823]/40 to-transparent" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.08),transparent_50%)]" />
                         <div className="relative z-10">
-                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#f8f4e8] mb-6">
+                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-6">
                                 Open Recruitment
                             </span>
                             <h2 className="text-2xl md:text-4xl font-black tracking-wider text-[#f8f4e8] mb-4 font-tanker">

@@ -65,7 +65,7 @@ export default function CallToAction() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.1),transparent_50%)]" />
 
           <div className="relative z-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#f8f4e8] mb-4">
+            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
               Be Part of Us
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-[#f8f4e8] mb-4 font-tanker">

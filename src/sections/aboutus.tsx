@@ -41,8 +41,9 @@ export default function AboutUsSection() {
                             Our Story
                         </span>
                     </div>
-                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker text-[#f8f4e8]">
-                        About Lamb Falcons
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
+                        <span className="text-[#f8f4e8]">About</span>{" "}
+                        <span className="text-[#d2e823]">Lamb Falcons</span>
                     </h2>
                     <p className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed mb-4">
                         What started as a small group of passionate sportsman in 2020 has
@@ -114,7 +115,7 @@ export default function AboutUsSection() {
                                 className="group relative p-7 rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 transition-all duration-500 text-center"
                             >
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <h3 className="relative text-lg font-bold text-[#f8f4e8] mb-2">
+                                <h3 className="relative text-lg font-semibold text-[#f8f4e8] tracking-wide mb-2 font-space-grotesk">
                                     {v.title}
                                 </h3>
                                 <p className="relative text-sm text-[#f8f4e8]/40 leading-relaxed">
