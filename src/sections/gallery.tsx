@@ -21,7 +21,7 @@ export default function Gallery() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#f8f4e8] mb-4">
             Moments
           </span>
           <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker">

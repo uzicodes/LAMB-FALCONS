@@ -104,12 +104,12 @@ export default function JerseySection() {
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f8f4e8]/10 bg-[#f8f4e8]/5 backdrop-blur-sm mb-6">
                         <span className="w-2 h-2 rounded-full bg-[#d2e823] animate-pulse" />
-                        <span className="text-xs font-medium tracking-widest uppercase text-[#f8f4e8]/80">
+                        <span className="text-xs font-medium tracking-widest uppercase text-[#f8f4e8]">
                             Our Collections
                         </span>
                     </div>
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-4 font-tanker">
-                        <span className="text-[#f8f4e8]">Official Merchandise</span>{" "}
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-4 font-tanker text-[#f8f4e8]">
+                        Official Merchandise
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed">
                         Representing with Premium Quality Kits & Merchandise

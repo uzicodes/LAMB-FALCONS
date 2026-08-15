@@ -41,11 +41,8 @@ export default function AboutUsSection() {
                             Our Story
                         </span>
                     </div>
-                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
-                        <span className="text-[#f8f4e8]">About</span>{" "}
-                        <span className="text-[#d2e823]">
-                            Lamb Falcons
-                        </span>
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker text-[#f8f4e8]">
+                        About Lamb Falcons
                     </h2>
                     <p className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed mb-4">
                         What started as a small group of passionate sportsman in 2020 has
@@ -106,7 +103,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823]/70 font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#f8f4e8] font-tanker">
                             Core Values
                         </h2>
                     </div>
@@ -133,7 +130,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823]/70 font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#f8f4e8] font-tanker">
                             Our Journey
                         </h2>
                     </div>

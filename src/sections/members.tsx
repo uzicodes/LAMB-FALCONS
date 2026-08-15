@@ -72,11 +72,8 @@ export default function MembersSection() {
             {/* Header */}
             <div className="relative py-8 md:py-12">
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-6 font-tanker">
-                        <span className="text-[#f8f4e8]">Meet The </span>{" "}
-                        <span className="text-[#d2e823]">
-                            Squad
-                        </span>
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-6 font-tanker text-[#f8f4e8]">
+                        Meet The Squad
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed">
                         The players who make LAMB FALCONS the
@@ -107,7 +104,7 @@ export default function MembersSection() {
                                 </div>
                                 <div className="p-5">
                                     <div className="mb-1 text-center">
-                                        <h3 className="text-base font-bold text-[#d2e823] leading-tight font-satoshi">
+                                        <h3 className="text-base font-bold text-[#f8f4e8] leading-tight font-satoshi">
                                             {member.name}
                                         </h3>
                                     </div>
@@ -152,10 +149,10 @@ export default function MembersSection() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#d2e823]/40 to-transparent" />
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.08),transparent_50%)]" />
                         <div className="relative z-10">
-                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823]/50 mb-6">
+                            <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#f8f4e8] mb-6">
                                 Open Recruitment
                             </span>
-                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-[#d2e823]/70 mb-4 font-tanker">
+                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-[#f8f4e8] mb-4 font-tanker">
                                 Think You&apos;ve Got What It Takes?
                             </h2>
                             <p className="text-[#f8f4e8]/50 max-w-md mx-auto mb-8 leading-relaxed">
