@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { LazyMotion, domMax, m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
-import { SignedIn, SignedOut, useUser, useAuth } from "@clerk/nextjs";
+import { Show, useUser, useAuth } from "@clerk/nextjs";
 
 const ProfileAvatar = () => {
 	const { user } = useUser();
@@ -116,9 +116,9 @@ const Navbar = () => {
 	}, [isHomePage, router]);
 
 	return (
-		<LazyMotion features={domMax}>
-			{/* Main Navbar */}
-			<m.nav
+        <LazyMotion features={domMax}>
+            {/* Main Navbar */}
+            <m.nav
 				className="fixed top-4 inset-x-0 mx-auto z-50 w-fit max-w-[98%] md:max-w-[95%]"
 			>
 				<div className="relative flex items-center justify-between px-3 md:px-2 py-1.5 md:py-2 bg-gradient-to-b from-black/80 to-black/60 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] ring-1 ring-white/5 w-full mx-auto">
@@ -186,7 +186,7 @@ const Navbar = () => {
 						<div className="hidden md:flex ml-2 items-center">
 							{!isAuthLoaded ? (
 								/* Subtle skeleton placeholder while auth loads */
-								<div className="w-8 h-8 rounded-full bg-white/10 animate-pulse" />
+								(<div className="w-8 h-8 rounded-full bg-white/10 animate-pulse" />)
 							) : isSignedIn ? (
 								<ProfileAvatar />
 							) : (
@@ -238,9 +238,8 @@ const Navbar = () => {
 					</div>
 				</div>
 			</m.nav>
-
-			{/* Mobile Menu */}
-			<AnimatePresence>
+            {/* Mobile Menu */}
+            <AnimatePresence>
 				{isMobileMenuOpen && (
 					<m.div
 						initial={{ opacity: 0, y: -20, x: "-50%" }}
@@ -273,7 +272,7 @@ const Navbar = () => {
 									transition={{ delay: 0.1 }}
 									className="pt-1"
 								>
-									<SignedIn>
+									<Show when="signed-in">
 										<div
 											role="button"
 											tabIndex={0}
@@ -288,8 +287,8 @@ const Navbar = () => {
 										>
 											<ProfileAvatar />
 										</div>
-									</SignedIn>
-									<SignedOut>
+									</Show>
+									<Show when="signed-out">
 										<Link
 											href="/login"
 											onClick={() => setIsMobileMenuOpen(false)}
@@ -298,16 +297,15 @@ const Navbar = () => {
 											<span className="relative z-10">Join Now</span>
 											<div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-green-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										</Link>
-									</SignedOut>
+									</Show>
 								</m.div>
 							</div>
 						</div>
 					</m.div>
 				)}
 			</AnimatePresence>
-
-			{/* Mobile Menu Backdrop */}
-			<AnimatePresence>
+            {/* Mobile Menu Backdrop */}
+            <AnimatePresence>
 				{isMobileMenuOpen && (
 					<m.div
 						role="button"
@@ -327,8 +325,8 @@ const Navbar = () => {
 					/>
 				)}
 			</AnimatePresence>
-		</LazyMotion>
-	);
+        </LazyMotion>
+    );
 };
 
 export default Navbar;

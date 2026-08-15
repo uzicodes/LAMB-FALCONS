@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser, useClerk, SignedIn, RedirectToSignIn, SignedOut } from "@clerk/nextjs";
+import { useUser, useClerk, Show, RedirectToSignIn } from "@clerk/nextjs";
 import { useRef, useReducer } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { ProfileHeader } from "@/components/profile/profile-header";
@@ -215,12 +215,12 @@ const ProfileContent = () => {
 const ProfilePage = () => {
     return (
         <>
-            <SignedIn>
+            <Show when="signed-in">
                 <ProfileContent />
-            </SignedIn>
-            <SignedOut>
+            </Show>
+            <Show when="signed-out">
                 <RedirectToSignIn />
-            </SignedOut>
+            </Show>
         </>
     );
 };

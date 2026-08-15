@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { useReducer } from "react";
-import { useSignIn } from "@clerk/nextjs";
+import { useSignIn } from "@clerk/nextjs/legacy";
 
 const initialState = {
     loading: false,
@@ -107,13 +107,11 @@ const ForgotPassword = () => {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-zinc-950 overflow-hidden">
-
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-zinc-950/70 z-10" />
                 <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-25" />
             </div>
-
             <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden pb-4">
 
                 <div className="px-6 pt-4 pb-2 text-center">
@@ -144,7 +142,7 @@ const ForgotPassword = () => {
 
                 {!successfulCreation ? (
                     // Email form
-                    <form onSubmit={handleSendCode} className="px-5 pb-2 space-y-3">
+                    (<form onSubmit={handleSendCode} className="px-5 pb-2 space-y-3">
                         <div>
                             <label htmlFor="forgot-email" className="text-[11px] font-medium text-zinc-300 ml-1">Email Address</label>
                             <div className="relative group mt-0.5">
@@ -162,7 +160,6 @@ const ForgotPassword = () => {
                                 />
                             </div>
                         </div>
-
                         <div className="pt-2">
                             <button
                                 disabled={loading}
@@ -172,7 +169,6 @@ const ForgotPassword = () => {
                                 {loading ? "Sending Code..." : "Send Reset Code"}
                             </button>
                         </div>
-
                         <div className="text-center">
                             <Link
                                 href="/login"
@@ -182,10 +178,10 @@ const ForgotPassword = () => {
                                 Back to Login
                             </Link>
                         </div>
-                    </form>
+                    </form>)
                 ) : (
                     // Code + New Password form
-                    <form onSubmit={handleResetPassword} className="px-5 pb-2 space-y-1.5">
+                    (<form onSubmit={handleResetPassword} className="px-5 pb-2 space-y-1.5">
                         {/* Verification Code */}
                         <div>
                             <label htmlFor="forgot-code" className="text-[11px] font-medium text-zinc-300 ml-1">Verification Code</label>
@@ -200,7 +196,6 @@ const ForgotPassword = () => {
                                 />
                             </div>
                         </div>
-
                         {/* New Password */}
                         <div>
                             <label htmlFor="forgot-new-password" className="text-[11px] font-medium text-zinc-300 ml-1">New Password</label>
@@ -232,7 +227,6 @@ const ForgotPassword = () => {
                                 Min 6 characters, Max 30 characters
                             </p>
                         </div>
-
                         {/* Confirm New Password */}
                         <div>
                             <label htmlFor="forgot-confirm-password" className="text-[11px] font-medium text-zinc-300 ml-1">Confirm New Password</label>
@@ -261,7 +255,6 @@ const ForgotPassword = () => {
                                 </button>
                             </div>
                         </div>
-
                         <div className="pt-5">
                             <button
                                 disabled={loading}
@@ -271,7 +264,6 @@ const ForgotPassword = () => {
                                 {loading ? "Resetting..." : "Reset Password"}
                             </button>
                         </div>
-
                         <div className="text-center">
                             <button
                                 type="button"
@@ -290,7 +282,7 @@ const ForgotPassword = () => {
                                 Use a different email
                             </button>
                         </div>
-                    </form>
+                    </form>)
                 )}
             </div>
         </section>

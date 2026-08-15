@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Mail, Lock } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { useSignIn } from "@clerk/nextjs";
+import { useSignIn } from "@clerk/nextjs/legacy";
 
 const Login = () => {
     const router = useRouter();

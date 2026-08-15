@@ -1,11 +1,11 @@
 "use client";
-
 import { Phone, User, Mail, Lock, CheckCircle2, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useReducer, useRef } from "react";
-import { useSignUp, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
+import { useSignUp } from "@clerk/nextjs/legacy";
 
 const initialState = {
     verifying: false,
@@ -119,12 +119,10 @@ const Register = () => {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-zinc-950 overflow-hidden">
-
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-zinc-950/70 z-10" />
                 <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-25" />
             </div>
-
             <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden pb-4">
 
                 <div className="px-6 pt-4 pb-2 text-center">

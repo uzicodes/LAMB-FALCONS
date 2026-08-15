@@ -3,10 +3,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-satoshi: Satoshi, sans-serif;
-  --font-boldonse: Boldonse, sans-serif;
-  --font-tanker: Tanker, sans-serif;
-
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-boldonse: "Boldonse", sans-serif;
+  --font-tanker: "Tanker", sans-serif;
+  
   --color-falcon-blue: #3B82F6;
   --color-falcon-blue-light: #60A5FA;
   --color-falcon-blue-dark: #2563EB;

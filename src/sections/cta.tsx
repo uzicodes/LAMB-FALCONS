@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import { SignedOut } from "@clerk/nextjs";
+import { Show } from "@clerk/nextjs";
 
 gsap.registerPlugin(ScrollTrigger);
 

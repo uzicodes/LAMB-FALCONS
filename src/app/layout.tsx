@@ -24,15 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider appearance={clerkAppearance}>
-      <html lang="en">
-        <body className={`${inter.variable} font-satoshi`}>
+    <html lang="en">
+      <body className={`${inter.variable} font-satoshi`}><ClerkProvider appearance={clerkAppearance}>
           <SmoothScrollProvider>
             <Navbar />
             {children}
           </SmoothScrollProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider></body>
+    </html>
   );
 }
