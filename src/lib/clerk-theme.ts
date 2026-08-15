@@ -3,59 +3,59 @@ import type { Appearance } from "@clerk/types";
 
 export const clerkAppearance: Appearance = {
   variables: {
-    colorPrimary: "#2563eb",           // blue-600
-    colorBackground: "#18181b",        // zinc-900
-    colorInputBackground: "#09090b",   // zinc-950
-    colorInputText: "#ffffff",
-    colorText: "#ffffff",
-    colorTextSecondary: "#a1a1aa",     // zinc-400
+    colorPrimary: "#d2e823",           // accent lime
+    colorBackground: "#0a2a1f",        // falcon dark
+    colorInputBackground: "#061a13",   // falcon deep dark
+    colorInputText: "#f8f4e8",
+    colorText: "#f8f4e8",
+    colorTextSecondary: "#f8f4e899",   // cream muted
     colorDanger: "#ef4444",            // red-500
-    colorSuccess: "#22c55e",           // green-500
+    colorSuccess: "#d2e823",           // accent
     borderRadius: "0.75rem",
     fontFamily: "var(--font-inter), Satoshi, sans-serif",
   },
   elements: {
     // Root card
     rootBox: "mx-auto w-full",
-    card: "bg-zinc-900/80 backdrop-blur-xl border border-zinc-800 shadow-2xl rounded-2xl",
+    card: "bg-[#0a2a1f]/80 backdrop-blur-xl border border-[#15442f] shadow-2xl rounded-2xl",
 
     // Header
-    headerTitle: "text-white text-2xl font-bold tracking-tight",
-    headerSubtitle: "text-zinc-400 text-sm",
+    headerTitle: "text-[#f8f4e8] text-2xl font-bold tracking-tight",
+    headerSubtitle: "text-[#f8f4e8]/60 text-sm",
 
     // Social / OAuth buttons
     socialButtonsBlockButton:
-      "bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-all duration-200 rounded-lg",
-    socialButtonsBlockButtonText: "text-zinc-300 font-medium",
+      "bg-[#0e3527] border border-[#15442f] text-[#f8f4e8]/80 hover:bg-[#15442f] hover:text-[#f8f4e8] transition-all duration-200 rounded-lg",
+    socialButtonsBlockButtonText: "text-[#f8f4e8]/80 font-medium",
 
     // Divider
-    dividerLine: "bg-zinc-700",
-    dividerText: "text-zinc-500 text-xs uppercase tracking-widest",
+    dividerLine: "bg-[#15442f]",
+    dividerText: "text-[#f8f4e8]/40 text-xs uppercase tracking-widest",
 
     // Form fields
-    formFieldLabel: "text-zinc-300 text-xs font-medium",
+    formFieldLabel: "text-[#f8f4e8]/80 text-xs font-medium",
     formFieldInput:
-      "bg-zinc-950/50 border border-zinc-700 text-white rounded-lg focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-zinc-600 transition-all",
-    formFieldInputShowPasswordButton: "text-zinc-500 hover:text-zinc-300",
+      "bg-[#061a13]/50 border border-[#15442f] text-[#f8f4e8] rounded-lg focus:border-[#d2e823] focus:ring-1 focus:ring-[#d2e823] placeholder-[#f8f4e8]/30 transition-all",
+    formFieldInputShowPasswordButton: "text-[#f8f4e8]/40 hover:text-[#f8f4e8]/70",
 
     // Primary action button
     formButtonPrimary:
-      "bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all duration-200 active:scale-[0.98]",
+      "bg-[#d2e823] hover:bg-[#e0f040] text-[#0a2a1f] font-bold rounded-lg shadow-[0_0_15px_rgba(210,232,35,0.3)] hover:shadow-[0_0_20px_rgba(210,232,35,0.5)] transition-all duration-200 active:scale-[0.98]",
 
     // Footer links
-    footerActionLink: "text-blue-400 hover:text-blue-300 font-semibold transition-colors",
-    footerActionText: "text-zinc-400 text-xs",
+    footerActionLink: "text-[#d2e823] hover:text-[#e0f040] font-semibold transition-colors",
+    footerActionText: "text-[#f8f4e8]/50 text-xs",
 
     // Extras
-    identityPreviewEditButton: "text-blue-400 hover:text-blue-300",
-    formFieldAction: "text-blue-400 hover:text-blue-300 text-xs",
-    formResendCodeLink: "text-blue-400 hover:text-blue-300 text-xs",
+    identityPreviewEditButton: "text-[#d2e823] hover:text-[#e0f040]",
+    formFieldAction: "text-[#d2e823] hover:text-[#e0f040] text-xs",
+    formResendCodeLink: "text-[#d2e823] hover:text-[#e0f040] text-xs",
 
     // User button (navbar avatar)
-    userButtonAvatarBox: "w-8 h-8 ring-2 ring-blue-500/30",
-    userButtonPopoverCard: "bg-zinc-900 border border-zinc-800 shadow-2xl",
-    userButtonPopoverActionButton: "text-zinc-300 hover:text-white hover:bg-zinc-800",
-    userButtonPopoverActionButtonText: "text-zinc-300",
-    userButtonPopoverFooter: "border-zinc-800",
+    userButtonAvatarBox: "w-8 h-8 ring-2 ring-[#d2e823]/30",
+    userButtonPopoverCard: "bg-[#0a2a1f] border border-[#15442f] shadow-2xl",
+    userButtonPopoverActionButton: "text-[#f8f4e8]/80 hover:text-[#f8f4e8] hover:bg-[#0e3527]",
+    userButtonPopoverActionButtonText: "text-[#f8f4e8]/80",
+    userButtonPopoverFooter: "border-[#15442f]",
   },
 };

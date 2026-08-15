@@ -90,10 +90,10 @@ export default function About() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div ref={headingRef} className="text-center mb-12">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
             Who Are We
           </span>
-          <h2 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-wider text-[#AD7D0C] font-tanker">
+          <h2 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-wider text-[#d2e823] font-tanker">
             LAMB FALCONS
           </h2>
         </div>
@@ -102,13 +102,13 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-24 mt-16 md:mt-24">
           {/* Text side */}
           <div ref={textRef}>
-            <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-6">
+            <p className="text-lg md:text-xl text-[#f8f4e8]/60 leading-relaxed mb-6">
               LAMB Falcons was founded with a clear mission to create a
               community-driven club that pushes boundaries on and off the field.
               What started as a small group of passionate players has grown into a
               powerhouse in the regional circuit.
             </p>
-            <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-[#f8f4e8]/60 leading-relaxed mb-8">
               Our philosophy is simple: develop talent, foster unity & compete
               with relentless intensity. We don&apos;t just play we set the
               standard. Join us on this journey as we continue to soar higher, break records & make history together. Falcons isn&apos;t just a club, it&apos;s a legacy in the making.
@@ -122,13 +122,13 @@ export default function About() {
               {STATS.map((stat) => (
                 <div
                   key={stat.label}
-                  className="group relative px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-500 hover:bg-white/[0.04]"
+                  className="group relative px-4 py-3 rounded-xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/10 transition-all duration-500 hover:bg-[#f8f4e8]/[0.04]"
                 >
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <p className="relative text-lg font-black text-yellow-400">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <p className="relative text-lg font-black text-[#d2e823]">
                     {stat.value}
                   </p>
-                  <p className="relative text-[10px] text-green-500 uppercase tracking-widest">
+                  <p className="relative text-[10px] text-[#d2e823]/70 uppercase tracking-widest">
                     {stat.label}
                   </p>
                 </div>
@@ -138,21 +138,21 @@ export default function About() {
 
           {/* Visual side — abstract card */}
           <div className="relative">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 overflow-hidden relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 overflow-hidden relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/10 via-transparent to-[#d2e823]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-8xl md:text-9xl font-black text-white/5">
+                  <p className="text-8xl md:text-9xl font-black text-[#f8f4e8]/5">
                     LF
                   </p>
-                  <p className="text-sm uppercase tracking-[0.4em] text-gray-600 mt-4">
+                  <p className="text-sm uppercase tracking-[0.4em] text-[#f8f4e8]/30 mt-4">
                     Lamb Falcons
                   </p>
                 </div>
               </div>
               {/* Corner accents */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-white/10" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-white/10" />
+              <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-[#f8f4e8]/10" />
+              <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-[#f8f4e8]/10" />
             </div>
           </div>
         </div>

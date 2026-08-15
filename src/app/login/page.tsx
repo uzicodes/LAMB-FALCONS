@@ -63,15 +63,15 @@ const Login = () => {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-zinc-950 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 bg-[#061a13] overflow-hidden">
 
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-zinc-950/70 z-10" />
+                <div className="absolute inset-0 bg-[#061a13]/70 z-10" />
                 <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-25" />
             </div>
 
-            <div className="relative z-20 w-full max-w-sm bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="relative z-20 w-full max-w-sm bg-[#0a2a1f]/80 backdrop-blur-md border border-[#15442f] rounded-2xl shadow-2xl overflow-hidden">
 
                 <div className="px-6 pt-6 pb-4 text-center">
                     <div className="relative w-14 h-14 mx-auto mb-2">
@@ -80,13 +80,13 @@ const Login = () => {
                             alt="Lamb Falcons Logo"
                             fill
                             sizes="56px"
-                            className="object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                            className="object-contain drop-shadow-[0_0_10px_rgba(210,232,35,0.5)]"
                         />
                     </div>
-                    <h2 className="text-2xl font-bold text-white tracking-tight">
+                    <h2 className="text-2xl font-bold text-[#f8f4e8] tracking-tight">
                         Welcome Back
                     </h2>
-                    <p className="text-xs text-zinc-400 mt-2">
+                    <p className="text-xs text-[#f8f4e8]/60 mt-2">
                         Enter your credentials to access your account
                     </p>
                 </div>
@@ -100,16 +100,16 @@ const Login = () => {
                     )}
 
                     <div className="space-y-1">
-                        <label htmlFor="login-email" className="text-xs font-medium text-zinc-300 ml-1">Email Address</label>
+                        <label htmlFor="login-email" className="text-xs font-medium text-[#f8f4e8]/80 ml-1">Email Address</label>
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <Mail className="w-3.5 h-3.5 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                <Mail className="w-3.5 h-3.5 text-[#f8f4e8]/40 group-focus-within:text-[#d2e823] transition-colors" />
                             </div>
                             <input
                                 id="login-email"
                                 type="email"
                                 name="email"
-                                className="block w-full py-2 pl-9 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                className="block w-full py-2 pl-9 pr-3 text-sm text-[#f8f4e8] bg-[#061a13]/50 border border-[#15442f] rounded-lg focus:border-[#d2e823] focus:ring-1 focus:ring-[#d2e823] focus:outline-none transition-all placeholder-[#f8f4e8]/30"
                                 placeholder="name@example.com"
                                 required
                             />
@@ -117,16 +117,16 @@ const Login = () => {
                     </div>
 
                     <div className="space-y-1">
-                        <label htmlFor="login-password" className="text-xs font-medium text-zinc-300 ml-1">Password</label>
+                        <label htmlFor="login-password" className="text-xs font-medium text-[#f8f4e8]/80 ml-1">Password</label>
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <Lock className="w-3.5 h-3.5 text-zinc-500 group-focus-within:text-emerald-500 transition-colors" />
+                                <Lock className="w-3.5 h-3.5 text-[#f8f4e8]/40 group-focus-within:text-[#d2e823] transition-colors" />
                             </div>
                             <input
                                 id="login-password"
                                 type="password"
                                 name="password"
-                                className="block w-full py-2 pl-9 pr-3 text-sm text-white bg-zinc-950/50 border border-zinc-700 rounded-lg focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all placeholder-zinc-600"
+                                className="block w-full py-2 pl-9 pr-3 text-sm text-[#f8f4e8] bg-[#061a13]/50 border border-[#15442f] rounded-lg focus:border-[#d2e823] focus:ring-1 focus:ring-[#d2e823] focus:outline-none transition-all placeholder-[#f8f4e8]/30"
                                 placeholder="••••••••"
                                 required
                             />
@@ -135,7 +135,7 @@ const Login = () => {
                         <div className="text-right">
                             <Link
                                 href="/forgot-password"
-                                className="text-[10px] text-zinc-400 hover:text-emerald-400 transition-colors"
+                                className="text-[10px] text-[#f8f4e8]/60 hover:text-[#e0f040] transition-colors"
                             >
                                 Forgot password?
                             </Link>
@@ -144,20 +144,20 @@ const Login = () => {
                     </div>
 
                     <div id="clerk-captcha"></div>
-                    <button type="submit" disabled={loading} className="w-full py-2 text-sm font-bold text-black bg-emerald-500 rounded-lg hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transform active:scale-[0.98] disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="w-full py-2 text-sm font-bold text-black bg-[#d2e823] rounded-lg hover:bg-[#e0f040] focus:outline-none focus:ring-2 focus:ring-[#d2e823]/50 transition-all shadow-[0_0_15px_rgba(210,232,35,0.3)] hover:shadow-[0_0_20px_rgba(210,232,35,0.5)] transform active:scale-[0.98] disabled:opacity-50">
                         {loading ? "Signing In..." : "Sign In"}
                     </button>
 
                     <div className="relative flex items-center py-1">
-                        <div className="flex-grow border-t border-zinc-700"></div>
-                        <span className="flex-shrink mx-3 text-[10px] text-zinc-500 uppercase tracking-widest">Or continue with</span>
-                        <div className="flex-grow border-t border-zinc-700"></div>
+                        <div className="flex-grow border-t border-[#15442f]"></div>
+                        <span className="flex-shrink mx-3 text-[10px] text-[#f8f4e8]/40 uppercase tracking-widest">Or continue with</span>
+                        <div className="flex-grow border-t border-[#15442f]"></div>
                     </div>
 
                     <button
                         type="button"
                         onClick={handleGoogleLogin}
-                        className="flex items-center justify-center w-1/2 mx-auto py-2 text-sm font-medium text-zinc-300 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-700 hover:text-white transition-all duration-200"
+                        className="flex items-center justify-center w-1/2 mx-auto py-2 text-sm font-medium text-[#f8f4e8]/80 bg-[#0e3527] border border-[#15442f] rounded-lg hover:bg-[#15442f] hover:text-[#f8f4e8] transition-all duration-200"
                     >
                         <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -169,11 +169,11 @@ const Login = () => {
                     </button>
 
                     <div className="text-center pt-2">
-                        <p className="text-xs text-zinc-400">
+                        <p className="text-xs text-[#f8f4e8]/60">
                             Not a member?{" "}
                             <Link
                                 href="/register"
-                                className="text-emerald-500 hover:text-emerald-400 font-bold hover:underline transition-colors"
+                                className="text-[#d2e823] hover:text-[#e0f040] font-bold hover:underline transition-colors"
                             >
                                 Register Now !
                             </Link>

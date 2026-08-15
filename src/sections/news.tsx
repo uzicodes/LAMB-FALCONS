@@ -31,10 +31,10 @@ export default function News() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-400 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
             Latest
           </span>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-white font-tanker">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker">
             Club News
           </h2>
         </div>
@@ -45,29 +45,29 @@ export default function News() {
           {NEWS.map((article) => (
             <article
               key={article.title}
-              className="group relative rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden hover:border-white/15 transition-all duration-500 cursor-pointer"
+              className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 overflow-hidden hover:border-[#f8f4e8]/15 transition-all duration-500 cursor-pointer"
             >
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Image placeholder */}
-              <div className="w-full aspect-[16/9] bg-gradient-to-br from-gray-900 to-gray-950 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="w-full aspect-[16/9] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full border border-white/5 flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full border border-white/5" />
+                  <div className="w-12 h-12 rounded-full border border-[#f8f4e8]/5 flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full border border-[#f8f4e8]/5" />
                   </div>
                 </div>
               </div>
 
               <div className="p-6 flex flex-col items-center text-center">
-                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-yellow-400 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#0a2a1f] px-2 py-0.5 rounded-full bg-[#d2e823]/80 border border-[#d2e823]/30 mb-4">
                   {article.tag}
                 </span>
-                <span className="text-xs text-gray-600 mb-2">{article.date}</span>
-                <h3 className="text-base md:text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300 mb-2 leading-snug font-satoshi">
+                <span className="text-xs text-[#f8f4e8]/30 mb-2">{article.date}</span>
+                <h3 className="text-base md:text-lg font-bold text-[#f8f4e8] group-hover:text-[#d2e823] transition-colors duration-300 mb-2 leading-snug font-satoshi">
                   {article.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-[#f8f4e8]/40 leading-relaxed">
                   {article.excerpt}
                 </p>
               </div>

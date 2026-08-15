@@ -31,10 +31,10 @@ export function ProfileDetails({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-4 bg-zinc-900/70 backdrop-blur-xl border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl"
+            className="mt-4 bg-[#0a2a1f]/70 backdrop-blur-xl border border-[#15442f] rounded-2xl overflow-hidden shadow-2xl"
         >
-            <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800">
-                <h2 className="text-sm font-bold text-white uppercase tracking-wider">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#15442f]">
+                <h2 className="text-sm font-bold text-[#f8f4e8] uppercase tracking-wider">
                     Profile Details
                 </h2>
                 <button
@@ -43,7 +43,7 @@ export function ProfileDetails({
                         if (isEditing) onSave();
                         else onEditStart();
                     }}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-700 border border-zinc-700"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 bg-[#0e3527] text-[#f8f4e8]/80 hover:text-[#f8f4e8] hover:bg-[#15442f] border border-[#15442f]"
                 >
                     {isEditing ? (
                         <>Save Changes</>
@@ -56,36 +56,36 @@ export function ProfileDetails({
                 </button>
             </div>
 
-            <div className="divide-y divide-zinc-800/50">
+            <div className="divide-y divide-[#15442f]/50">
                 {/* Full Name */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-green-500/5 rounded-lg">
-                        <User className="w-4 h-4 text-green-400" />
+                    <div className="flex-shrink-0 p-2 bg-[#d2e823]/5 rounded-lg">
+                        <User className="w-4 h-4 text-[#d2e823]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <label htmlFor="edit-fullname" className="block text-[10px] text-zinc-500 uppercase tracking-wider">Full Name</label>
+                        <label htmlFor="edit-fullname" className="block text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Full Name</label>
                         {isEditing ? (
                             <input
                                 id="edit-fullname"
                                 type="text"
                                 value={editForm.fullName}
                                 onChange={(e) => onEditChange("fullName", e.target.value)}
-                                className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
+                                className="mt-0.5 w-full bg-[#0e3527]/50 border border-[#15442f] rounded-lg px-3 py-1.5 text-sm text-[#f8f4e8] focus:border-[#d2e823] focus:ring-1 focus:ring-[#d2e823] focus:outline-none transition-all"
                             />
                         ) : (
-                            <p className="text-sm text-[#AD7D0C] font-medium truncate">{displayName}</p>
+                            <p className="text-sm text-[#f8f4e8] font-medium truncate">{displayName}</p>
                         )}
                     </div>
                 </div>
 
                 {/* Email */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-blue-500/10 rounded-lg">
-                        <Mail className="w-4 h-4 text-blue-400" />
+                    <div className="flex-shrink-0 p-2 bg-[#d2e823]/10 rounded-lg">
+                        <Mail className="w-4 h-4 text-[#d2e823]" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Email Address</p>
-                        <p className="text-sm text-[#AD7D0C] font-medium truncate">{email}</p>
+                        <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Email Address</p>
+                        <p className="text-sm text-[#f8f4e8] font-medium truncate">{email}</p>
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@ export function ProfileDetails({
                         <Phone className="w-4 h-4 text-purple-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <label htmlFor="edit-phone" className="block text-[10px] text-zinc-500 uppercase tracking-wider">Phone Number</label>
+                        <label htmlFor="edit-phone" className="block text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Phone Number</label>
                         {isEditing ? (
                             <input
                                 id="edit-phone"
@@ -106,11 +106,11 @@ export function ProfileDetails({
                                     onEditChange("phoneNumber", val);
                                 }}
                                 maxLength={15}
-                                className="mt-0.5 w-full bg-zinc-800/50 border border-zinc-700 rounded-lg px-3 py-1.5 text-sm text-white focus:border-blue-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none transition-all"
+                                className="mt-0.5 w-full bg-[#0e3527]/50 border border-[#15442f] rounded-lg px-3 py-1.5 text-sm text-[#f8f4e8] focus:border-[#d2e823] focus:ring-1 focus:ring-[#d2e823] focus:outline-none transition-all"
                                 placeholder="Enter your phone number"
                             />
                         ) : (
-                            <p className="text-sm text-[#AD7D0C] font-medium truncate">{phoneNumber}</p>
+                            <p className="text-sm text-[#f8f4e8] font-medium truncate">{phoneNumber}</p>
                         )}
                     </div>
                 </div>
@@ -121,8 +121,8 @@ export function ProfileDetails({
                         <CalendarDays className="w-4 h-4 text-rose-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                        <p className="text-[10px] text-zinc-500 uppercase tracking-wider">Member Since</p>
-                        <p className="text-sm text-[#AD7D0C] font-medium">{joinedDate}</p>
+                        <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Member Since</p>
+                        <p className="text-sm text-[#f8f4e8] font-medium">{joinedDate}</p>
                     </div>
                 </div>
             </div>

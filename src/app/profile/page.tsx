@@ -42,8 +42,8 @@ const ProfileContent = () => {
 
     if (!isLoaded) {
         return (
-            <section className="min-h-screen bg-zinc-950 flex items-center justify-center">
-                <div className="animate-pulse text-zinc-500 text-sm">Loading profile...</div>
+            <section className="min-h-screen bg-[#061a13] flex items-center justify-center">
+                <div className="animate-pulse text-[#f8f4e8]/40 text-sm">Loading profile...</div>
             </section>
         );
     }
@@ -144,12 +144,12 @@ const ProfileContent = () => {
 
     return (
         <LazyMotion features={domAnimation}>
-            <section className="relative min-h-screen bg-zinc-950 pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <section className="relative min-h-screen bg-[#061a13] pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
                 {/* Background effects */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-zinc-950/80 z-10" />
+                    <div className="absolute inset-0 bg-[#061a13]/80 z-10" />
                     <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-10" />
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#d2e823]/5 rounded-full blur-[120px]" />
                 </div>
 
                 <div className="relative z-20 max-w-2xl mx-auto">
@@ -190,7 +190,7 @@ const ProfileContent = () => {
                             <button
                                 type="button"
                                 onClick={() => dispatch({ isEditing: false })}
-                                className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-2"
+                                className="text-xs text-[#f8f4e8]/40 hover:text-[#f8f4e8]/80 transition-colors underline underline-offset-2"
                             >
                                 Cancel editing
                             </button>

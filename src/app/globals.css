@@ -7,9 +7,13 @@
   --font-boldonse: "Boldonse", sans-serif;
   --font-tanker: "Tanker", sans-serif;
   
-  --color-falcon-blue: #3B82F6;
-  --color-falcon-blue-light: #60A5FA;
-  --color-falcon-blue-dark: #2563EB;
+  --color-falcon-dark: #0a2a1f;
+  --color-falcon-dark-deep: #061a13;
+  --color-falcon-dark-card: #0e3527;
+  --color-falcon-dark-border: #15442f;
+  --color-falcon-accent: #d2e823;
+  --color-falcon-accent-hover: #e0f040;
+  --color-falcon-cream: #f8f4e8;
 }
 
 @font-face {
@@ -55,16 +59,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #061a13;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #15442f;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #1a5538;
 }
 
 /* Lenis handles smooth scrolling — remove native */
@@ -86,15 +90,15 @@ html.lenis body {
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #061a13;
+  color: #f8f4e8;
   overflow-x: hidden;
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
-  color: #fff;
+  background: rgba(210, 232, 35, 0.3);
+  color: #f8f4e8;
 }
 
 /* Accessibility: Reduced Motion Controls (WCAG 2.3.3) */

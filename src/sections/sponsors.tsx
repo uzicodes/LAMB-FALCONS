@@ -41,10 +41,10 @@ export default function Sponsors() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-green-500 mb-4">
+          <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
             Proudly Supported By
           </span>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-white font-tanker">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker">
             Our Partners
           </h2>
         </div>
@@ -53,16 +53,16 @@ export default function Sponsors() {
       {/* Marquee track */}
       <div className="relative overflow-hidden">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-black to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-black to-transparent" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#061a13] to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#061a13] to-transparent" />
 
         <div ref={trackRef} className="flex items-center gap-12 w-max">
           {[...SPONSORS, ...SPONSORS].map((sponsor, i) => (
             <div
               key={`${sponsor}-${i >= SPONSORS.length ? "copy" : "orig"}`}
-              className="flex-shrink-0 px-8 py-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
+              className="flex-shrink-0 px-8 py-5 rounded-xl border border-[#f8f4e8]/5 bg-[#f8f4e8]/[0.02] hover:bg-[#f8f4e8]/[0.05] hover:border-[#f8f4e8]/10 transition-all duration-300"
             >
-              <span className="text-lg md:text-xl font-bold tracking-wider text-gray-500 hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">
+              <span className="text-lg md:text-xl font-bold tracking-wider text-[#f8f4e8]/40 hover:text-[#f8f4e8]/70 transition-colors duration-300 whitespace-nowrap">
                 {sponsor}
               </span>
             </div>

@@ -17,23 +17,23 @@ export function ProfileActions({ onSignOut, onDeleteClick }: ProfileActionsProps
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-4 bg-zinc-900/70 backdrop-blur-xl border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl"
+                className="mt-4 bg-[#0a2a1f]/70 backdrop-blur-xl border border-[#15442f] rounded-2xl overflow-hidden shadow-2xl"
             >
-                <div className="px-6 py-4 border-b border-zinc-800">
-                    <h2 className="text-sm font-bold text-white uppercase tracking-wider">
+                <div className="px-6 py-4 border-b border-[#15442f]">
+                    <h2 className="text-sm font-bold text-[#f8f4e8] uppercase tracking-wider">
                         Quick Actions
                     </h2>
                 </div>
 
-                <div className="divide-y divide-zinc-800/50">
+                <div className="divide-y divide-[#15442f]/50">
                     <Link
                         href="/"
-                        className="flex items-center justify-between px-6 py-3.5 hover:bg-zinc-800/30 transition-colors group"
+                        className="flex items-center justify-between px-6 py-3.5 hover:bg-[#0e3527]/30 transition-colors group"
                     >
-                        <span className="text-sm text-zinc-300 group-hover:text-white transition-colors">
+                        <span className="text-sm text-[#f8f4e8]/80 group-hover:text-[#f8f4e8] transition-colors">
                             Back to Home
                         </span>
-                        <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+                        <ChevronRight className="w-4 h-4 text-[#f8f4e8]/30 group-hover:text-[#f8f4e8]/60 transition-colors" />
                     </Link>
 
                     <button
@@ -54,7 +54,7 @@ export function ProfileActions({ onSignOut, onDeleteClick }: ProfileActionsProps
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-4 bg-zinc-900/70 backdrop-blur-xl border border-red-900/30 rounded-2xl overflow-hidden shadow-2xl"
+                className="mt-4 bg-[#0a2a1f]/70 backdrop-blur-xl border border-red-900/30 rounded-2xl overflow-hidden shadow-2xl"
             >
                 <div className="px-6 py-4 border-b border-red-900/20">
                     <h2 className="text-sm font-bold text-red-400 uppercase tracking-wider">
@@ -62,7 +62,7 @@ export function ProfileActions({ onSignOut, onDeleteClick }: ProfileActionsProps
                     </h2>
                 </div>
                 <div className="px-6 py-4">
-                    <p className="text-xs text-zinc-400 mb-3">
+                    <p className="text-xs text-[#f8f4e8]/60 mb-3">
                         Permanently delete your account and all associated data. This action cannot be undone.
                     </p>
                     <button

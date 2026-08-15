@@ -35,28 +35,28 @@ export default function AboutUsSection() {
             {/* Header */}
             <div className="relative pt-12 md:pt-16 pb-4 md:pb-6">
                 <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-4">
-                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                        <span className="text-xs font-medium tracking-widest uppercase text-gray-300">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f8f4e8]/10 bg-[#f8f4e8]/5 backdrop-blur-sm mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#d2e823] animate-pulse" />
+                        <span className="text-xs font-medium tracking-widest uppercase text-[#f8f4e8]/80">
                             Our Story
                         </span>
                     </div>
                     <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
-                        <span className="text-white">About</span>{" "}
-                        <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                        <span className="text-[#f8f4e8]">About</span>{" "}
+                        <span className="text-[#d2e823]">
                             Lamb Falcons
                         </span>
                     </h2>
-                    <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-4">
+                    <p className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed mb-4">
                         What started as a small group of passionate sportsman in 2020 has
                         grown into the region&apos;s most dominant force — a club built on
                         grit, brotherhood, and an unrelenting will to win.
                     </p>
-                    <div className="flex items-center justify-center gap-6 text-large text-gray-500">
+                    <div className="flex items-center justify-center gap-6 text-large text-[#f8f4e8]/40">
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-px bg-gradient-to-r from-green-500 to-transparent" />
+                            <div className="w-8 h-px bg-gradient-to-r from-[#d2e823] to-transparent" />
                             <span className="uppercase tracking-widest">Est. 2020</span>
-                            <div className="w-8 h-px bg-gradient-to-r from-transparent to-green-500" />
+                            <div className="w-8 h-px bg-gradient-to-r from-transparent to-[#d2e823]" />
                         </div>
                     </div>
                 </div>
@@ -66,34 +66,34 @@ export default function AboutUsSection() {
             <div className="relative pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                        <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 p-10 md:p-12 overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-white/10" />
-                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-white/10" />
-                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
+                        <div className="relative rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 p-10 md:p-12 overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-[#f8f4e8]/10" />
+                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-[#f8f4e8]/10" />
+                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
                                 Our Mission
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-white mb-4 font-tanker">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#f8f4e8] mb-4 font-tanker">
                                 Redefining What a Club Can Be
                             </h3>
-                            <p className="relative text-gray-400 leading-relaxed">
+                            <p className="relative text-[#f8f4e8]/50 leading-relaxed">
                                 To create a community that develops talent at
                                 every level, fosters deep bonds between members, and competes with
                                 relentless intensity while giving back to the community that
                                 fuels us.
                             </p>
                         </div>
-                        <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-white/5 p-10 md:p-12 overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-white/10" />
-                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-white/10" />
-                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-blue-400 mb-4">
+                        <div className="relative rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 p-10 md:p-12 overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-[#f8f4e8]/10" />
+                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-[#f8f4e8]/10" />
+                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
                                 Our Vision
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-white mb-4 font-tanker">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#f8f4e8] mb-4 font-tanker">
                                 Standard for Modern Sports
                             </h3>
-                            <p className="relative text-gray-400 leading-relaxed">
+                            <p className="relative text-[#f8f4e8]/50 leading-relaxed">
                                 To be recognised as the gold standard in community-driven sports a club that proves you don&apos;t need a century of history to
                                 build a legacy. Just hunger, discipline, and unity.
                             </p>
@@ -106,7 +106,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-red-500/70 font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823]/70 font-tanker">
                             Core Values
                         </h2>
                     </div>
@@ -114,13 +114,13 @@ export default function AboutUsSection() {
                         {VALUES.map((v) => (
                             <div
                                 key={v.title}
-                                className="group relative p-7 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-500 text-center"
+                                className="group relative p-7 rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 transition-all duration-500 text-center"
                             >
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <h3 className="relative text-lg font-bold text-white mb-2">
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <h3 className="relative text-lg font-bold text-[#f8f4e8] mb-2">
                                     {v.title}
                                 </h3>
-                                <p className="relative text-sm text-gray-500 leading-relaxed">
+                                <p className="relative text-sm text-[#f8f4e8]/40 leading-relaxed">
                                     {v.description}
                                 </p>
                             </div>
@@ -133,7 +133,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-red-500/70 font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823]/70 font-tanker">
                             Our Journey
                         </h2>
                     </div>
@@ -147,17 +147,17 @@ export default function AboutUsSection() {
                                 >
                                     {/* Connector line */}
                                     {index < TIMELINE.length - 1 && (
-                                        <div className="absolute top-[22px] md:top-[28px] left-1/2 w-full h-px bg-gradient-to-r from-green-500/50 " />
+                                        <div className="absolute top-[22px] md:top-[28px] left-1/2 w-full h-px bg-gradient-to-r from-[#d2e823]/50 " />
                                     )}
                                     {/* Circle with year */}
-                                    <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-white/10 bg-black flex items-center justify-center group-hover:border-blue-500/40 transition-colors duration-300">
-                                        <span className="text-[10px] md:text-xs font-bold text-amber-600">
+                                    <div className="relative z-10 flex-shrink-0 w-11 md:w-14 h-11 md:h-14 rounded-full border border-[#f8f4e8]/10 bg-[#061a13] flex items-center justify-center group-hover:border-[#d2e823]/40 transition-colors duration-300">
+                                        <span className="text-[10px] md:text-xs font-bold text-[#d2e823]">
                                             {item.year}
                                         </span>
                                     </div>
                                     {/* Event text */}
                                     <div className="mt-4 text-center max-w-[140px]">
-                                        <p className="text-xs md:text-sm text-gray-300 group-hover:text-white transition-colors duration-300 leading-relaxed">
+                                        <p className="text-xs md:text-sm text-[#f8f4e8]/70 group-hover:text-[#f8f4e8] transition-colors duration-300 leading-relaxed">
                                             {item.event}
                                         </p>
                                     </div>
