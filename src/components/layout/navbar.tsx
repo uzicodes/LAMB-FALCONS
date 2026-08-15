@@ -154,7 +154,7 @@ const Navbar = () => {
 								className={`relative group ${link.name === "About Us" ? "hidden md:block" : ""}`}
 							>
 								<m.div
-									className="px-1.5 py-1 md:px-2 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-[#f8f4e8]/70 transition-colors duration-200 group-hover:text-[#f8f4e8] font-inter"
+									className="px-1.5 py-1 md:px-2 md:py-1.5 rounded-full text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-[#f8f4e8]/70 transition-colors duration-200 group-hover:text-[#f8f4e8] font-space-grotesk"
 									whileHover="hover"
 								>
 									{/* Glowing background on hover */}
@@ -192,7 +192,7 @@ const Navbar = () => {
 							) : (
 								<Link
 									href="/login"
-									className="inline-flex items-center px-5 py-1.5 bg-[#f8f4e8]/5 backdrop-blur-md border border-[#f8f4e8]/10 hover:bg-[#f8f4e8]/10 hover:border-[#d2e823]/30 text-[#f8f4e8] text-[10px] md:text-[11px] font-bold uppercase tracking-widest font-inter rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(210,232,35,0.4)] group overflow-hidden relative"
+									className="inline-flex items-center px-5 py-1.5 bg-[#f8f4e8]/5 backdrop-blur-md border border-[#f8f4e8]/10 hover:bg-[#f8f4e8]/10 hover:border-[#d2e823]/30 text-[#f8f4e8] text-[10px] md:text-[11px] font-bold uppercase tracking-widest font-space-grotesk rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(210,232,35,0.4)] group overflow-hidden relative"
 								>
 									<span className="relative z-10">Join</span>
 									<div className="absolute inset-0 bg-gradient-to-r from-[#d2e823]/20 to-[#d2e823]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -292,7 +292,7 @@ const Navbar = () => {
 										<Link
 											href="/login"
 											onClick={() => setIsMobileMenuOpen(false)}
-											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-[#0e3527]/50 to-[#0a2a1f]/50 backdrop-blur-md border border-[#d2e823]/30 hover:from-[#0e3527]/70 hover:to-[#0a2a1f]/70 hover:border-[#d2e823]/50 text-[#f8f4e8] text-[11px] font-bold uppercase tracking-widest font-inter rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(210,232,35,0.1)] hover:shadow-[0_0_20px_rgba(210,232,35,0.4)] group overflow-hidden relative w-fit mx-auto"
+											className="flex items-center justify-center px-10 py-3 bg-gradient-to-r from-[#0e3527]/50 to-[#0a2a1f]/50 backdrop-blur-md border border-[#d2e823]/30 hover:from-[#0e3527]/70 hover:to-[#0a2a1f]/70 hover:border-[#d2e823]/50 text-[#f8f4e8] text-[11px] font-bold uppercase tracking-widest font-space-grotesk rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(210,232,35,0.1)] hover:shadow-[0_0_20px_rgba(210,232,35,0.4)] group overflow-hidden relative w-fit mx-auto"
 										>
 											<span className="relative z-10">Join Now</span>
 											<div className="absolute inset-0 bg-gradient-to-r from-[#d2e823]/20 to-[#d2e823]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

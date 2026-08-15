@@ -64,7 +64,7 @@ export default function News() {
                   {article.tag}
                 </span>
                 <span className="text-xs text-[#f8f4e8]/30 mb-2">{article.date}</span>
-                <h3 className="text-base md:text-lg font-bold text-[#f8f4e8] group-hover:text-[#d2e823] transition-colors duration-300 mb-2 leading-snug font-satoshi">
+                <h3 className="text-base md:text-lg font-bold text-[#f8f4e8] group-hover:text-[#d2e823] transition-colors duration-300 mb-2 leading-snug font-space-grotesk">
                   {article.title}
                 </h3>
                 <p className="text-sm text-[#f8f4e8]/40 leading-relaxed">

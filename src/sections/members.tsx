@@ -90,7 +90,7 @@ export default function MembersSection() {
                         {MEMBERS.map((member) => (
                             <div
                                 key={member.name}
-                                className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 overflow-hidden transition-all duration-500 font-satoshi"
+                                className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 overflow-hidden transition-all duration-500 font-space-grotesk"
                             >
                                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="w-full aspect-[4/3] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden">
@@ -104,7 +104,7 @@ export default function MembersSection() {
                                 </div>
                                 <div className="p-5">
                                     <div className="mb-1 text-center">
-                                        <h3 className="text-base font-bold text-[#f8f4e8] leading-tight font-satoshi">
+                                        <h3 className="text-base font-bold text-[#f8f4e8] leading-tight font-space-grotesk">
                                             {member.name}
                                         </h3>
                                     </div>
@@ -205,7 +205,7 @@ export default function MembersSection() {
                                     <div className="w-16 h-16 rounded-2xl bg-[#d2e823]/10 flex items-center justify-center mb-6 border border-[#d2e823]/20">
                                         <AlertCircle className="w-8 h-8 text-[#d2e823]" />
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-[#f8f4e8] mb-4 font-satoshi tracking-wide">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-[#f8f4e8] mb-4 font-space-grotesk tracking-wide">
                                         Recruitment Closed
                                     </h3>
                                     <p className="text-[#f8f4e8]/50 leading-relaxed mb-8">

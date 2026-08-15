@@ -93,7 +93,7 @@ export default function About() {
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#f8f4e8] mb-4">
             Who Are We
           </span>
-          <h2 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-wider text-[#f8f4e8] font-tanker">
+          <h2 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-wider text-[#d2e823] font-tanker">
             LAMB FALCONS
           </h2>
         </div>

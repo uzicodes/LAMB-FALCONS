@@ -12,7 +12,7 @@ export const clerkAppearance: Appearance = {
     colorDanger: "#ef4444",            // red-500
     colorSuccess: "#d2e823",           // accent
     borderRadius: "0.75rem",
-    fontFamily: "var(--font-inter), Satoshi, sans-serif",
+    fontFamily: "'Space Grotesk', sans-serif",
   },
   elements: {
     // Root card
