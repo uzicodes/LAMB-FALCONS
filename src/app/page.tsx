@@ -24,10 +24,7 @@ export default function Home() {
         {/* Scrollable content container — slides up over the fixed hero */}
         <div className="relative z-10">
           {/* Background layers for the content area */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#061a13] via-[#0a2a1f] to-[#0e3527] rounded-t-[2.5rem]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.08),transparent_50%)] rounded-t-[2.5rem]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(210,232,35,0.05),transparent_50%)] rounded-t-[2.5rem]" />
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNTAnIGhlaWdodD0nMjUwJz48ZmlsdGVyIGlkPSdub2lzZScgeD0nMCcgeT0nMCc+PGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzAuNjUnIG51bU9jdGF2ZXM9JzMnIHN0aXRjaFRpbGVzPSdzdGl0Y2gnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbm9pc2UpJyBvcGFjaXR5PScxJy8+PC9zdmc+')] rounded-t-[2.5rem]" />
+          <div className="absolute inset-0 bg-[#061a13] rounded-t-[2.5rem]" />
 
           {/* Content sections */}
           <div className="relative rounded-t-[2.5rem] overflow-hidden">
