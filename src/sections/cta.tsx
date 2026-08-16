@@ -37,7 +37,7 @@ export default function CallToAction() {
           duration: 0.6,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: formRef.current,
+            trigger: sectionRef.current, // Use section as trigger for reliability
             start: "top 95%",
             toggleActions: "play none none reverse",
           },
