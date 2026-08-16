@@ -1,46 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import Image from "next/image";
 
-const SPONSORS = [
-  "APEX Sports",
-  "VeloTech",
-  "NovaDrink",
-  "UrbanKit",
-  "SkyNet Media",
-  "ProField",
-  "EliteGear",
-  "Zenith Labs",
+const PARTNERS = [
+  {
+    name: "Designex",
+    src: "/designex.webp",
+  },
+  {
+    name: "LAMB",
+    src: "/lamb.webp",
+  },
 ];
 
 export default function Sponsors() {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const track = trackRef.current;
-      if (!track) return;
-
-      const totalWidth = track.scrollWidth / 2;
-      gsap.to(track, {
-        x: -totalWidth,
-        duration: 30,
-        ease: "none",
-        repeat: -1,
-      });
-    }, trackRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      className="relative py-24 md:py-32 overflow-hidden"
-    >
-
+    <section id="sponsors" className="relative py-20 md:py-28 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 md:mb-24">
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
             Proudly Supported By
           </span>
@@ -48,23 +25,23 @@ export default function Sponsors() {
             Our Partners
           </h2>
         </div>
-      </div>
 
-      {/* Marquee track */}
-      <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[#061a13] to-transparent" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[#061a13] to-transparent" />
-
-        <div ref={trackRef} className="flex items-center gap-12 w-max">
-          {[...SPONSORS, ...SPONSORS].map((sponsor, i) => (
+        {/* Static Partner Logos */}
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-10 md:gap-14 pt-4 md:pt-8 pb-4">
+          {PARTNERS.map((partner) => (
             <div
-              key={`${sponsor}-${i >= SPONSORS.length ? "copy" : "orig"}`}
-              className="flex-shrink-0 px-8 py-5 rounded-xl border border-[#f8f4e8]/5 bg-[#f8f4e8]/[0.02] hover:bg-[#f8f4e8]/[0.05] hover:border-[#f8f4e8]/10 transition-all duration-300"
+              key={partner.name}
+              className="group relative flex items-center justify-center p-8 sm:p-10 md:p-12 rounded-3xl border border-[#d2e823]/40 bg-[#061a13] hover:border-[#d2e823]/70 hover:shadow-[0_0_35px_rgba(210,232,35,0.15)] transition-all duration-500 w-full max-w-sm sm:max-w-md md:max-w-lg h-52 sm:h-64 md:h-72"
             >
-              <span className="text-lg md:text-xl font-bold tracking-wider text-[#f8f4e8]/40 hover:text-[#f8f4e8]/70 transition-colors duration-300 whitespace-nowrap">
-                {sponsor}
-              </span>
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={450}
+                  height={200}
+                  className="max-h-28 sm:max-h-36 md:max-h-44 w-auto max-w-[240px] sm:max-w-[320px] md:max-w-[380px] object-contain filter brightness-95 group-hover:brightness-110 group-hover:scale-105 transition-all duration-300"
+                />
+              </div>
             </div>
           ))}
         </div>

@@ -58,12 +58,8 @@ export default function CallToAction() {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={formRef}
-          className="relative rounded-3xl border border-[#f8f4e8]/10 bg-gradient-to-br from-[#f8f4e8]/[0.03] to-[#f8f4e8]/[0.01] p-6 md:p-10 text-center overflow-hidden"
+          className="relative rounded-3xl border border-[#d2e823]/40 bg-[#061a13] p-6 md:p-10 text-center overflow-hidden"
         >
-          {/* Internal glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#d2e823]/40 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.1),transparent_50%)]" />
-
           <div className="relative z-10">
             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
               Be Part of Us

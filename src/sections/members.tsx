@@ -143,11 +143,8 @@ export default function MembersSection() {
 
             {/* Join CTA */}
             <div className="relative py-24 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(210,232,35,0.06),transparent_60%)]" />
                 <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="relative rounded-3xl border border-[#f8f4e8]/10 bg-gradient-to-br from-[#f8f4e8]/[0.03] to-[#f8f4e8]/[0.01] p-10 md:p-16 text-center overflow-hidden">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-[#d2e823]/40 to-transparent" />
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,232,35,0.08),transparent_50%)]" />
+                    <div className="relative rounded-3xl border border-[#d2e823]/40 bg-[#061a13] p-10 md:p-16 text-center overflow-hidden">
                         <div className="relative z-10">
                             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-6">
                                 Open Recruitment
