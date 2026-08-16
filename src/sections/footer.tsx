@@ -68,29 +68,22 @@ export default function Footer() {
   );
 
   return (
-    <footer className="relative mt-12 md:mt-24 pt-8 pb-4 overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-t from-[#d2e823]/10 via-[#0a2a1f]/30 to-transparent blur-[140px] pointer-events-none" />
-
+    <footer className="relative mt-8 md:mt-16 pt-4 pb-2 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main modern glass card */}
-        <div className="relative rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-b from-[#0a2a1f]/90 via-[#0a2a1f]/60 to-[#061a13]/90 border border-[#15442f]/80 backdrop-blur-2xl p-8 sm:p-10 md:p-14 shadow-2xl overflow-hidden">
-          {/* Top highlight line */}
-          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/40 to-transparent" />
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#d2e823]/10 blur-[80px] pointer-events-none" />
-
+        {/* Main modern card */}
+        <div className="relative rounded-[2rem] md:rounded-[2.5rem] bg-[#061a13] border border-[#d2e823]/40 p-6 sm:p-8 md:p-10 shadow-2xl overflow-hidden">
           {/* Upper Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-[#15442f]/60">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pb-6 md:pb-8 border-b border-[#d2e823]/20">
             {/* Brand column (5 cols) */}
             <div className="lg:col-span-5 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="relative w-11 h-11 rounded-2xl bg-[#0e3527] border border-[#d2e823]/20 flex items-center justify-center p-1.5 shadow-[0_0_20px_rgba(210,232,35,0.15)]">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-10 h-10 rounded-2xl bg-[#0e3527] border border-[#d2e823]/20 flex items-center justify-center p-1.5 shadow-[0_0_20px_rgba(210,232,35,0.15)]">
                     <Image
                       src="/falcons_logo.png"
                       alt="Lamb Falcons Logo"
-                      width={36}
-                      height={36}
+                      width={32}
+                      height={32}
                       className="object-contain"
                     />
                   </div>
@@ -98,26 +91,26 @@ export default function Footer() {
                     <h3 className="text-2xl font-black tracking-wider leading-none font-tanker text-[#f8f4e8]">
                       LAMB FALCONS
                     </h3>
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-[#d2e823]/70 font-semibold mt-1">
-                      Football Club
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-[#d2e823]/70 font-semibold mt-0.5">
+                      Sports Club
                     </p>
                   </div>
                 </div>
 
-                <p className="text-sm text-[#f8f4e8]/60 leading-relaxed max-w-sm mb-6">
+                <p className="text-sm text-[#f8f4e8]/60 leading-relaxed max-w-sm mb-4">
                   Built on relentless grit, brotherhood, and a culture of winning. The official home of LAMB Falcons FC.
                 </p>
               </div>
 
               {/* Status pill & quick CTA */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061a13] border border-[#15442f] shadow-inner">
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061a13] border border-[#d2e823]/30 shadow-inner">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d2e823] opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d2e823]" />
                   </span>
                   <span className="text-xs font-medium text-[#f8f4e8]/70">
-                    Season 2025–26 Active
+                    Season 2025–26
                   </span>
                 </div>
 
@@ -132,13 +125,13 @@ export default function Footer() {
             </div>
 
             {/* Links Columns (7 cols) */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8">
               {Object.entries(FOOTER_LINKS).map(([category, links]) => (
                 <div key={category} className="flex flex-col">
-                  <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-[#f8f4e8] mb-5">
+                  <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-[#f8f4e8] mb-3.5">
                     {category}
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5">
                     {links.map((link) => (
                       <li key={link.name}>
                         {link.href.startsWith("#") ? (
@@ -177,7 +170,7 @@ export default function Footer() {
           </div>
 
           {/* Lower utility bar */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-xs text-[#f8f4e8]/40">
+          <div className="pt-5 md:pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#f8f4e8]/40">
             {/* Developer Credits */}
             <div className="flex items-center gap-4">
               <span className="font-semibold tracking-wider text-[#f8f4e8]/50 uppercase text-[10px]">
@@ -187,7 +180,7 @@ export default function Footer() {
                 <Link
                   href="https://github.com/uzicodes"
                   target="_blank"
-                  className="p-2 rounded-xl bg-[#061a13]/80 border border-[#15442f] text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/40 transition-all duration-300 shadow-sm"
+                  className="p-2 rounded-xl bg-[#061a13] border border-[#d2e823]/30 text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/60 transition-all duration-300 shadow-sm"
                   aria-label="GitHub"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github">
@@ -198,7 +191,7 @@ export default function Footer() {
                 <Link
                   href="https://www.utshochowdhury.me"
                   target="_blank"
-                  className="p-2 rounded-xl bg-[#061a13]/80 border border-[#15442f] text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/40 transition-all duration-300 shadow-sm"
+                  className="p-2 rounded-xl bg-[#061a13] border border-[#d2e823]/30 text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/60 transition-all duration-300 shadow-sm"
                   aria-label="Portfolio Website"
                 >
                   <Globe size={14} />
@@ -206,7 +199,7 @@ export default function Footer() {
                 <Link
                   href="https://www.linkedin.com/in/utsho-heaven-chowdhury"
                   target="_blank"
-                  className="p-2 rounded-xl bg-[#061a13]/80 border border-[#15442f] text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/40 transition-all duration-300 shadow-sm"
+                  className="p-2 rounded-xl bg-[#061a13] border border-[#d2e823]/30 text-[#f8f4e8]/60 hover:text-[#d2e823] hover:border-[#d2e823]/60 transition-all duration-300 shadow-sm"
                   aria-label="LinkedIn"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin">
@@ -226,7 +219,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="group flex items-center justify-center w-10 h-10 rounded-full bg-[#061a13] border border-[#15442f] hover:border-[#d2e823] hover:bg-[#0e3527] transition-all duration-300 shadow-sm hover:shadow-[0_0_15px_rgba(210,232,35,0.25)]"
+                className="group flex items-center justify-center w-10 h-10 rounded-full bg-[#061a13] border border-[#d2e823]/30 hover:border-[#d2e823] hover:bg-[#0e3527] transition-all duration-300 shadow-sm hover:shadow-[0_0_15px_rgba(210,232,35,0.25)]"
                 aria-label="Scroll to top"
               >
                 <ArrowUp
@@ -239,7 +232,7 @@ export default function Footer() {
         </div>
 
         {/* ── BIG DISPLAY TYPOGRAPHY UNDER FOOTER ── */}
-        <div className="relative pt-12 md:pt-16 pb-2 text-center select-none pointer-events-none overflow-hidden">
+        <div className="relative pt-8 md:pt-10 pb-2 text-center select-none pointer-events-none overflow-hidden">
           <h1
             className="text-[13vw] sm:text-[14vw] md:text-[14.5vw] lg:text-[15vw] font-black tracking-tight leading-none uppercase font-tanker bg-gradient-to-b from-[#f8f4e8]/25 via-[#d2e823]/15 to-transparent bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(210,232,35,0.05)] whitespace-nowrap"
           >

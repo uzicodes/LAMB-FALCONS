@@ -104,7 +104,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#f8f4e8] font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823] font-tanker">
                             Core Values
                         </h2>
                     </div>
@@ -115,7 +115,7 @@ export default function AboutUsSection() {
                                 className="group relative p-7 rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 transition-all duration-500 text-center"
                             >
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <h3 className="relative text-lg font-semibold text-[#f8f4e8] tracking-wide mb-2 font-space-grotesk">
+                                <h3 className="relative text-lg font-semibold text-[#f8f4e8] tracking-wide uppercase mb-2 font-space-grotesk">
                                     {v.title}
                                 </h3>
                                 <p className="relative text-sm text-[#f8f4e8]/40 leading-relaxed">
@@ -131,7 +131,7 @@ export default function AboutUsSection() {
             <div className="relative py-12 md:py-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#f8f4e8] font-tanker">
+                        <h2 className="text-4xl sm:text-5xl font-black tracking-wider text-[#d2e823] font-tanker">
                             Our Journey
                         </h2>
                     </div>
