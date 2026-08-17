@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-space-grotesk: "Space Grotesk", sans-serif;
-  --font-sans: "Space Grotesk", sans-serif;
-  --font-satoshi: "Space Grotesk", sans-serif;
-  --font-boldonse: "Boldonse", sans-serif;
-  --font-tanker: "Tanker", sans-serif;
+  --font-space-grotesk: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-satoshi: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-tanker: var(--font-tanker), "Tanker", sans-serif;
+  --font-winky-milky: var(--font-winky-milky), "Winky Milky", sans-serif;
   
   --color-falcon-dark: #0a2a1f;
   --color-falcon-dark-deep: #061a13;
@@ -15,38 +14,6 @@
   --color-falcon-accent: #d2e823;
   --color-falcon-accent-hover: #e0f040;
   --color-falcon-cream: #f8f4e8;
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/SpaceGrotesk.woff2') format('woff2');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Winky Milky';
-  src: url('/fonts/Winky Milky.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Boldonse';
-  src: url('/fonts/Boldonse.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tanker';
-  src: url('/fonts/Tanker.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
 
 @layer base {
