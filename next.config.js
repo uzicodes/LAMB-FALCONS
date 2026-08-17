@@ -2,16 +2,16 @@
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://clerk.com https://*.clerk.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://clerk.com https://*.clerk.com https://*.clerk.accounts.dev;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://clerk.com https://*.clerk.com;
+    img-src 'self' blob: data: https://clerk.com https://*.clerk.com https://*.clerk.accounts.dev;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
     upgrade-insecure-requests;
-    connect-src 'self' https://clerk.com https://*.clerk.com;
+    connect-src 'self' https://clerk.com https://*.clerk.com https://*.clerk.accounts.dev;
     worker-src 'self' blob:;
 `
 
