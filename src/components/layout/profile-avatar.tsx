@@ -13,9 +13,9 @@ export default function ProfileAvatar() {
         <Image
           src={user?.imageUrl || "/falcons_logo.png"}
           alt="Profile"
-          fill
-          sizes="32px"
-          className="object-cover"
+          width={32}
+          height={32}
+          className="object-cover w-full h-full"
         />
       </div>
     </Link>

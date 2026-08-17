@@ -92,22 +92,15 @@ export default function MembersSection() {
                                 key={member.name}
                                 className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 overflow-hidden transition-all duration-500 font-space-grotesk"
                             >
-                                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="w-full aspect-[4/3] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden">
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-5xl md:text-6xl font-black text-[#f8f4e8]/[0.04] group-hover:text-[#f8f4e8]/[0.08] transition-colors duration-500">
-                                            {member.number}
-                                        </span>
-                                    </div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#061a13]/60 to-transparent" />
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                <div className="w-full aspect-[4/3] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden flex items-center justify-center">
+                                    <span className="text-5xl md:text-6xl font-black text-[#f8f4e8]/[0.04] group-hover:text-[#f8f4e8]/[0.08] transition-colors duration-500">
+                                        {member.number}
+                                    </span>
                                 </div>
                                 <div className="p-5">
-                                    <div className="mb-1 text-center">
-                                        <h3 className="text-base font-semibold text-[#f8f4e8] tracking-wide leading-tight font-space-grotesk">
-                                            {member.name}
-                                        </h3>
-                                    </div>
+                                    <h3 className="text-base font-semibold text-[#f8f4e8] tracking-wide leading-tight font-space-grotesk mb-1 text-center">
+                                        {member.name}
+                                    </h3>
                                     <div className="mt-4 pt-3 border-t border-[#f8f4e8]/5 flex items-center justify-between">
                                         <span className="text-[10px] text-[#f8f4e8]/30 uppercase tracking-widest w-1/3">2020</span>
                                         <div className="flex items-center gap-3 w-1/3 justify-center">

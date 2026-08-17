@@ -46,11 +46,9 @@ export default function Testimonials() {
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Quote mark */}
-              <div className="relative mb-6">
-                <span className="text-5xl font-serif text-[#d2e823]/20 leading-none select-none">
-                  &ldquo;
-                </span>
-              </div>
+              <span className="relative block text-5xl font-serif text-[#d2e823]/20 leading-none select-none mb-6">
+                &ldquo;
+              </span>
 
               <p className="relative text-[#f8f4e8]/50 leading-relaxed mb-8 text-sm md:text-base">
                 {item.quote}
@@ -58,7 +56,7 @@ export default function Testimonials() {
 
               <div className="relative flex items-center gap-3">
                 {/* Avatar placeholder */}
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 flex items-center justify-center flex-shrink-0">
                   <span className="text-xs font-bold text-[#f8f4e8]/40">
                     {item.name
                       .split(" ")

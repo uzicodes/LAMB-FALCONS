@@ -50,12 +50,9 @@ export default function News() {
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Image placeholder */}
-              <div className="w-full aspect-[16/9] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full border border-[#f8f4e8]/5 flex items-center justify-center">
-                    <div className="w-6 h-6 rounded-full border border-[#f8f4e8]/5" />
-                  </div>
+              <div className="w-full aspect-[16/9] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full border border-[#f8f4e8]/5 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full border border-[#f8f4e8]/5" />
                 </div>
               </div>
 

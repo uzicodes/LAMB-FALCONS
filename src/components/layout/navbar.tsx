@@ -118,13 +118,13 @@ const Navbar = () => {
 
 					{/* Logo Area */}
 					<Link href="/" className="relative flex items-center gap-1.5 group">
-						<div className="relative w-10 h-10 -my-1 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110">
+						<div className="relative w-10 h-10 -my-1 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
 							<Image
 								src={BRAND.logo}
 								alt="Lamb Falcons Logo"
-								fill
-								sizes="40px"
-								className="object-cover"
+								width={40}
+								height={40}
+								className="object-cover w-full h-full"
 								priority
 							/>
 						</div>

@@ -131,31 +131,19 @@ export default function JerseySection() {
                                     key={jersey.name}
                                     className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-12px)]"
                                 >
-                                    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                    <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative`}>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-[#0a2a1f]/80 to-[#061a13]" />
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                            <div className="w-18 h-26 rounded-t-3xl border-2 border-[#f8f4e8]/[0.06] relative">
-                                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-5 h-2 rounded-b-lg border-b-2 border-x-2 border-[#f8f4e8]/[0.06]" />
-                                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                    <span className="text-2xl font-black text-[#f8f4e8]/[0.06]">LF</span>
-                                                </div>
-                                            </div>
+                                    <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative overflow-hidden flex flex-col items-center justify-center`}>
+                                        <div className="w-18 h-26 rounded-t-3xl border-2 border-[#f8f4e8]/[0.06] flex items-center justify-center">
+                                            <span className="text-2xl font-black text-[#f8f4e8]/[0.06]">LF</span>
                                         </div>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                        <div className="absolute top-2.5 left-2.5">
-                                            <span className={`inline-block text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full border ${jersey.badgeColor}`}>
-                                                {jersey.tag}
-                                            </span>
-                                        </div>
+                                        <span className={`absolute top-2.5 left-2.5 inline-block text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full border ${jersey.badgeColor}`}>
+                                            {jersey.tag}
+                                        </span>
                                     </div>
                                     <div className="p-3.5 text-center flex flex-col items-center">
-                                        <div className="flex flex-col items-center mb-1.5">
-                                            <h3 className="text-sm font-semibold text-[#f8f4e8] tracking-wide group-hover:text-[#d2e823] transition-colors duration-300 line-clamp-1 font-space-grotesk">
-                                                {mainName}
-                                            </h3>
-                                            <span className="text-xs font-semibold text-[#d2e823] tracking-wide mt-0.5 font-space-grotesk">{jersey.price}</span>
-                                        </div>
+                                        <h3 className="text-sm font-semibold text-[#f8f4e8] tracking-wide group-hover:text-[#d2e823] transition-colors duration-300 line-clamp-1 font-space-grotesk">
+                                            {mainName}
+                                        </h3>
+                                        <span className="text-xs font-semibold text-[#d2e823] tracking-wide mt-0.5 mb-1 font-space-grotesk">{jersey.price}</span>
                                         <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-[0.1em] font-semibold mb-2">
                                             {jersey.colors}
                                         </p>

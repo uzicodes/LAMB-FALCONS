@@ -35,29 +35,18 @@ export default function Gallery() {
           {GALLERY_ITEMS.map((item) => (
             <div
               key={item.title}
-              className={`group relative ${item.aspect} rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 overflow-hidden break-inside-avoid hover:border-[#f8f4e8]/15 transition-all duration-500 cursor-pointer`}
+              className={`group relative ${item.aspect} rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 overflow-hidden break-inside-avoid hover:border-[#f8f4e8]/15 transition-all duration-500 cursor-pointer flex items-center justify-center`}
             >
-              {/* Hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#061a13]/80 via-[#061a13]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
               {/* Placeholder pattern */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full border border-[#f8f4e8]/5 flex items-center justify-center">
-                  <div className="w-8 h-8 rounded-full border border-[#f8f4e8]/5" />
-                </div>
+              <div className="w-16 h-16 rounded-full border border-[#f8f4e8]/5 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full border border-[#f8f4e8]/5" />
               </div>
 
-              {/* Accent on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
               {/* Title overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-[#061a13]/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
                 <p className="text-sm font-semibold text-[#f8f4e8]">{item.title}</p>
                 <p className="text-xs text-[#f8f4e8]/50 mt-1">Lamb Falcons</p>
               </div>
-
-              {/* Corner accent */}
-              <div className="absolute top-3 right-3 w-6 h-6 border-t border-r border-[#f8f4e8]/0 group-hover:border-[#f8f4e8]/20 transition-all duration-500" />
             </div>
           ))}
         </div>
