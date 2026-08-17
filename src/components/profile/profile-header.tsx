@@ -14,6 +14,7 @@ interface ProfileHeaderProps {
     fileInputRef: RefObject<HTMLInputElement>;
     onImageUpload: (e: ChangeEvent<HTMLInputElement>) => void;
     onRemoveImage: () => void;
+    isEditing?: boolean;
 }
 
 export function ProfileHeader({
@@ -25,26 +26,27 @@ export function ProfileHeader({
     fileInputRef,
     onImageUpload,
     onRemoveImage,
+    isEditing,
 }: ProfileHeaderProps) {
     return (
         <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-[#0a2a1f]/70 backdrop-blur-xl border border-[#15442f] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative h-48 sm:h-52 bg-[#0a2a1f]/70 backdrop-blur-xl border border-[#15442f] rounded-2xl overflow-hidden shadow-2xl flex flex-col justify-end"
         >
-            {/* Banner */}
-            <div className="relative h-48 bg-[#0a2a1f] overflow-hidden">
+            {/* Banner Background across full card */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/register.jpg')] bg-cover bg-center opacity-50 transition-transform duration-700 hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061a13] via-[#061a13]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061a13] via-[#061a13]/60 to-transparent" />
                 <div className="absolute inset-0 bg-[#d2e823]/5 mix-blend-overlay" />
             </div>
 
             {/* Avatar + Name */}
-            <div className="relative z-10 px-6 -mt-16">
+            <div className="relative z-10 px-6 pb-5">
                 <div className="flex items-end gap-4">
-                    <div className="relative group">
-                        <div className="relative w-28 h-28 rounded-full border-4 border-zinc-950 bg-[#0e3527] overflow-hidden shadow-2xl ring-2 ring-[#d2e823]/20">
+                    <div className="relative">
+                        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-zinc-950 bg-[#0e3527] overflow-hidden shadow-2xl ring-2 ring-[#d2e823]/20">
                             <Image
                                 src={avatar}
                                 alt={displayName}
@@ -65,25 +67,29 @@ export function ProfileHeader({
                             onChange={onImageUpload}
                             className="hidden"
                         />
-                        <button
-                            type="button"
-                            aria-label="Upload profile photo"
-                            onClick={() => fileInputRef.current?.click()}
-                            disabled={uploadingImage}
-                            className="absolute bottom-1 right-1 p-2 bg-[#d2e823] rounded-full text-[#f8f4e8] hover:bg-[#e0f040] transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
-                        >
-                            <Camera className="w-3.5 h-3.5" />
-                        </button>
-                        {hasImage && (
-                            <button
-                                type="button"
-                                aria-label="Remove profile photo"
-                                onClick={onRemoveImage}
-                                disabled={uploadingImage}
-                                className="absolute bottom-1 left-1 p-2 bg-red-600 rounded-full text-[#f8f4e8] hover:bg-red-500 transition-all shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 disabled:opacity-50"
-                            >
-                                <Trash2 className="w-3.5 h-3.5" />
-                            </button>
+                        {isEditing && (
+                            <>
+                                <button
+                                    type="button"
+                                    aria-label="Upload profile photo"
+                                    onClick={() => fileInputRef.current?.click()}
+                                    disabled={uploadingImage}
+                                    className="absolute bottom-1 right-1 p-2 bg-[#d2e823] rounded-full text-[#0a2a1f] hover:bg-[#e0f040] transition-all shadow-lg hover:scale-110 disabled:opacity-50"
+                                >
+                                    <Camera className="w-3.5 h-3.5" />
+                                </button>
+                                {hasImage && (
+                                    <button
+                                        type="button"
+                                        aria-label="Remove profile photo"
+                                        onClick={onRemoveImage}
+                                        disabled={uploadingImage}
+                                        className="absolute bottom-1 left-1 p-2 bg-red-600 rounded-full text-[#f8f4e8] hover:bg-red-500 transition-all shadow-lg hover:scale-110 disabled:opacity-50"
+                                    >
+                                        <Trash2 className="w-3.5 h-3.5" />
+                                    </button>
+                                )}
+                            </>
                         )}
                     </div>
                     <div className="pb-3">

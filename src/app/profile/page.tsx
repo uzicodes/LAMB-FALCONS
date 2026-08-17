@@ -162,6 +162,7 @@ const ProfileContent = () => {
                         fileInputRef={fileInputRef}
                         onImageUpload={handleImageUpload}
                         onRemoveImage={handleRemoveImage}
+                        isEditing={isEditing}
                     />
 
                     <ProfileDetails
