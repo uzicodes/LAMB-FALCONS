@@ -36,71 +36,108 @@ export default function SplashScreen({
                 {isLoading && (
                     <m.div
                         key="splash"
-                        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#061a13]"
-                        exit={shouldReduceMotion ? { opacity: 0 } : { y: "-100%", opacity: 0 }}
-                        transition={{ duration: shouldReduceMotion ? 0.2 : 0.8, ease: [0.76, 0, 0.24, 1] }}
+                        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#061a13] overflow-hidden"
+                        exit={shouldReduceMotion ? { opacity: 0 } : { scale: 1.1, opacity: 0, filter: "blur(10px)" }}
+                        transition={{ duration: shouldReduceMotion ? 0.2 : 0.6, ease: "easeInOut" }}
                     >
-                        {/* ── Ambient glow behind the logo ── */}
+                        {/* Background subtle radial gradient */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#d2e823]/5 via-[#061a13]/80 to-[#061a13] z-0" />
+                        
+                        {/* Ambient glow behind the logo */}
                         <m.div
-                            className="absolute w-72 h-72 rounded-full bg-[#d2e823]/20 blur-[100px]"
-                            animate={shouldReduceMotion ? { opacity: 0.4 } : { scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-                            transition={shouldReduceMotion ? {} : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute z-0 w-80 h-80 rounded-full bg-[#d2e823]/10 blur-[120px]"
+                            animate={shouldReduceMotion ? { opacity: 0.5 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.7, 0.3] }}
+                            transition={shouldReduceMotion ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
                         />
 
-                        {/* ── Center Content ── */}
+                        {/* Center Content */}
                         <m.div
-                            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: shouldReduceMotion ? 0 : 0.8, ease: "easeOut" }}
-                            className="flex flex-col items-center justify-center"
+                            className="relative z-10 flex flex-col items-center justify-center"
                         >
-                            {/* ── Pulsing ring ── */}
-                            <m.div
-                                className="relative flex items-center justify-center w-44 h-44 rounded-full border-2 border-[#d2e823] shadow-[0_0_30px_rgba(210,232,35,0.5),0_0_60px_rgba(210,232,35,0.25)]"
-                                animate={shouldReduceMotion ? {} : {
-                                    boxShadow: [
-                                        "0 0 20px rgba(210,232,35,0.4), 0 0 40px rgba(210,232,35,0.2)",
-                                        "0 0 40px rgba(210,232,35,0.7), 0 0 80px rgba(210,232,35,0.35)",
-                                        "0 0 20px rgba(210,232,35,0.4), 0 0 40px rgba(210,232,35,0.2)",
-                                    ],
-                                    scale: [1, 1.04, 1],
-                                }}
-                                transition={shouldReduceMotion ? {} : { duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                                {/* ── Logo ── */}
-                                <div>
+                            {/* Logo and Rings Container */}
+                            <div className="relative flex items-center justify-center w-56 h-56">
+                                
+                                {/* Outer Dashed Ring - Spins Clockwise */}
+                                <m.div 
+                                    className="absolute inset-0 rounded-full border border-dashed border-[#d2e823]/30"
+                                    animate={shouldReduceMotion ? {} : { rotate: 360 }}
+                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                                />
+
+                                {/* Middle Thin Ring - Spins Counter-Clockwise */}
+                                <m.div 
+                                    className="absolute inset-2 rounded-full border border-[#d2e823]/20 border-t-[#d2e823]/80"
+                                    animate={shouldReduceMotion ? {} : { rotate: -360 }}
+                                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                                />
+
+                                {/* Inner Ring - Pulses */}
+                                <m.div
+                                    className="absolute inset-6 rounded-full border border-[#d2e823]/50 shadow-[0_0_15px_rgba(210,232,35,0.3)]"
+                                    animate={shouldReduceMotion ? {} : { 
+                                        scale: [1, 1.05, 1],
+                                        boxShadow: [
+                                            "0 0 15px rgba(210,232,35,0.3)",
+                                            "0 0 30px rgba(210,232,35,0.6)",
+                                            "0 0 15px rgba(210,232,35,0.3)"
+                                        ]
+                                    }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                />
+
+                                {/* The Logo */}
+                                <m.div
+                                    className="relative z-20"
+                                    animate={shouldReduceMotion ? {} : { y: [-4, 4, -4] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                >
                                     <Image
                                         src="/falcons_logo.png"
                                         alt="Falcons Logo"
-                                        width={120}
-                                        height={120}
-                                        className="object-contain drop-shadow-[0_0_15px_rgba(210,232,35,0.6)]"
+                                        width={110}
+                                        height={110}
+                                        className="object-contain drop-shadow-[0_0_20px_rgba(210,232,35,0.8)]"
                                         priority
                                     />
-                                </div>
-                            </m.div>
-
-                            {/* ── Loading bar ── */}
-                            <div className="mt-10 w-48 h-1 rounded-full bg-[#f8f4e8]/10 overflow-hidden">
-                                <m.div
-                                    className="h-full rounded-full bg-gradient-to-r from-[#d2e823] via-[#e0f040] to-[#d2e823]"
-                                    initial={{ x: "-100%" }}
-                                    animate={{ x: "100%" }}
-                                    transition={{
-                                        duration: 1.2,
-                                        repeat: Infinity,
-                                        ease: "easeInOut",
-                                    }}
-                                />
+                                </m.div>
                             </div>
 
-                            {/* ── Bottom text ── */}
-                            <p className="mt-6 text-sm font-tanker tracking-[0.3em] uppercase text-[#d2e823]/70">
-                                LAMB FALCONS
-                            </p>
+                            {/* Loading Indicator */}
+                            <div className="mt-12 flex flex-col items-center gap-4">
+                                {/* Sleek animated dots */}
+                                <div className="flex gap-3">
+                                    {[0, 1, 2].map((i) => (
+                                        <m.div
+                                            key={i}
+                                            className="w-1.5 h-1.5 rounded-full bg-[#d2e823]"
+                                            animate={shouldReduceMotion ? {} : { 
+                                                scale: [1, 1.5, 1],
+                                                opacity: [0.3, 1, 0.3],
+                                                y: [0, -4, 0]
+                                            }}
+                                            transition={{ 
+                                                duration: 1, 
+                                                repeat: Infinity, 
+                                                delay: i * 0.2,
+                                                ease: "easeInOut" 
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                                
+                                {/* Bottom text */}
+                                <m.h1 
+                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.15em] leading-none uppercase font-tanker bg-gradient-to-b from-[#f8f4e8]/80 via-[#d2e823]/60 to-[#061a13] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(210,232,35,0.2)] whitespace-nowrap mt-6"
+                                    animate={shouldReduceMotion ? {} : { opacity: [0.6, 1, 0.6] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                >
+                                    LAMB FALCONS
+                                </m.h1>
+                            </div>
                         </m.div>
-
-
                     </m.div>
                 )}
             </AnimatePresence>
