@@ -140,7 +140,7 @@ export default function JerseySection() {
                                         </span>
                                     </div>
                                     <div className="p-3.5 text-center flex flex-col items-center">
-                                        <h3 className="text-sm font-semibold text-[#f8f4e8] tracking-wide group-hover:text-[#d2e823] transition-colors duration-300 line-clamp-1 font-space-grotesk">
+                                        <h3 className="text-sm font-bold text-[#FB4500] tracking-wide group-hover:text-[#d2e823] transition-colors duration-300 line-clamp-1 font-space-grotesk">
                                             {mainName}
                                         </h3>
                                         <span className="text-xs font-semibold text-[#d2e823] tracking-wide mt-0.5 mb-1 font-space-grotesk">{jersey.price}</span>

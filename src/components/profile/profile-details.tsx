@@ -59,8 +59,8 @@ export function ProfileDetails({
             <div className="divide-y divide-[#15442f]/50">
                 {/* Full Name */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-[#d2e823]/5 rounded-lg">
-                        <User className="w-4 h-4 text-[#d2e823]" />
+                    <div className="flex-shrink-0 p-2 bg-sky-400/10 rounded-lg">
+                        <User className="w-4 h-4 text-sky-400" />
                     </div>
                     <div className="flex-1 min-w-0">
                         <label htmlFor="edit-fullname" className="block text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Full Name</label>
@@ -80,8 +80,8 @@ export function ProfileDetails({
 
                 {/* Email */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-[#d2e823]/10 rounded-lg">
-                        <Mail className="w-4 h-4 text-[#d2e823]" />
+                    <div className="flex-shrink-0 p-2 bg-sky-400/10 rounded-lg">
+                        <Mail className="w-4 h-4 text-sky-400" />
                     </div>
                     <div className="flex-1 min-w-0">
                         <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Email Address</p>
@@ -91,8 +91,8 @@ export function ProfileDetails({
 
                 {/* Phone Number */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-purple-500/10 rounded-lg">
-                        <Phone className="w-4 h-4 text-purple-400" />
+                    <div className="flex-shrink-0 p-2 bg-sky-400/10 rounded-lg">
+                        <Phone className="w-4 h-4 text-sky-400" />
                     </div>
                     <div className="flex-1 min-w-0">
                         <label htmlFor="edit-phone" className="block text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Phone Number</label>
@@ -117,8 +117,8 @@ export function ProfileDetails({
 
                 {/* Joined */}
                 <div className="flex items-center gap-4 px-6 py-4">
-                    <div className="flex-shrink-0 p-2 bg-rose-500/10 rounded-lg">
-                        <CalendarDays className="w-4 h-4 text-rose-400" />
+                    <div className="flex-shrink-0 p-2 bg-sky-400/10 rounded-lg">
+                        <CalendarDays className="w-4 h-4 text-sky-400" />
                     </div>
                     <div className="flex-1 min-w-0">
                         <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-wider">Member Since</p>

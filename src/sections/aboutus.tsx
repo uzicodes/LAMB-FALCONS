@@ -181,7 +181,7 @@ export default function AboutUsSection() {
                             <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
                                 Our Mission
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#f8f4e8] mb-4 font-tanker">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#FB4500] mb-4 font-tanker">
                                 Redefining What a Club Can Be
                             </h3>
                             <p className="relative text-[#f8f4e8]/50 leading-relaxed">
@@ -198,7 +198,7 @@ export default function AboutUsSection() {
                             <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
                                 Our Vision
                             </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#f8f4e8] mb-4 font-tanker">
+                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#FB4500] mb-4 font-tanker">
                                 Standard for Modern Sports
                             </h3>
                             <p className="relative text-[#f8f4e8]/50 leading-relaxed">
@@ -220,7 +220,7 @@ export default function AboutUsSection() {
                                 className="group relative p-7 rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 transition-all duration-500 text-center"
                             >
                                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <h3 className="relative text-lg font-semibold text-[#f8f4e8] tracking-wide uppercase mb-2 font-space-grotesk">
+                                <h3 className="relative text-lg font-bold text-[#FB4500] tracking-wide uppercase mb-2 font-space-grotesk">
                                     {v.title}
                                 </h3>
                                 <p className="relative text-sm text-[#f8f4e8]/40 leading-relaxed">
@@ -255,17 +255,17 @@ export default function AboutUsSection() {
                         {/* Glowing comet tip that travels with the progress line */}
                         <div
                             ref={glowRef}
-                            className="absolute left-[15px] md:left-1/2 pointer-events-none z-20"
+                            className="absolute left-[15px] md:left-1/2 pointer-events-none z-[1]"
                             style={{ top: "0%", transform: "translate(-50%, -50%)" }}
                         >
                             {/* Comet tail — upward fading trail */}
-                            <div className="absolute left-1/2 -translate-x-1/2 bottom-[6px] w-[3px] h-10 bg-gradient-to-t from-[#d2e823]/60 via-[#d2e823]/20 to-transparent rounded-full blur-[1px]" />
+                            <div className="absolute left-1/2 -translate-x-1/2 bottom-[6px] w-[3px] h-8 bg-gradient-to-t from-[#FB4500]/40 via-[#FB4500]/10 to-transparent rounded-full blur-[0.5px]" />
                             {/* Outer ambient glow */}
-                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#d2e823]/15 blur-lg" />
+                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#FB4500]/10 blur-md" />
                             {/* Mid glow ring */}
-                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#d2e823]/25 blur-md" />
+                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#FB4500]/15 blur-sm" />
                             {/* Core comet head — slightly elongated downward */}
-                            <div className="relative left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[7px] h-[10px] rounded-[50%_50%_50%_50%_/_40%_40%_60%_60%] bg-[#d2e823] shadow-[0_0_6px_rgba(210,232,35,0.9),0_0_14px_rgba(210,232,35,0.5),0_2px_20px_rgba(210,232,35,0.3)]" />
+                            <div className="relative left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[7px] h-[10px] rounded-[50%_50%_50%_50%_/_40%_40%_60%_60%] bg-[#FB4500] shadow-[0_0_5px_rgba(251,69,0,0.7),0_0_10px_rgba(251,69,0,0.3)]" />
                         </div>
 
                         {/* Timeline nodes — each node is sticky so the next one overlaps it */}
@@ -279,20 +279,20 @@ export default function AboutUsSection() {
                                     key={`${item.year}-${index}`}
                                     ref={(el) => { nodeRefs.current[index] = el; }}
                                     className="sticky mb-24 md:mb-36"
-                                    style={{ top: `${stickyTop}px`, zIndex: index + 1 }}
+                                    style={{ top: `${stickyTop}px`, zIndex: 10 + index }}
                                 >
                                     {/* ── MOBILE LAYOUT (always right of line) ── */}
-                                    <div className="md:hidden flex items-start gap-5 w-full pl-0">
+                                    <div className="md:hidden flex items-start gap-4 w-full pl-0">
                                         {/* Circle node on the line */}
-                                        <div className="relative z-10 flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#d2e823]/50 bg-[#061a13] flex items-center justify-center shadow-[0_0_12px_rgba(210,232,35,0.25)]">
-                                            <span className="text-[8px] font-bold text-[#d2e823]">
+                                        <div className="relative z-10 flex-shrink-0 -ml-[5px] w-10 h-10 rounded-full border-2 border-[#d2e823]/50 bg-[#061a13] flex items-center justify-center shadow-[0_0_12px_rgba(210,232,35,0.25)]">
+                                            <span className="text-[10px] font-bold text-[#FB4500]">
                                                 {item.year}
                                             </span>
                                         </div>
                                         {/* Card */}
                                         <div className="flex-1 group relative p-5 rounded-xl bg-[#0a2a1f] border border-[#f8f4e8]/5 hover:border-[#d2e823]/30 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                             <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                            <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#d2e823] mb-1.5">
+                                            <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#FB4500] mb-1.5">
                                                 {item.year}
                                             </span>
                                             <p className="relative text-sm text-[#f8f4e8]/70 group-hover:text-[#f8f4e8] transition-colors duration-300 leading-relaxed">
@@ -308,7 +308,7 @@ export default function AboutUsSection() {
                                             {isLeft ? (
                                                 <div className="group relative p-6 rounded-xl bg-[#0a2a1f] border border-[#f8f4e8]/5 hover:border-[#d2e823]/30 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)] ml-auto max-w-sm text-right">
                                                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                                    <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#d2e823] mb-1.5">
+                                                    <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#FB4500] mb-1.5">
                                                         {item.year}
                                                     </span>
                                                     <p className="relative text-sm text-[#f8f4e8]/70 group-hover:text-[#f8f4e8] transition-colors duration-300 leading-relaxed">
@@ -321,8 +321,8 @@ export default function AboutUsSection() {
                                         </div>
 
                                         {/* Center circle node */}
-                                        <div className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full border-2 border-[#d2e823]/50 bg-[#061a13] flex items-center justify-center shadow-[0_0_20px_rgba(210,232,35,0.3)]">
-                                            <span className="text-xs font-bold text-[#d2e823]">
+                                        <div className="relative z-10 flex-shrink-0 w-16 h-16 rounded-full border-2 border-[#d2e823]/50 bg-[#061a13] flex items-center justify-center shadow-[0_0_20px_rgba(210,232,35,0.3)]">
+                                            <span className="text-sm font-bold text-[#FB4500]">
                                                 {item.year}
                                             </span>
                                         </div>
@@ -332,7 +332,7 @@ export default function AboutUsSection() {
                                             {!isLeft ? (
                                                 <div className="group relative p-6 rounded-xl bg-[#0a2a1f] border border-[#f8f4e8]/5 hover:border-[#d2e823]/30 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)] mr-auto max-w-sm text-left">
                                                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                                    <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#d2e823] mb-1.5">
+                                                    <span className="relative block text-[10px] font-bold tracking-[0.2em] uppercase text-[#FB4500] mb-1.5">
                                                         {item.year}
                                                     </span>
                                                     <p className="relative text-sm text-[#f8f4e8]/70 group-hover:text-[#f8f4e8] transition-colors duration-300 leading-relaxed">

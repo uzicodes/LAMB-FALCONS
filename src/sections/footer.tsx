@@ -128,7 +128,7 @@ export default function Footer() {
             <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8">
               {Object.entries(FOOTER_LINKS).map(([category, links]) => (
                 <div key={category} className="flex flex-col">
-                  <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-[#f8f4e8] mb-3.5">
+                  <h4 className="text-xs font-bold tracking-[0.2em] uppercase text-[#FB4500] mb-3.5">
                     {category}
                   </h4>
                   <ul className="space-y-2.5">

@@ -98,7 +98,7 @@ export default function MembersSection() {
                                     </span>
                                 </div>
                                 <div className="p-5">
-                                    <h3 className="text-base font-semibold text-[#f8f4e8] tracking-wide leading-tight font-space-grotesk mb-1 text-center">
+                                    <h3 className="text-base font-bold text-[#FB4500] tracking-wide leading-tight font-space-grotesk mb-1 text-center">
                                         {member.name}
                                     </h3>
                                     <div className="mt-4 pt-3 border-t border-[#f8f4e8]/5 flex items-center justify-between">
