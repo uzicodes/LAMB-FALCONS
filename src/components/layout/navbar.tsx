@@ -3,28 +3,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { LazyMotion, domMax, m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
-import { Show, useUser, useAuth } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 
-const ProfileAvatar = () => {
-	const { user } = useUser();
-	return (
-		<Link href="/profile" className="block">
-			<div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#d2e823]/50 hover:border-[#d2e823] transition-all duration-300 hover:shadow-[0_0_12px_rgba(210,232,35,0.4)] cursor-pointer flex-shrink-0">
-				<Image
-					src={user?.imageUrl || "/falcons_logo.png"}
-					alt="Profile"
-					fill
-					sizes="32px"
-					className="object-cover"
-				/>
-			</div>
-		</Link>
-	);
-};
+const ProfileAvatar = dynamic(() => import("./profile-avatar"), {
+	ssr: false,
+	loading: () => <div className="w-8 h-8 rounded-full bg-[#f8f4e8]/10 animate-pulse" />,
+});
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -272,7 +261,7 @@ const Navbar = () => {
 									transition={{ delay: 0.1 }}
 									className="pt-1"
 								>
-									<Show when="signed-in">
+									{isSignedIn ? (
 										<div
 											role="button"
 											tabIndex={0}
@@ -287,8 +276,7 @@ const Navbar = () => {
 										>
 											<ProfileAvatar />
 										</div>
-									</Show>
-									<Show when="signed-out">
+									) : (
 										<Link
 											href="/login"
 											onClick={() => setIsMobileMenuOpen(false)}
@@ -297,7 +285,7 @@ const Navbar = () => {
 											<span className="relative z-10">Join Now</span>
 											<div className="absolute inset-0 bg-gradient-to-r from-[#d2e823]/20 to-[#d2e823]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 										</Link>
-									</Show>
+									)}
 								</m.div>
 							</div>
 						</div>
