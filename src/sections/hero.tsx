@@ -32,7 +32,7 @@ export default function Hero() {
     >
       {/* Background image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/heroslides1.JPG')] bg-cover bg-center bg-no-repeat blur-[0.7px] scale-[1.02]" />
+        <div className="absolute inset-0 bg-[url('/heroslides1.webp')] bg-cover bg-center bg-no-repeat blur-[0.7px] scale-[1.02]" />
       </div>
 
       {/* Dark overlay */}
