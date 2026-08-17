@@ -45,9 +45,9 @@ export default function News() {
           {NEWS.map((article) => (
             <article
               key={article.title}
-              className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 overflow-hidden hover:border-[#f8f4e8]/15 transition-all duration-500 cursor-pointer"
+              className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 overflow-hidden hover:border-[#f8f4e8]/20 hover:bg-[#f8f4e8]/[0.04] hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)] transition-all duration-300 cursor-pointer"
             >
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#d2e823]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#FB4500]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Image placeholder */}
               <div className="w-full aspect-[16/9] bg-gradient-to-br from-[#0a2a1f] to-[#061a13] relative overflow-hidden flex items-center justify-center">
@@ -61,7 +61,7 @@ export default function News() {
                   {article.tag}
                 </span>
                 <span className="text-xs text-[#f8f4e8]/30 mb-2">{article.date}</span>
-                <h3 className="text-base md:text-lg font-bold text-[#FB4500] group-hover:text-[#d2e823] transition-colors duration-300 mb-2 leading-snug font-space-grotesk">
+                <h3 className="text-base md:text-lg font-bold text-[#FB4500] mb-2 leading-snug font-space-grotesk">
                   {article.title}
                 </h3>
                 <p className="text-sm text-[#f8f4e8]/40 leading-relaxed">

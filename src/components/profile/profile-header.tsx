@@ -93,7 +93,7 @@ export function ProfileHeader({
                         )}
                     </div>
                     <div className="pb-3">
-                        <h1 className="text-2xl font-black text-[#f8f4e8] tracking-tight drop-shadow-md">
+                        <h1 className="text-2xl font-black text-[#FB4500] tracking-tight drop-shadow-md">
                             {displayName}
                         </h1>
                         <div className="flex items-center gap-2.5 mt-1">

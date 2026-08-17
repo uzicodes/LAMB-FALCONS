@@ -163,7 +163,7 @@ const Navbar = () => {
 									{activeSection === link.href && (
 										<m.div
 											layoutId="activeTab"
-											className="absolute bottom-0 md:bottom-0.5 left-1/4 w-1/2 h-0.5 bg-[#d2e823] rounded-full shadow-[0_0_8px_rgba(210,232,35,0.8)]"
+											className="absolute bottom-0 md:bottom-0.5 left-1/4 w-1/2 h-0.5 bg-[#FB4500] rounded-full shadow-[0_0_8px_rgba(251,69,0,0.8)]"
 											transition={{ type: "spring", stiffness: 300, damping: 30 }}
 										/>
 									)}

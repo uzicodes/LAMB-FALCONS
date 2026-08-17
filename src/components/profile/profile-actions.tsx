@@ -20,7 +20,7 @@ export function ProfileActions({ onSignOut, onDeleteClick }: ProfileActionsProps
                 className="mt-4 bg-[#0a2a1f]/70 backdrop-blur-xl border border-[#15442f] rounded-2xl overflow-hidden shadow-2xl"
             >
                 <div className="px-6 py-4 border-b border-[#15442f]">
-                    <h2 className="text-sm font-bold text-[#f8f4e8] uppercase tracking-wider">
+                    <h2 className="text-sm font-bold text-[#d2e823] uppercase tracking-wider">
                         Quick Actions
                     </h2>
                 </div>
