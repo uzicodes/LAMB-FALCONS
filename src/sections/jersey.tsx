@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Shirt, ShoppingBag, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const JERSEYS = [
@@ -11,48 +12,52 @@ const JERSEYS = [
         price: "600 TK",
         tag: "Latest",
         colors: "Royal Blue / White",
-        accent: "from-[#d2e823]/20 to-[#0a2a1f]/20",
-        badgeColor: "bg-[#d2e823]/10 border-[#d2e823]/20 text-[#d2e823]",
+        accent: "from-blue-600 to-indigo-900",
+        badgeColor: "bg-blue-500/20 border-blue-400/30 text-blue-300",
+        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)]",
     },
     {
         name: "EXODUS HOME 2024/25",
         price: "600 TK",
         tag: "Exclusive",
         colors: "Stealth Black / Gold",
-        accent: "from-[#d2e823]/10 to-[#0a2a1f]/20",
-        badgeColor: "bg-[#d2e823]/10 border-[#d2e823]/20 text-[#d2e823]",
+        accent: "from-zinc-800 to-black",
+        badgeColor: "bg-yellow-500/20 border-yellow-400/30 text-yellow-300",
+        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(234,179,8,0.3)]",
     },
     {
         name: "EXODUS AWAY 2024/25",
         price: "550 TK",
         tag: "Partnered",
         colors: "Arctic White / Cyan",
-        accent: "from-[#f8f4e8]/5 to-[#0a2a1f]/20",
-        badgeColor: "bg-[#f8f4e8]/10 border-[#f8f4e8]/20 text-[#f8f4e8]/70",
+        accent: "from-cyan-400 to-blue-600",
+        badgeColor: "bg-cyan-500/20 border-cyan-400/30 text-cyan-100",
+        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)]",
     },
     {
         name: "FALCONS AWAY 2022/23",
         price: "450 TK",
         tag: "2nd Kit",
         colors: "Graphite / Lime",
-        accent: "from-[#d2e823]/10 to-[#0a2a1f]/20",
-        badgeColor: "bg-[#d2e823]/10 border-[#d2e823]/20 text-[#d2e823]",
+        accent: "from-lime-400 to-green-700",
+        badgeColor: "bg-lime-500/20 border-lime-400/30 text-lime-300",
+        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(163,230,53,0.4)]",
     },
     {
         name: "FALCONS HOME 2020/21",
         price: "650 TK",
         tag: "Debut",
         colors: "Crimson / Navy",
-        accent: "from-[#f8f4e8]/5 to-[#0a2a1f]/20",
-        badgeColor: "bg-[#f8f4e8]/10 border-[#f8f4e8]/20 text-[#f8f4e8]/70",
+        accent: "from-red-600 to-rose-900",
+        badgeColor: "bg-red-500/20 border-red-400/30 text-red-300",
+        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(220,38,38,0.4)]",
     },
 ];
 
-
 export default function JerseySection() {
+    const sectionRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const jerseyGridRef = useRef<HTMLDivElement>(null);
-
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -62,26 +67,26 @@ export default function JerseySection() {
             if (headerChildren) {
                 gsap.fromTo(
                     headerChildren,
-                    { opacity: 0, y: 40 },
+                    { opacity: 0, y: 50 },
                     {
-                        opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                        opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "expo.out",
                         scrollTrigger: {
                             trigger: headerRef.current,
-                            start: "top 80%",
+                            start: "top 85%",
                             toggleActions: "play none none reverse",
                         },
                     }
                 );
             }
 
-            // Jersey cards
+            // Jersey cards stagger with a 3d-like effect
             const jerseyCards = jerseyGridRef.current?.children;
             if (jerseyCards) {
                 gsap.fromTo(
                     jerseyCards,
-                    { opacity: 0, y: 70, scale: 0.95 },
+                    { opacity: 0, y: 100, rotationX: 15, scale: 0.9 },
                     {
-                        opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
+                        opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 1.2, stagger: 0.1, ease: "power4.out",
                         scrollTrigger: {
                             trigger: jerseyGridRef.current,
                             start: "top 80%",
@@ -90,85 +95,108 @@ export default function JerseySection() {
                     }
                 );
             }
-
-
-        });
+        }, sectionRef);
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <section id="jersey" className="relative overflow-hidden">
+        <section ref={sectionRef} id="jersey" className="relative overflow-hidden [perspective:1000px]">
             {/* Header */}
-            <div className="relative py-12 md:py-16">
+            <div className="relative pt-16 md:pt-24 pb-4 md:pb-6">
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div data-animate className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f8f4e8]/10 bg-[#f8f4e8]/5 backdrop-blur-sm mb-6">
                         <span className="w-2 h-2 rounded-full bg-[#d2e823] animate-pulse" />
-                        <span className="text-xs font-medium tracking-widest uppercase text-[#f8f4e8]">
+                        <span className="text-xs font-semibold tracking-[0.25em] uppercase text-[#f8f4e8]">
                             Our Collections
                         </span>
                     </div>
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-4 font-tanker text-[#f8f4e8]">
-                        Official Merchandise
+                    
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wider text-[#f8f4e8] font-tanker leading-none mb-6">
+                        OFFICIAL <span className="text-[#d2e823]">MERCHANDISE</span>
                     </h2>
-                    <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed">
-                        Representing with Premium Quality Kits & Merchandise
+                    
+                    <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/60 max-w-2xl mx-auto leading-relaxed font-space-grotesk">
+                        Represent the Falcons with our premium quality kits and exclusive club merchandise.
                     </p>
                 </div>
             </div>
 
             {/* Jersey Showcase */}
-            <div className="relative py-8 md:py-12 overflow-hidden">
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div ref={jerseyGridRef} className="flex flex-wrap justify-center gap-4 lg:gap-3">
-                        {JERSEYS.map((jersey) => {
-                            const nameParts = jersey.name.split(" ");
-                            const year = nameParts.pop();
-                            const mainName = nameParts.join(" ");
-                            
-                            return (
-                                <div
-                                    key={jersey.name}
-                                    className="group relative rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 overflow-hidden transition-all duration-500 w-full sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-12px)]"
-                                >
-                                    <div className={`w-full aspect-[4/5] bg-gradient-to-br ${jersey.accent} relative overflow-hidden flex flex-col items-center justify-center`}>
-                                        <div className="w-18 h-26 rounded-t-3xl border-2 border-[#f8f4e8]/[0.06] flex items-center justify-center">
-                                            <span className="text-2xl font-black text-[#f8f4e8]/[0.06]">LF</span>
-                                        </div>
-                                        <span className={`absolute top-2.5 left-2.5 inline-block text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full border ${jersey.badgeColor}`}>
-                                            {jersey.tag}
-                                        </span>
-                                    </div>
-                                    <div className="p-3.5 text-center flex flex-col items-center">
-                                        <h3 className="text-sm font-bold text-[#FB4500] tracking-wide group-hover:text-[#d2e823] transition-colors duration-300 line-clamp-1 font-space-grotesk">
-                                            {mainName}
-                                        </h3>
-                                        <span className="text-xs font-semibold text-[#d2e823] tracking-wide mt-0.5 mb-1 font-space-grotesk">{jersey.price}</span>
-                                        <p className="text-[10px] text-[#f8f4e8]/40 uppercase tracking-[0.1em] font-semibold mb-2">
-                                            {jersey.colors}
-                                        </p>
-                                        <p className="text-sm font-bold text-[#f8f4e8]/50 mb-3">
-                                            {year}
-                                        </p>
-                                        <button type="button" className="w-full py-2 rounded-xl bg-[#f8f4e8]/5 border border-[#f8f4e8]/10 text-[9px] font-semibold text-[#f8f4e8] hover:bg-[#f8f4e8]/10 hover:border-[#d2e823]/30 hover:shadow-[0_0_20px_rgba(210,232,35,0.15)] transition-all duration-300 uppercase tracking-widest">
-                                            View Details
+            <div className="relative pt-4 pb-12 md:pb-16 overflow-hidden">
+                <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div ref={jerseyGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+                    {JERSEYS.map((jersey, i) => {
+                        const nameParts = jersey.name.split(" ");
+                        const year = nameParts.pop();
+                        const mainName = nameParts.join(" ");
+                        
+                        return (
+                            <div
+                                key={jersey.name}
+                                className={`group relative rounded-3xl bg-zinc-900/50 backdrop-blur-sm border border-white/5 hover:border-white/20 overflow-hidden transition-all duration-500 hover:-translate-y-2 ${jersey.glow}`}
+                            >
+                                {/* Image / Visual representation */}
+                                <div className={`w-full aspect-[4/5] bg-gradient-to-b ${jersey.accent} relative overflow-hidden flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-700 ease-out`}>
+                                    
+                                    {/* Glassmorphic overlay for depth */}
+                                    <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                                    
+                                    <Shirt className="w-32 h-32 text-white/90 drop-shadow-2xl z-0 transition-transform duration-500 group-hover:scale-110" strokeWidth={1} />
+                                    
+                                    {/* Badge */}
+                                    <span className={`absolute top-4 left-4 z-20 inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border backdrop-blur-md ${jersey.badgeColor}`}>
+                                        {jersey.tag}
+                                    </span>
+                                    
+                                    {/* Overlay action button */}
+                                    <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <button type="button" className="bg-white text-black px-6 py-3 rounded-full font-bold uppercase tracking-wide text-xs shadow-xl hover:scale-105 transition-transform flex items-center gap-2">
+                                            <ShoppingBag className="w-4 h-4" />
+                                            Pre-order
                                         </button>
                                     </div>
                                 </div>
-                            );
-                        })}
-                    </div>
+                                
+                                {/* Info details */}
+                                <div className="p-5 flex flex-col relative bg-zinc-950/80">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h3 className="text-base font-black text-white group-hover:text-[#d2e823] transition-colors duration-300 font-tanker tracking-wide leading-tight">
+                                            {mainName}
+                                        </h3>
+                                        <span className="text-sm font-bold text-[#d2e823] whitespace-nowrap ml-2">{jersey.price}</span>
+                                    </div>
+                                    <p className="text-xs text-zinc-400 font-medium mb-3">
+                                        Season {year}
+                                    </p>
+                                    <div className="flex items-center gap-2 mt-auto">
+                                        <div className="w-full h-[1px] bg-white/10" />
+                                        <span className="text-[10px] text-zinc-500 uppercase tracking-widest whitespace-nowrap">
+                                            {jersey.colors}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
                 </div>
             </div>
 
             {/* CTA */}
             <div className="relative py-12 overflow-hidden">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="text-[#f8f4e8]/50 mb-8 max-w-lg mx-auto">
-                        Join the Falcons family & unlock exclusive discounts on all merchandise.
+                <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div className="p-8 md:p-12 rounded-[2rem] bg-gradient-to-b from-zinc-900 to-black border border-white/5 flex flex-col items-center justify-center relative overflow-hidden">
+                    <h3 className="text-3xl md:text-4xl font-tanker text-white mb-4 z-10">BECOME A MEMBER, GET 15% OFF</h3>
+                    <p className="text-zinc-400 mb-8 max-w-lg z-10 font-space-grotesk text-sm md:text-base">
+                        Join the Falcons family and unlock exclusive discounts on all merchandise, early access to new drops, and more.
                     </p>
+                    <Link href="/register" className="z-10 relative px-8 py-4 bg-[#d2e823] text-black font-black uppercase tracking-widest text-sm rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(210,232,35,0.3)]">
+                        Join the Club
+                    </Link>
+                </div>
                 </div>
             </div>
-        </section >
+        </section>
     );
 }
