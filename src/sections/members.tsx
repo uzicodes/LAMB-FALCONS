@@ -84,7 +84,6 @@ export default function MembersSection() {
 
             {/* Grid */}
             <div className="relative py-6 md:py-8 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(210,232,35,0.03),transparent_60%)]" />
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                         {MEMBERS.map((member) => (
