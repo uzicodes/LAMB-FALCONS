@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Shirt, ShoppingBag, ArrowRight } from "lucide-react";
+import { Shirt, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
 const JERSEYS = [
@@ -11,46 +11,26 @@ const JERSEYS = [
         name: "FALCONS THIRD 2025/26",
         price: "600 TK",
         tag: "Latest",
-        colors: "Royal Blue / White",
-        accent: "from-blue-600 to-indigo-900",
-        badgeColor: "bg-blue-500/20 border-blue-400/30 text-blue-300",
-        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)]",
     },
     {
         name: "EXODUS HOME 2024/25",
         price: "600 TK",
         tag: "Exclusive",
-        colors: "Stealth Black / Gold",
-        accent: "from-zinc-800 to-black",
-        badgeColor: "bg-yellow-500/20 border-yellow-400/30 text-yellow-300",
-        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(234,179,8,0.3)]",
     },
     {
         name: "EXODUS AWAY 2024/25",
         price: "550 TK",
         tag: "Partnered",
-        colors: "Arctic White / Cyan",
-        accent: "from-cyan-400 to-blue-600",
-        badgeColor: "bg-cyan-500/20 border-cyan-400/30 text-cyan-100",
-        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)]",
     },
     {
         name: "FALCONS AWAY 2022/23",
         price: "450 TK",
         tag: "2nd Kit",
-        colors: "Graphite / Lime",
-        accent: "from-lime-400 to-green-700",
-        badgeColor: "bg-lime-500/20 border-lime-400/30 text-lime-300",
-        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(163,230,53,0.4)]",
     },
     {
         name: "FALCONS HOME 2020/21",
         price: "650 TK",
         tag: "Debut",
-        colors: "Crimson / Navy",
-        accent: "from-red-600 to-rose-900",
-        badgeColor: "bg-red-500/20 border-red-400/30 text-red-300",
-        glow: "group-hover:shadow-[0_0_40px_-10px_rgba(220,38,38,0.4)]",
     },
 ];
 
@@ -112,8 +92,8 @@ export default function JerseySection() {
                         </span>
                     </div>
                     
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-wider text-[#f8f4e8] font-tanker leading-none mb-6">
-                        OFFICIAL <span className="text-[#d2e823]">MERCHANDISE</span>
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker leading-none mb-6">
+                        Official Merchandise
                     </h2>
                     
                     <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/60 max-w-2xl mx-auto leading-relaxed font-space-grotesk">
@@ -126,7 +106,7 @@ export default function JerseySection() {
             <div className="relative pt-4 pb-12 md:pb-16 overflow-hidden">
                 <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div ref={jerseyGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
-                    {JERSEYS.map((jersey, i) => {
+                    {JERSEYS.map((jersey) => {
                         const nameParts = jersey.name.split(" ");
                         const year = nameParts.pop();
                         const mainName = nameParts.join(" ");
@@ -134,10 +114,10 @@ export default function JerseySection() {
                         return (
                             <div
                                 key={jersey.name}
-                                className={`group relative rounded-3xl bg-zinc-900/50 backdrop-blur-sm border border-white/5 hover:border-white/20 overflow-hidden transition-all duration-500 hover:-translate-y-2 ${jersey.glow}`}
+                                className="group relative rounded-3xl bg-zinc-900/50 backdrop-blur-sm border border-white/5 hover:border-white/20 overflow-hidden transition-all duration-500 hover:-translate-y-2 group-hover:shadow-[0_0_40px_-10px_rgba(210,232,35,0.25)]"
                             >
                                 {/* Image / Visual representation */}
-                                <div className={`w-full aspect-[4/5] bg-gradient-to-b ${jersey.accent} relative overflow-hidden flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-700 ease-out`}>
+                                <div className="w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 via-zinc-900 to-black relative overflow-hidden flex flex-col items-center justify-center p-6 group-hover:scale-105 transition-transform duration-700 ease-out">
                                     
                                     {/* Glassmorphic overlay for depth */}
                                     <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
@@ -145,7 +125,7 @@ export default function JerseySection() {
                                     <Shirt className="w-32 h-32 text-white/90 drop-shadow-2xl z-0 transition-transform duration-500 group-hover:scale-110" strokeWidth={1} />
                                     
                                     {/* Badge */}
-                                    <span className={`absolute top-4 left-4 z-20 inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border backdrop-blur-md ${jersey.badgeColor}`}>
+                                    <span className="absolute top-4 left-4 z-20 inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border backdrop-blur-md bg-[#d2e823]/10 border-[#d2e823]/20 text-[#d2e823]">
                                         {jersey.tag}
                                     </span>
                                     
@@ -159,22 +139,16 @@ export default function JerseySection() {
                                 </div>
                                 
                                 {/* Info details */}
-                                <div className="p-5 flex flex-col relative bg-zinc-950/80">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <h3 className="text-base font-black text-white group-hover:text-[#d2e823] transition-colors duration-300 font-tanker tracking-wide leading-tight">
-                                            {mainName}
-                                        </h3>
-                                        <span className="text-sm font-bold text-[#d2e823] whitespace-nowrap ml-2">{jersey.price}</span>
-                                    </div>
-                                    <p className="text-xs text-zinc-400 font-medium mb-3">
-                                        Season {year}
-                                    </p>
-                                    <div className="flex items-center gap-2 mt-auto">
-                                        <div className="w-full h-[1px] bg-white/10" />
-                                        <span className="text-[10px] text-zinc-500 uppercase tracking-widest whitespace-nowrap">
-                                            {jersey.colors}
-                                        </span>
-                                    </div>
+                                <div className="p-5 flex flex-col items-center text-center relative bg-zinc-950/80">
+                                    <span className="text-[9px] font-semibold text-[#f8f4e8]/40 tracking-[0.2em] uppercase mb-1 font-space-grotesk">
+                                        {year}
+                                    </span>
+                                    <h3 className="text-2xl sm:text-3xl font-black text-[#FB4500] font-tanker tracking-wider leading-tight mb-1.5">
+                                        {mainName}
+                                    </h3>
+                                    <span className="text-sm sm:text-base font-bold text-[#d2e823] tracking-wide font-space-grotesk">
+                                        {jersey.price}
+                                    </span>
                                 </div>
                             </div>
                         );
