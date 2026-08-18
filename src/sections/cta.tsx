@@ -63,7 +63,7 @@ export default function CallToAction() {
             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
               Be Part of Us
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-[#f8f4e8] mb-4 font-tanker">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wider text-[#e8e0c8] mb-4 font-tanker">
               Ready to Fly?
             </h2>
             <p className="text-base md:text-lg text-[#f8f4e8]/50 max-w-xl mx-auto mb-6 leading-relaxed">

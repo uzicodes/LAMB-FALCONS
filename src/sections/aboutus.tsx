@@ -152,7 +152,7 @@ export default function AboutUsSection() {
                         </span>
                     </div>
                     <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-3 font-tanker">
-                        <span className="text-[#f8f4e8]">About</span>{" "}
+                        <span className="text-[#e8e0c8]">About</span>{" "}
                         <span className="text-[#d2e823]">Lamb Falcons</span>
                     </h2>
                     <p className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed mb-4">

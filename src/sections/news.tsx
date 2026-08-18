@@ -34,7 +34,7 @@ export default function News() {
           <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
             Latest
           </span>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#e8e0c8] font-tanker">
             Club News
           </h2>
         </div>

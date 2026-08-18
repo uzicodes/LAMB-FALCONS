@@ -124,7 +124,7 @@ const ForgotPassword = () => {
                             className="object-contain drop-shadow-[0_0_10px_rgba(210,232,35,0.5)]"
                         />
                     </div>
-                    <h2 className="text-xl font-bold text-[#f8f4e8] tracking-tight">
+                    <h2 className="text-xl font-bold text-[#e8e0c8] tracking-tight">
                         {successfulCreation ? "Reset Password" : "Forgot Password"}
                     </h2>
                     <p className="text-[11px] text-[#f8f4e8]/60 mt-1">

@@ -45,7 +45,7 @@ export function DeleteAccountModal({
                                 <div className="w-12 h-12 mx-auto mb-3 bg-red-500/10 rounded-full flex items-center justify-center">
                                     <AlertTriangle className="w-6 h-6 text-red-400" />
                                 </div>
-                                <h3 className="text-lg font-bold text-[#f8f4e8]">
+                                <h3 className="text-lg font-bold text-[#e8e0c8]">
                                     Delete Your Account?
                                 </h3>
                                 <p className="text-xs text-[#f8f4e8]/60 mt-2 leading-relaxed">

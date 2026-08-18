@@ -44,7 +44,7 @@ export default function Hero() {
         <div className="flex flex-col items-center justify-center">
           <h1
             ref={headingRef}
-            className="opacity-0 text-4xl sm:text-4xl md:text-5xl lg:text-8xl text-[#f8f4e8] leading-none tracking-wider font-winky-milky"
+            className="opacity-0 text-4xl sm:text-4xl md:text-5xl lg:text-8xl text-[#e8e0c8] leading-none tracking-wider font-winky-milky"
             style={{ marginTop: '-30px' }}
           >
             MORE THAN A CLUB

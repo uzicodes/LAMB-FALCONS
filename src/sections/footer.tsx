@@ -88,7 +88,7 @@ export default function Footer() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black tracking-wider leading-none font-tanker text-[#f8f4e8]">
+                    <h3 className="text-2xl font-black tracking-wider leading-none font-tanker text-[#e8e0c8]">
                       LAMB FALCONS
                     </h3>
                     <p className="text-[10px] uppercase tracking-[0.25em] text-[#d2e823]/70 font-semibold mt-0.5">

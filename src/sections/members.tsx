@@ -72,7 +72,7 @@ export default function MembersSection() {
             {/* Header */}
             <div className="relative py-8 md:py-12">
                 <div ref={headerRef} className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-6 font-tanker text-[#f8f4e8]">
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider leading-[0.9] mb-6 font-tanker text-[#e8e0c8]">
                         Meet The Squad
                     </h2>
                     <p data-animate className="text-lg sm:text-xl text-[#f8f4e8]/50 max-w-2xl mx-auto leading-relaxed">
@@ -141,7 +141,7 @@ export default function MembersSection() {
                             <span className="inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-6">
                                 Open Recruitment
                             </span>
-                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-[#f8f4e8] mb-4 font-tanker">
+                            <h2 className="text-2xl md:text-4xl font-black tracking-wider text-[#e8e0c8] mb-4 font-tanker">
                                 Think You&apos;ve Got What It Takes?
                             </h2>
                             <p className="text-[#f8f4e8]/50 max-w-md mx-auto mb-8 leading-relaxed">
@@ -194,7 +194,7 @@ export default function MembersSection() {
                                     <div className="w-16 h-16 rounded-2xl bg-[#d2e823]/10 flex items-center justify-center mb-6 border border-[#d2e823]/20">
                                         <AlertCircle className="w-8 h-8 text-[#d2e823]" />
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-[#f8f4e8] mb-4 font-space-grotesk tracking-wide">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-[#e8e0c8] mb-4 font-space-grotesk tracking-wide">
                                         Recruitment Closed
                                     </h3>
                                     <p className="text-[#f8f4e8]/50 leading-relaxed mb-8">

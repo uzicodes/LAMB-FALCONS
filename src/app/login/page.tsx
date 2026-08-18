@@ -83,7 +83,7 @@ const Login = () => {
                             className="object-contain drop-shadow-[0_0_10px_rgba(210,232,35,0.5)]"
                         />
                     </div>
-                    <h2 className="text-2xl font-bold text-[#f8f4e8] tracking-tight">
+                    <h2 className="text-2xl font-bold text-[#e8e0c8] tracking-tight">
                         Welcome Back
                     </h2>
                     <p className="text-xs text-[#f8f4e8]/60 mt-2">

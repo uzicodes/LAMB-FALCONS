@@ -92,7 +92,7 @@ export default function JerseySection() {
                         </span>
                     </div>
                     
-                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#f8f4e8] font-tanker leading-none mb-6">
+                    <h2 data-animate className="text-5xl sm:text-6xl md:text-7xl font-black tracking-wider text-[#e8e0c8] font-tanker leading-none mb-6">
                         Official Merchandise
                     </h2>
                     
