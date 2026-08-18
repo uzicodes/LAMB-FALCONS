@@ -47,29 +47,29 @@ export default function JerseySection() {
             if (headerChildren) {
                 gsap.fromTo(
                     headerChildren,
-                    { opacity: 0, y: 50 },
+                    { opacity: 0, y: 25 },
                     {
-                        opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "expo.out",
+                        opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: "power3.out",
                         scrollTrigger: {
                             trigger: headerRef.current,
-                            start: "top 85%",
+                            start: "top 92%",
                             toggleActions: "play none none reverse",
                         },
                     }
                 );
             }
 
-            // Jersey cards stagger with a 3d-like effect
+            // Jersey cards ultra-snappy entrance
             const jerseyCards = jerseyGridRef.current?.children;
             if (jerseyCards) {
                 gsap.fromTo(
                     jerseyCards,
-                    { opacity: 0, y: 100, rotationX: 15, scale: 0.9 },
+                    { opacity: 0, y: 20, scale: 0.98 },
                     {
-                        opacity: 1, y: 0, rotationX: 0, scale: 1, duration: 1.2, stagger: 0.1, ease: "power4.out",
+                        opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.035, ease: "power3.out",
                         scrollTrigger: {
                             trigger: jerseyGridRef.current,
-                            start: "top 80%",
+                            start: "top 95%",
                             toggleActions: "play none none reverse",
                         },
                     }

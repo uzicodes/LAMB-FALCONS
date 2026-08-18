@@ -37,12 +37,12 @@ export default function MembersSection() {
         if (headerChildren) {
             gsap.fromTo(
                 headerChildren,
-                { opacity: 0, y: 40 },
+                { opacity: 0, y: 25 },
                 {
-                    opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: "power3.out",
                     scrollTrigger: {
                         trigger: headerRef.current,
-                        start: "top 80%",
+                        start: "top 92%",
                         toggleActions: "play none none reverse",
                     },
                 }
@@ -53,12 +53,12 @@ export default function MembersSection() {
         if (cards && cards.length > 0) {
             gsap.fromTo(
                 cards,
-                { opacity: 0, y: 30, scale: 0.96 },
+                { opacity: 0, y: 15, scale: 0.98 },
                 {
-                    opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out",
+                    opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.015, ease: "power2.out",
                     scrollTrigger: {
                         trigger: gridRef.current,
-                        start: "top 80%",
+                        start: "top 98%",
                         toggleActions: "play none none reverse",
                     },
                 }
