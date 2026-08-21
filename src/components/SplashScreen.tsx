@@ -40,15 +40,8 @@ export default function SplashScreen({
                         exit={shouldReduceMotion ? { opacity: 0 } : { scale: 1.1, opacity: 0, filter: "blur(10px)" }}
                         transition={{ duration: shouldReduceMotion ? 0.2 : 0.6, ease: "easeInOut" }}
                     >
-                        {/* Background subtle radial gradient */}
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#d2e823]/5 via-[#061a13]/80 to-[#061a13] z-0" />
-                        
-                        {/* Ambient glow behind the logo */}
-                        <m.div
-                            className="absolute z-0 w-80 h-80 rounded-full bg-[#d2e823]/10 blur-[120px]"
-                            animate={shouldReduceMotion ? { opacity: 0.5 } : { scale: [1, 1.2, 1], opacity: [0.3, 0.7, 0.3] }}
-                            transition={shouldReduceMotion ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        />
+                        {/* Clean dark background with zero banding */}
+                        <div className="absolute inset-0 bg-[#061a13]" />
 
                         {/* Center Content */}
                         <m.div
@@ -69,21 +62,17 @@ export default function SplashScreen({
 
                                 {/* Middle Thin Ring - Spins Counter-Clockwise */}
                                 <m.div 
-                                    className="absolute inset-2 rounded-full border border-[#d2e823]/20 border-t-[#d2e823]/80"
+                                    className="absolute inset-2 rounded-full border border-[#d2e823]/20 border-t-[#d2e823]/90"
                                     animate={shouldReduceMotion ? {} : { rotate: -360 }}
                                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                                 />
 
                                 {/* Inner Ring - Pulses */}
                                 <m.div
-                                    className="absolute inset-6 rounded-full border border-[#d2e823]/50 shadow-[0_0_15px_rgba(210,232,35,0.3)]"
+                                    className="absolute inset-6 rounded-full border border-[#d2e823]/40"
                                     animate={shouldReduceMotion ? {} : { 
-                                        scale: [1, 1.05, 1],
-                                        boxShadow: [
-                                            "0 0 15px rgba(210,232,35,0.3)",
-                                            "0 0 30px rgba(210,232,35,0.6)",
-                                            "0 0 15px rgba(210,232,35,0.3)"
-                                        ]
+                                        scale: [1, 1.04, 1],
+                                        borderColor: ["rgba(210,232,35,0.3)", "rgba(210,232,35,0.7)", "rgba(210,232,35,0.3)"]
                                     }}
                                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                                 />
@@ -91,7 +80,7 @@ export default function SplashScreen({
                                 {/* The Logo */}
                                 <m.div
                                     className="relative z-20"
-                                    animate={shouldReduceMotion ? {} : { y: [-4, 4, -4] }}
+                                    animate={shouldReduceMotion ? {} : { y: [-3, 3, -3] }}
                                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                 >
                                     <Image
@@ -99,7 +88,7 @@ export default function SplashScreen({
                                         alt="Falcons Logo"
                                         width={110}
                                         height={110}
-                                        className="object-contain drop-shadow-[0_0_20px_rgba(210,232,35,0.8)]"
+                                        className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]"
                                         priority
                                     />
                                 </m.div>
@@ -130,8 +119,8 @@ export default function SplashScreen({
                                 
                                 {/* Bottom text */}
                                 <m.h1 
-                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.15em] leading-none uppercase font-tanker bg-gradient-to-b from-[#f8f4e8]/80 via-[#d2e823]/60 to-[#061a13] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(210,232,35,0.2)] whitespace-nowrap mt-6"
-                                    animate={shouldReduceMotion ? {} : { opacity: [0.6, 1, 0.6] }}
+                                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.15em] leading-none uppercase font-tanker bg-gradient-to-b from-[#f8f4e8] to-[#d2e823]/80 bg-clip-text text-transparent whitespace-nowrap mt-6"
+                                    animate={shouldReduceMotion ? {} : { opacity: [0.7, 1, 0.7] }}
                                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                                 >
                                     LAMB FALCONS
