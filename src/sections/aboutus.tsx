@@ -3,25 +3,38 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Zap, Users, Trophy, HeartHandshake } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VALUES = [
     {
         title: "Relentless Drive",
-        description: "We push limits every day. Mediocrity isn't in our vocabulary ",
+        tag: "Mentality",
+        description: "We push limits every single day. Every drill and match is executed with relentless intensity driving us forward.",
+        icon: Zap,
+        accent: "#d2e823",
     },
     {
         title: "Brotherhood",
-        description: "A family that stands together through every challenge.",
+        tag: "Unity",
+        description: "A bonded family that stands shoulder-to-shoulder through every triumph, setback, and battle on and off the field.",
+        icon: Users,
+        accent: "#FB4500",
     },
     {
         title: "Winning Culture",
-        description: "Our mentality is built to compete at the highest level.",
+        tag: "Excellence",
+        description: "Built with an unrelenting hunger to compete at the highest level, demanding ruthless discipline and tactical perfection.",
+        icon: Trophy,
+        accent: "#d2e823",
     },
     {
         title: "Community First",
-        description: "We invest in our community through local events.",
+        tag: "Impact",
+        description: "We invest back into our grassroots community inspiring the next generation of sportsmen.",
+        icon: HeartHandshake,
+        accent: "#FB4500",
     },
 ];
 
@@ -170,64 +183,46 @@ export default function AboutUsSection() {
                 </div>
             </div>
 
-            {/* Mission / Vision */}
-            <div className="relative pt-4 md:pt-6 pb-12 md:pb-16 overflow-hidden">
+            {/* Core Values - 4 Interactive Feature Bento Cards */}
+            <div className="relative pt-6 md:pt-8 pb-16 md:pb-24 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-                        <div className="relative rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 p-10 md:p-12 overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-[#f8f4e8]/10" />
-                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-[#f8f4e8]/10" />
-                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
-                                Our Mission
-                            </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#FB4500] mb-4 font-tanker">
-                                Redefining What a Club Can Be
-                            </h3>
-                            <p className="relative text-[#f8f4e8]/50 leading-relaxed">
-                                To create a community that develops talent at
-                                every level, fosters deep bonds between members, and competes with
-                                relentless intensity while giving back to the community that
-                                fuels us.
-                            </p>
-                        </div>
-                        <div className="relative rounded-2xl bg-gradient-to-br from-[#0a2a1f] to-[#061a13] border border-[#f8f4e8]/5 p-10 md:p-12 overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                            <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-[#f8f4e8]/10" />
-                            <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-[#f8f4e8]/10" />
-                            <span className="relative inline-block text-xs font-semibold tracking-[0.3em] uppercase text-[#d2e823] mb-4">
-                                Our Vision
-                            </span>
-                            <h3 className="relative text-2xl md:text-3xl font-bold tracking-wide text-[#FB4500] mb-4 font-tanker">
-                                Standard for Modern Sports
-                            </h3>
-                            <p className="relative text-[#f8f4e8]/50 leading-relaxed">
-                                To be recognised as the gold standard in community-driven sports a club that proves you don&apos;t need a century of history to
-                                build a legacy. Just hunger, discipline, and unity.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {VALUES.map((v) => {
+                            const IconComponent = v.icon;
+                            return (
+                                <div
+                                    key={v.title}
+                                    className="group relative rounded-2xl bg-gradient-to-b from-[#0c2a20]/90 via-[#071d15]/95 to-[#061a13] border border-[#f8f4e8]/10 hover:border-[#f8f4e8]/25 p-7 sm:p-8 flex flex-col items-center text-center justify-between overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
+                                >
+                                    {/* Corner bracket accents */}
+                                    <div className="absolute top-3 left-3 w-4 h-4 border-l border-t border-[#f8f4e8]/10 group-hover:border-[#f8f4e8]/30 transition-colors pointer-events-none" />
+                                    <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-[#f8f4e8]/10 group-hover:border-[#f8f4e8]/30 transition-colors pointer-events-none" />
 
-            {/* Core Values */}
-            <div className="relative pt-0 pb-12 md:pb-16 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                        {VALUES.map((v) => (
-                            <div
-                                key={v.title}
-                                className="group relative p-7 rounded-2xl bg-[#f8f4e8]/[0.02] border border-[#f8f4e8]/5 hover:border-[#f8f4e8]/15 transition-all duration-500 text-center"
-                            >
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#d2e823]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <h3 className="relative text-lg font-bold text-[#FB4500] tracking-wide uppercase mb-2 font-space-grotesk">
-                                    {v.title}
-                                </h3>
-                                <p className="relative text-sm text-[#f8f4e8]/40 leading-relaxed">
-                                    {v.description}
-                                </p>
-                            </div>
-                        ))}
+                                    <div className="flex flex-col items-center text-center w-full">
+                                        {/* Card Header with Icon */}
+                                        <div className="mb-6 flex justify-center">
+                                            <div className="w-11 h-11 rounded-xl flex items-center justify-center border border-sky-400/25 bg-sky-500/10 text-sky-400 group-hover:bg-sky-500/20 group-hover:border-sky-400/50 transition-all duration-300">
+                                                <IconComponent className="w-5 h-5 text-sky-400" />
+                                            </div>
+                                        </div>
+
+                                        <div className="mb-2.5">
+                                            <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#d2e823]">
+                                                {v.tag}
+                                            </span>
+                                        </div>
+
+                                        <h4 className="text-2xl sm:text-[1.65rem] font-black text-[#f8f4e8] tracking-[0.06em] leading-tight mb-4 font-tanker">
+                                            {v.title}
+                                        </h4>
+
+                                        <p className="text-sm text-[#f8f4e8]/60 leading-relaxed font-light">
+                                            {v.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
