@@ -6,24 +6,30 @@ import { Globe, ArrowUp, ArrowUpRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 
-const FOOTER_LINKS = {
+interface FooterLink {
+  name: string;
+  href: string;
+  external?: boolean;
+}
+
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Navigation: [
     { name: "About Us", href: "#about" },
     { name: "Squad Members", href: "#members" },
     { name: "Club News", href: "#news" },
-    { name: "Match Gallery", href: "#gallery" },
+    { name: "Gallery Section", href: "#gallery" },
   ],
   Resources: [
     { name: "Official Jerseys", href: "#jersey" },
     { name: "Join Falcons", href: "/register" },
-    { name: "Partner Brands", href: "#sponsors" },
-    { name: "Player Login", href: "/login" },
+    { name: "Our Brands", href: "#sponsors" },
+    { name: "Member Login", href: "/login" },
   ],
   Social: [
-    { name: "Instagram", href: "https://instagram.com", external: true },
-    { name: "Twitter / X", href: "https://x.com", external: true },
-    { name: "YouTube", href: "https://youtube.com", external: true },
-    { name: "Facebook", href: "https://facebook.com", external: true },
+    { name: "Instagram", href: "#" },
+    { name: "Twitter / X", href: "#" },
+    { name: "YouTube", href: "#" },
+    { name: "Facebook", href: "#" },
   ],
 };
 
