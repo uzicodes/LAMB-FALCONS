@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -31,8 +32,16 @@ export default function Hero() {
       className="fixed inset-0 z-0 flex items-center justify-center overflow-hidden"
     >
       {/* Background image */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/heroslides1.webp')] bg-cover bg-center bg-no-repeat blur-[0.7px] scale-[1.02]" />
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/heroslides1.webp"
+          alt="Lamb Falcons Hero Background"
+          fill
+          priority
+          quality={80}
+          sizes="100vw"
+          className="object-cover object-center blur-[0.7px] scale-[1.02]"
+        />
       </div>
 
       {/* Dark overlay */}
