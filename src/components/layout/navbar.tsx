@@ -48,33 +48,44 @@ const Navbar = () => {
 		}
 	}, [isHomePage]);
 
-	// Detect which section is currently in view (only on homepage)
+	// Detect which section is currently in view using IntersectionObserver (zero forced reflows)
 	useEffect(() => {
 		if (!isHomePage) {
 			setActiveSection("");
 			return;
 		}
 
-		const handleScroll = () => {
-			const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
-			let current = "";
+		const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
+		const observedElements: HTMLElement[] = [];
 
-			for (const sectionId of sections) {
-				const element = document.getElementById(sectionId);
-				if (element) {
-					const rect = element.getBoundingClientRect();
-					if (rect.top <= 150 && rect.bottom >= 150) {
-						current = `#${sectionId}`;
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						setActiveSection(`#${entry.target.id}`);
 					}
 				}
+			},
+			{
+				rootMargin: "-20% 0px -60% 0px",
+				threshold: 0,
 			}
+		);
 
-			setActiveSection(current);
+		for (const sectionId of sections) {
+			const element = document.getElementById(sectionId);
+			if (element) {
+				observedElements.push(element);
+				observer.observe(element);
+			}
+		}
+
+		return () => {
+			for (const el of observedElements) {
+				observer.unobserve(el);
+			}
+			observer.disconnect();
 		};
-
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		handleScroll(); // Run once on mount
-		return () => window.removeEventListener("scroll", handleScroll);
 	}, [isHomePage]);
 
 	// Handle smooth scroll on nav link click
